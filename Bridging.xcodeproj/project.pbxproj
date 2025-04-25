@@ -6,6 +6,16 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		7C2E37EC2DBBB49C00BD6B95 /* Auth in Frameworks */ = {isa = PBXBuildFile; productRef = 7C2E37EB2DBBB49C00BD6B95 /* Auth */; };
+		7C2E37EE2DBBB49C00BD6B95 /* Functions in Frameworks */ = {isa = PBXBuildFile; productRef = 7C2E37ED2DBBB49C00BD6B95 /* Functions */; };
+		7C2E37F02DBBB49C00BD6B95 /* PostgREST in Frameworks */ = {isa = PBXBuildFile; productRef = 7C2E37EF2DBBB49C00BD6B95 /* PostgREST */; };
+		7C2E37F22DBBB49C00BD6B95 /* Realtime in Frameworks */ = {isa = PBXBuildFile; productRef = 7C2E37F12DBBB49C00BD6B95 /* Realtime */; };
+		7C2E37F42DBBB49C00BD6B95 /* Storage in Frameworks */ = {isa = PBXBuildFile; productRef = 7C2E37F32DBBB49C00BD6B95 /* Storage */; };
+		7C2E37F72DBBB5A200BD6B95 /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 7C2E37F62DBBB5A200BD6B95 /* GoogleSignInSwift */; };
+		7CCC5CD52DBBBA95000FC317 /* Supabase in Frameworks */ = {isa = PBXBuildFile; productRef = 7CCC5CD42DBBBA95000FC317 /* Supabase */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		7C2E37CD2DBBAA2F00BD6B95 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -65,6 +75,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7CCC5CD52DBBBA95000FC317 /* Supabase in Frameworks */,
+				7C2E37F02DBBB49C00BD6B95 /* PostgREST in Frameworks */,
+				7C2E37EE2DBBB49C00BD6B95 /* Functions in Frameworks */,
+				7C2E37EC2DBBB49C00BD6B95 /* Auth in Frameworks */,
+				7C2E37F72DBBB5A200BD6B95 /* GoogleSignInSwift in Frameworks */,
+				7C2E37F42DBBB49C00BD6B95 /* Storage in Frameworks */,
+				7C2E37F22DBBB49C00BD6B95 /* Realtime in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -91,6 +108,7 @@
 				7C2E37B82DBBAA2D00BD6B95 /* Bridging */,
 				7C2E37CF2DBBAA2F00BD6B95 /* BridgingTests */,
 				7C2E37D92DBBAA2F00BD6B95 /* BridgingUITests */,
+				7CCC5CD32DBBBA95000FC317 /* Frameworks */,
 				7C2E37B72DBBAA2D00BD6B95 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -103,6 +121,13 @@
 				7C2E37D62DBBAA2F00BD6B95 /* BridgingUITests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		7CCC5CD32DBBBA95000FC317 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -125,6 +150,13 @@
 			);
 			name = Bridging;
 			packageProductDependencies = (
+				7C2E37EB2DBBB49C00BD6B95 /* Auth */,
+				7C2E37ED2DBBB49C00BD6B95 /* Functions */,
+				7C2E37EF2DBBB49C00BD6B95 /* PostgREST */,
+				7C2E37F12DBBB49C00BD6B95 /* Realtime */,
+				7C2E37F32DBBB49C00BD6B95 /* Storage */,
+				7C2E37F62DBBB5A200BD6B95 /* GoogleSignInSwift */,
+				7CCC5CD42DBBBA95000FC317 /* Supabase */,
 			);
 			productName = Bridging;
 			productReference = 7C2E37B62DBBAA2D00BD6B95 /* Bridging.app */;
@@ -208,6 +240,10 @@
 			);
 			mainGroup = 7C2E37AD2DBBAA2D00BD6B95;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				7C2E37EA2DBBB49C00BD6B95 /* XCRemoteSwiftPackageReference "supabase-swift" */,
+				7C2E37F52DBBB5A200BD6B95 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 7C2E37B72DBBAA2D00BD6B95 /* Products */;
 			projectDirPath = "";
@@ -292,11 +328,14 @@
 				DEVELOPMENT_TEAM = D49753ZB3N;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Bridging/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.social-networking";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIStatusBarHidden = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -304,6 +343,9 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.Wook.Bridging;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -315,16 +357,20 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Bridging/BridgingRelease.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = D49753ZB3N;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Bridging/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.social-networking";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIStatusBarHidden = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -332,6 +378,9 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.Wook.Bridging;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -571,6 +620,63 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		7C2E37EA2DBBB49C00BD6B95 /* XCRemoteSwiftPackageReference "supabase-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/supabase-community/supabase-swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.5.1;
+			};
+		};
+		7C2E37F52DBBB5A200BD6B95 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/google/GoogleSignIn-iOS";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		7C2E37EB2DBBB49C00BD6B95 /* Auth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7C2E37EA2DBBB49C00BD6B95 /* XCRemoteSwiftPackageReference "supabase-swift" */;
+			productName = Auth;
+		};
+		7C2E37ED2DBBB49C00BD6B95 /* Functions */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7C2E37EA2DBBB49C00BD6B95 /* XCRemoteSwiftPackageReference "supabase-swift" */;
+			productName = Functions;
+		};
+		7C2E37EF2DBBB49C00BD6B95 /* PostgREST */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7C2E37EA2DBBB49C00BD6B95 /* XCRemoteSwiftPackageReference "supabase-swift" */;
+			productName = PostgREST;
+		};
+		7C2E37F12DBBB49C00BD6B95 /* Realtime */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7C2E37EA2DBBB49C00BD6B95 /* XCRemoteSwiftPackageReference "supabase-swift" */;
+			productName = Realtime;
+		};
+		7C2E37F32DBBB49C00BD6B95 /* Storage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7C2E37EA2DBBB49C00BD6B95 /* XCRemoteSwiftPackageReference "supabase-swift" */;
+			productName = Storage;
+		};
+		7C2E37F62DBBB5A200BD6B95 /* GoogleSignInSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7C2E37F52DBBB5A200BD6B95 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignInSwift;
+		};
+		7CCC5CD42DBBBA95000FC317 /* Supabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7C2E37EA2DBBB49C00BD6B95 /* XCRemoteSwiftPackageReference "supabase-swift" */;
+			productName = Supabase;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 7C2E37AE2DBBAA2D00BD6B95 /* Project object */;
 }

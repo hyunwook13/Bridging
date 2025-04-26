@@ -1,5 +1,4 @@
 {
-  "originHash" : "8b13b193d448f2e9fcaad97aa40b178b8c6f813e0b44d743cc63d6dd9451ed72",
   "pins" : [
     {
       "identity" : "app-check",
@@ -22,7 +21,7 @@
     {
       "identity" : "googlesignin-ios",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/google/GoogleSignIn-iOS",
+      "location" : "https://github.com/google/GoogleSignIn-iOS.git",
       "state" : {
         "revision" : "65fb3f1aa6ffbfdc79c4e22178a55cd91561f5e9",
         "version" : "8.0.0"
@@ -65,9 +64,18 @@
       }
     },
     {
+      "identity" : "rxswift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/ReactiveX/RxSwift.git",
+      "state" : {
+        "revision" : "5dd1907d64f0d36f158f61a466bab75067224893",
+        "version" : "6.9.0"
+      }
+    },
+    {
       "identity" : "supabase-swift",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/supabase-community/supabase-swift.git",
+      "location" : "https://github.com/supabase/supabase-swift.git",
       "state" : {
         "revision" : "4c4f2a0483a794e9294ae0f550a63881e4ee1de9",
         "version" : "2.26.1"
@@ -128,5 +136,5 @@
       }
     }
   ],
-  "version" : 3
+  "version" : 2
 }

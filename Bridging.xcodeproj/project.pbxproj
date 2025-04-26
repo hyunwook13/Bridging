@@ -3,275 +3,531 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 77;
+	objectVersion = 55;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7C2E37EC2DBBB49C00BD6B95 /* Auth in Frameworks */ = {isa = PBXBuildFile; productRef = 7C2E37EB2DBBB49C00BD6B95 /* Auth */; };
-		7C2E37EE2DBBB49C00BD6B95 /* Functions in Frameworks */ = {isa = PBXBuildFile; productRef = 7C2E37ED2DBBB49C00BD6B95 /* Functions */; };
-		7C2E37F02DBBB49C00BD6B95 /* PostgREST in Frameworks */ = {isa = PBXBuildFile; productRef = 7C2E37EF2DBBB49C00BD6B95 /* PostgREST */; };
-		7C2E37F22DBBB49C00BD6B95 /* Realtime in Frameworks */ = {isa = PBXBuildFile; productRef = 7C2E37F12DBBB49C00BD6B95 /* Realtime */; };
-		7C2E37F42DBBB49C00BD6B95 /* Storage in Frameworks */ = {isa = PBXBuildFile; productRef = 7C2E37F32DBBB49C00BD6B95 /* Storage */; };
-		7C2E37F72DBBB5A200BD6B95 /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 7C2E37F62DBBB5A200BD6B95 /* GoogleSignInSwift */; };
-		7CCC5CD52DBBBA95000FC317 /* Supabase in Frameworks */ = {isa = PBXBuildFile; productRef = 7CCC5CD42DBBBA95000FC317 /* Supabase */; };
+		064668D23637DE8B15427759 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CD2F802307BD44D18EF717A /* RxSwift.framework */; };
+		06B369D9F9EB979711BB686F /* AppCheckCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75D1294F4CA65E10BEF1B3B9 /* AppCheckCore.framework */; };
+		073DE21A6870298FBB97BDCC /* RxCocoaRuntime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 022C770C0E7FA9A11740C2AF /* RxCocoaRuntime.framework */; };
+		09FF877CA7A31E275DFBF585 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B56139BD578D9808A64E343 /* RxCocoa.framework */; };
+		0B27A8C80E89EC6A9ECCD814 /* AppAuthCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AB0A9AFA3DC8AA99CC2D72D /* AppAuthCore.framework */; };
+		117871E1850A483AA3B5167D /* GTMAppAuth_GTMAppAuth.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4E8D30CD514AFC86A739784B /* GTMAppAuth_GTMAppAuth.bundle */; };
+		121C657B9D3EC8E622DF8E37 /* AppAuth_AppAuth.bundle in Dependencies */ = {isa = PBXBuildFile; fileRef = B564D02DD6E77A250B9C9B2C /* AppAuth_AppAuth.bundle */; };
+		14D494A95C24E9468533A88F /* GTMSessionFetcher_GTMSessionFetcherCore.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 854EE6ED5776690A2B1D70B4 /* GTMSessionFetcher_GTMSessionFetcherCore.bundle */; };
+		14EB108922C2C0B1FA610D95 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E3CD4F945A12338D408FB11 /* CoreText.framework */; };
+		154C0FBC98DA56B1EEFE774C /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D997A776BB229D38E2723C4 /* Constant.swift */; };
+		17ABFC873CE486E98FB79C7E /* AppAuth_AppAuthCore.bundle in Dependencies */ = {isa = PBXBuildFile; fileRef = 4D2767EA9C1A4CDFD0678922 /* AppAuth_AppAuthCore.bundle */; };
+		17F8BE5F14B5A4BC0529EC18 /* PostgREST.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06F4E6B98BF5B4A5E5108A05 /* PostgREST.framework */; };
+		1B13F00506C9D0E45C2BD20C /* RxSwift_RxCocoa.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 2C6BF095FE3AA1633FF5123E /* RxSwift_RxCocoa.bundle */; };
+		1F8382EFBCA91806AAF902C1 /* FBLPromises.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F2E76854B1D3B187A9C7090 /* FBLPromises.framework */; };
+		218AD6A024870FFF5F839632 /* GoogleSignIn_GoogleSignIn.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5F577CDC0C9121C1766BCDFC /* GoogleSignIn_GoogleSignIn.bundle */; };
+		230AD80EFE2689BD8087B9FD /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6952A298D4F4D4D7BAA0ADE /* AppKit.framework */; platformFilters = (macos, ); };
+		23C89FF3D8C29CFA9EC81CEE /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54D57EE3AEEABCC424FC6CB4 /* Security.framework */; };
+		249E7ACE046E71F4CED75A9E /* TuistAssets+Bridging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557A60365C3054A535C2B510 /* TuistAssets+Bridging.swift */; };
+		2940A037939FCE145142CC0C /* GoogleSignIn_GoogleSignIn.bundle in Dependencies */ = {isa = PBXBuildFile; fileRef = 5F577CDC0C9121C1766BCDFC /* GoogleSignIn_GoogleSignIn.bundle */; };
+		2B55B8E22240164DD67B4375 /* Helpers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 186C0B9660CB8FBA1792ED9C /* Helpers.framework */; };
+		2C37A1D670E4E279B937411D /* GoogleUtilities_GoogleUtilities_UserDefaults.bundle in Dependencies */ = {isa = PBXBuildFile; fileRef = 25A303E0F5F1DB774CECB714 /* GoogleUtilities_GoogleUtilities_UserDefaults.bundle */; };
+		2EBF51B5192CFB5907F7A630 /* GoogleUtilities_UserDefaults.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 151CB4B2521BF6147EF6BB7D /* GoogleUtilities_UserDefaults.framework */; };
+		2F5319B44273BA29C3BDAEE9 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8562C6315ABD33253ED6B79C /* Logger.swift */; };
+		315116B26E899B06E579C80E /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F06575C100FC8BE8DF935908 /* LocalAuthentication.framework */; };
+		31FE7F0FA3E64B275E3835D0 /* IssueReporting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F34F1F766587B32423AEA7CE /* IssueReporting.framework */; };
+		34BB530CBA14603177ECD5BA /* GoogleUtilities_GoogleUtilities_Logger.bundle in Dependencies */ = {isa = PBXBuildFile; fileRef = 33F5BD0AF178A1F6444D0736 /* GoogleUtilities_GoogleUtilities_Logger.bundle */; };
+		3E71EC7D0E769A06DCDB167A /* RxBlocking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F41C7B54841A0F37BD2B5425 /* RxBlocking.framework */; };
+		418A69BCC38FA587AA689EFC /* swift-crypto_Crypto.bundle in Resources */ = {isa = PBXBuildFile; fileRef = FBFFD6C79A6190131C87F23C /* swift-crypto_Crypto.bundle */; };
+		41BC4C37245DAFCEEA3FC033 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF116A2743FF3C00C5A11A0 /* SceneDelegate.swift */; };
+		44066ACEC355D73DAB21AD19 /* BridgingRelease.entitlements in Resources */ = {isa = PBXBuildFile; fileRef = 02747B26B69D545CE919B586 /* BridgingRelease.entitlements */; };
+		4532A14D64DF70ACA43293AC /* Promises_FBLPromises.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 6B764578DD0E203D73BFB450 /* Promises_FBLPromises.bundle */; };
+		48978AA03813B0F9C9986403 /* Promises_FBLPromises.bundle in Dependencies */ = {isa = PBXBuildFile; fileRef = 6B764578DD0E203D73BFB450 /* Promises_FBLPromises.bundle */; };
+		4B25AA3B28744A363EFA71B9 /* AppAuth_AppAuthCore.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4D2767EA9C1A4CDFD0678922 /* AppAuth_AppAuthCore.bundle */; };
+		4CABBF9C382EC6EA4A4DF042 /* Storage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 456D2B699BFFD79A86931D80 /* Storage.framework */; };
+		5282B090D27F7D523CA7748C /* swift-crypto_Crypto.bundle in Dependencies */ = {isa = PBXBuildFile; fileRef = FBFFD6C79A6190131C87F23C /* swift-crypto_Crypto.bundle */; };
+		60539B257989F5F28744F3B6 /* RxRelay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67B235F7BE0C8E481D17EA2E /* RxRelay.framework */; };
+		620B6694EF22519B03EC9F19 /* RxSwift_RxCocoaRuntime.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5834C61F1553E23233336E88 /* RxSwift_RxCocoaRuntime.bundle */; };
+		69F0E9FF17A8ECCCF38EFEA4 /* third_party_IsAppEncrypted.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1A8CDF3ED595F7ACC34286E /* third_party_IsAppEncrypted.framework */; };
+		6EF0E0C56168DC2B49DF7E5C /* RxTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CDBAFD2E4BB8A53A2D27EF6 /* RxTest.framework */; };
+		6F4F87539AC88581C2307F75 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C4ADD3C3604123687CA09A5 /* UIKit.framework */; };
+		717927818DAB7C8BFDE9DC37 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 862EA7DC16ABD798598D579C /* LaunchScreen.storyboard */; };
+		72A370F3FD7356F2E3B73A17 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25C37B8805DBCB0C6C2D3765 /* CoreGraphics.framework */; };
+		7309336D7231EBE5AB8E7C8A /* RxSwift_RxCocoa.bundle in Dependencies */ = {isa = PBXBuildFile; fileRef = 2C6BF095FE3AA1633FF5123E /* RxSwift_RxCocoa.bundle */; };
+		74307948B0EEB7918633D4F8 /* Auth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C1F5C32731A4255BBAEB2AF /* Auth.framework */; };
+		781D44E766AB85CEE4995209 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E48A707B4F660C8759A3A5E /* Foundation.framework */; };
+		81FA12D6DB8518206A384C99 /* RxSwift_RxRelay.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B8C4A6311D26C8CE28E14FEB /* RxSwift_RxRelay.bundle */; };
+		886425DF893908154515A587 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 182AFDD86D2333BD59737009 /* Assets.xcassets */; };
+		8B0A162C03B1A8ED83C0DFC5 /* RxSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4CD2F802307BD44D18EF717A /* RxSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		9238D3F1A862276506F83668 /* ConcurrencyExtras.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8EF7C813CF12114BE6578B4 /* ConcurrencyExtras.framework */; };
+		A26E9A7C90A37443172037C6 /* GoogleUtilities_GoogleUtilities_Environment.bundle in Dependencies */ = {isa = PBXBuildFile; fileRef = 2A96835BBE312A0E63499302 /* GoogleUtilities_GoogleUtilities_Environment.bundle */; };
+		A27DABD6352D8684C36224A0 /* Clocks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FEB6AE7B9F36F80D9AD43922 /* Clocks.framework */; };
+		A32991AB5C7D75B7BC7B2B1B /* GTMAppAuth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D0D3D00A9F092ED7D587C8A /* GTMAppAuth.framework */; };
+		A56EEA48F823C10067E66FB1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6440E19A3CED6DACEE88B99D /* ViewController.swift */; };
+		A931AA14DBB645247CFB0C93 /* Supabase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39320174A531665AC102EE45 /* Supabase.framework */; };
+		AEC1923D98FF10DF344EFDBD /* Supabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72DC0CE983FE88BB3470D6B4 /* Supabase.swift */; };
+		B009876374BCAB3774930609 /* HTTPTypes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B747FB5F9EDCF6B965A537F2 /* HTTPTypes.framework */; };
+		B1AB63A74FD0847B068B6606 /* Realtime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1CC5880EF7E69CBC1AFED61 /* Realtime.framework */; };
+		B5F6A3F17921FA89E319968C /* GoogleUtilities_Logger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 592B9A53623AFC4C0C8992D1 /* GoogleUtilities_Logger.framework */; };
+		BAFD6112BC4C43A082F866DE /* GoogleUtilities_GoogleUtilities_Environment.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 2A96835BBE312A0E63499302 /* GoogleUtilities_GoogleUtilities_Environment.bundle */; };
+		C18796318CAB46D732900D42 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE1C8F85A4EFF20735D378C /* LoginViewController.swift */; };
+		C999655F7AB68CEA393A8F74 /* XCTestDynamicOverlay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58133E2E8C4DA3BCDF84A496 /* XCTestDynamicOverlay.framework */; };
+		CD06BC6747FEFFA654EFCF42 /* GoogleUtilities_GoogleUtilities_UserDefaults.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 25A303E0F5F1DB774CECB714 /* GoogleUtilities_GoogleUtilities_UserDefaults.bundle */; };
+		CE5C482D1CB9CCE1B68E66B5 /* Crypto.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B060FCEB3C52E7C572BD88CC /* Crypto.framework */; };
+		CEF8F1F116313400B4F866C7 /* AppAuth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5214A64BB021B8A51A373DD1 /* AppAuth.framework */; };
+		D0C89EDFFC50CF208CBB344A /* GoogleUtilities_Environment.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B70FC68C364849C37CC8E336 /* GoogleUtilities_Environment.framework */; };
+		D5E253F195C770B15FAC89A3 /* GoogleSignIn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7652DF27A6132746114DD70 /* GoogleSignIn.framework */; };
+		D9153F2F0E80B1DE8D67D8C3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11121D1720BC2FC63D6A7BD0 /* AppDelegate.swift */; };
+		E086374509C724EAF1CBF986 /* Functions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A167881439D025107BD9399 /* Functions.framework */; };
+		E1132770F6532709B5F9BEAC /* DeviceCheck.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1DF9EDCEEED54042993BAAD /* DeviceCheck.framework */; };
+		E11A93DD8038C4A565598BED /* GoogleUtilities_GoogleUtilities_Logger.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 33F5BD0AF178A1F6444D0736 /* GoogleUtilities_GoogleUtilities_Logger.bundle */; };
+		E44048E852ED9A2BD69BA003 /* GTMAppAuth_GTMAppAuth.bundle in Dependencies */ = {isa = PBXBuildFile; fileRef = 4E8D30CD514AFC86A739784B /* GTMAppAuth_GTMAppAuth.bundle */; };
+		E7F7C2AE3D9A1B309AF7F002 /* RxSwift_RxRelay.bundle in Dependencies */ = {isa = PBXBuildFile; fileRef = B8C4A6311D26C8CE28E14FEB /* RxSwift_RxRelay.bundle */; };
+		E987FE522739C61749C3C695 /* GTMSessionFetcher_GTMSessionFetcherCore.bundle in Dependencies */ = {isa = PBXBuildFile; fileRef = 854EE6ED5776690A2B1D70B4 /* GTMSessionFetcher_GTMSessionFetcherCore.bundle */; };
+		F13E3DD90E3C82799376B466 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CD2F802307BD44D18EF717A /* RxSwift.framework */; };
+		F1AC8712CD8858B65B62E116 /* GTMSessionFetcherCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BC3EC124EC7CB07D59BD14F /* GTMSessionFetcherCore.framework */; };
+		F4BDB44650AAFADEC056EF5A /* TuistBundle+Bridging.swift in Sources */ = {isa = PBXBuildFile; fileRef = F146D5E2BFD7F101BE4C4857 /* TuistBundle+Bridging.swift */; };
+		F7AB1A0529E95417708905AA /* BridgingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A855CBDFBD899ADDBBA190FE /* BridgingTests.swift */; };
+		F88AC768E2E0DE99B96E4441 /* RxSwift_RxCocoaRuntime.bundle in Dependencies */ = {isa = PBXBuildFile; fileRef = 5834C61F1553E23233336E88 /* RxSwift_RxCocoaRuntime.bundle */; };
+		F8AFC2E0309C4A165B597816 /* AppAuth_AppAuth.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B564D02DD6E77A250B9C9B2C /* AppAuth_AppAuth.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		7C2E37CD2DBBAA2F00BD6B95 /* PBXContainerItemProxy */ = {
+		002946A7F91B35B5148AD280 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 7C2E37AE2DBBAA2D00BD6B95 /* Project object */;
+			containerPortal = CFA01719793FD31F3AE45395 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 7C2E37B52DBBAA2D00BD6B95;
-			remoteInfo = Bridging;
-		};
-		7C2E37D72DBBAA2F00BD6B95 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 7C2E37AE2DBBAA2D00BD6B95 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 7C2E37B52DBBAA2D00BD6B95;
+			remoteGlobalIDString = B234AF26FA4EB6C5271294A6;
 			remoteInfo = Bridging;
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		2E0144E8AB7FB66147BB079B /* Dependencies */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 8;
+			dstSubfolderSpec = 16;
+			files = (
+				121C657B9D3EC8E622DF8E37 /* AppAuth_AppAuth.bundle in Dependencies */,
+				17ABFC873CE486E98FB79C7E /* AppAuth_AppAuthCore.bundle in Dependencies */,
+				E44048E852ED9A2BD69BA003 /* GTMAppAuth_GTMAppAuth.bundle in Dependencies */,
+				E987FE522739C61749C3C695 /* GTMSessionFetcher_GTMSessionFetcherCore.bundle in Dependencies */,
+				2940A037939FCE145142CC0C /* GoogleSignIn_GoogleSignIn.bundle in Dependencies */,
+				A26E9A7C90A37443172037C6 /* GoogleUtilities_GoogleUtilities_Environment.bundle in Dependencies */,
+				34BB530CBA14603177ECD5BA /* GoogleUtilities_GoogleUtilities_Logger.bundle in Dependencies */,
+				2C37A1D670E4E279B937411D /* GoogleUtilities_GoogleUtilities_UserDefaults.bundle in Dependencies */,
+				48978AA03813B0F9C9986403 /* Promises_FBLPromises.bundle in Dependencies */,
+				7309336D7231EBE5AB8E7C8A /* RxSwift_RxCocoa.bundle in Dependencies */,
+				F88AC768E2E0DE99B96E4441 /* RxSwift_RxCocoaRuntime.bundle in Dependencies */,
+				E7F7C2AE3D9A1B309AF7F002 /* RxSwift_RxRelay.bundle in Dependencies */,
+				5282B090D27F7D523CA7748C /* swift-crypto_Crypto.bundle in Dependencies */,
+			);
+			name = Dependencies;
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+		5EE037C5F9296784AE17AB11 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				8B0A162C03B1A8ED83C0DFC5 /* RxSwift.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6DFB278953CBAF92FCA0A863 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
-		7C2E37B62DBBAA2D00BD6B95 /* Bridging.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bridging.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		7C2E37CC2DBBAA2F00BD6B95 /* BridgingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BridgingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		7C2E37D62DBBAA2F00BD6B95 /* BridgingUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BridgingUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		022C770C0E7FA9A11740C2AF /* RxCocoaRuntime.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RxCocoaRuntime.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		02747B26B69D545CE919B586 /* BridgingRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BridgingRelease.entitlements; sourceTree = "<group>"; };
+		06F4E6B98BF5B4A5E5108A05 /* PostgREST.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PostgREST.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0A167881439D025107BD9399 /* Functions.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Functions.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0CDBAFD2E4BB8A53A2D27EF6 /* RxTest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RxTest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0F2E76854B1D3B187A9C7090 /* FBLPromises.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FBLPromises.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		11121D1720BC2FC63D6A7BD0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		151CB4B2521BF6147EF6BB7D /* GoogleUtilities_UserDefaults.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GoogleUtilities_UserDefaults.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		182AFDD86D2333BD59737009 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		186C0B9660CB8FBA1792ED9C /* Helpers.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Helpers.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1D997A776BB229D38E2723C4 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		25A303E0F5F1DB774CECB714 /* GoogleUtilities_GoogleUtilities_UserDefaults.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GoogleUtilities_GoogleUtilities_UserDefaults.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		25C37B8805DBCB0C6C2D3765 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/CoreGraphics.framework; sourceTree = DEVELOPER_DIR; };
+		2A96835BBE312A0E63499302 /* GoogleUtilities_GoogleUtilities_Environment.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GoogleUtilities_GoogleUtilities_Environment.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		2AB0A9AFA3DC8AA99CC2D72D /* AppAuthCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AppAuthCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2C6BF095FE3AA1633FF5123E /* RxSwift_RxCocoa.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RxSwift_RxCocoa.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		33F5BD0AF178A1F6444D0736 /* GoogleUtilities_GoogleUtilities_Logger.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GoogleUtilities_GoogleUtilities_Logger.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		39320174A531665AC102EE45 /* Supabase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Supabase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3E3CD4F945A12338D408FB11 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/CoreText.framework; sourceTree = DEVELOPER_DIR; };
+		456D2B699BFFD79A86931D80 /* Storage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Storage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4CD2F802307BD44D18EF717A /* RxSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RxSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4D2767EA9C1A4CDFD0678922 /* AppAuth_AppAuthCore.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AppAuth_AppAuthCore.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		4E525A0F173EEF5F68308C77 /* Bridging-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Bridging-Info.plist"; sourceTree = "<group>"; };
+		4E8D30CD514AFC86A739784B /* GTMAppAuth_GTMAppAuth.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GTMAppAuth_GTMAppAuth.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		5214A64BB021B8A51A373DD1 /* AppAuth.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AppAuth.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		52E442EB62738DF5A0A600B8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		54D57EE3AEEABCC424FC6CB4 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
+		557A60365C3054A535C2B510 /* TuistAssets+Bridging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TuistAssets+Bridging.swift"; sourceTree = "<group>"; };
+		58133E2E8C4DA3BCDF84A496 /* XCTestDynamicOverlay.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = XCTestDynamicOverlay.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5834C61F1553E23233336E88 /* RxSwift_RxCocoaRuntime.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RxSwift_RxCocoaRuntime.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		592B9A53623AFC4C0C8992D1 /* GoogleUtilities_Logger.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GoogleUtilities_Logger.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5BC3EC124EC7CB07D59BD14F /* GTMSessionFetcherCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GTMSessionFetcherCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5C4ADD3C3604123687CA09A5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		5D0D3D00A9F092ED7D587C8A /* GTMAppAuth.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GTMAppAuth.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5F577CDC0C9121C1766BCDFC /* GoogleSignIn_GoogleSignIn.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GoogleSignIn_GoogleSignIn.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		6440E19A3CED6DACEE88B99D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		67B235F7BE0C8E481D17EA2E /* RxRelay.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RxRelay.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6B56139BD578D9808A64E343 /* RxCocoa.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RxCocoa.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6B764578DD0E203D73BFB450 /* Promises_FBLPromises.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Promises_FBLPromises.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		6C1F5C32731A4255BBAEB2AF /* Auth.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Auth.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		72DC0CE983FE88BB3470D6B4 /* Supabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Supabase.swift; sourceTree = "<group>"; };
+		75D1294F4CA65E10BEF1B3B9 /* AppCheckCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AppCheckCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7A7D102297F055F0E0A618E6 /* BridgingTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "BridgingTests-Info.plist"; sourceTree = "<group>"; };
+		7AF116A2743FF3C00C5A11A0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		7E48A707B4F660C8759A3A5E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		854EE6ED5776690A2B1D70B4 /* GTMSessionFetcher_GTMSessionFetcherCore.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GTMSessionFetcher_GTMSessionFetcherCore.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		8562C6315ABD33253ED6B79C /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		A855CBDFBD899ADDBBA190FE /* BridgingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BridgingTests.swift; sourceTree = "<group>"; };
+		B060FCEB3C52E7C572BD88CC /* Crypto.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Crypto.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B1DF9EDCEEED54042993BAAD /* DeviceCheck.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DeviceCheck.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/DeviceCheck.framework; sourceTree = DEVELOPER_DIR; };
+		B315B794B54F7C611B701C19 /* Bridging.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bridging.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B564D02DD6E77A250B9C9B2C /* AppAuth_AppAuth.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AppAuth_AppAuth.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		B70FC68C364849C37CC8E336 /* GoogleUtilities_Environment.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GoogleUtilities_Environment.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B747FB5F9EDCF6B965A537F2 /* HTTPTypes.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = HTTPTypes.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B7652DF27A6132746114DD70 /* GoogleSignIn.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GoogleSignIn.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B8C4A6311D26C8CE28E14FEB /* RxSwift_RxRelay.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RxSwift_RxRelay.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		BC3B0D28D9E8D5289DD01A9D /* BridgingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BridgingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C1CC5880EF7E69CBC1AFED61 /* Realtime.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Realtime.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D6952A298D4F4D4D7BAA0ADE /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/AppKit.framework; sourceTree = DEVELOPER_DIR; };
+		D8EF7C813CF12114BE6578B4 /* ConcurrencyExtras.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ConcurrencyExtras.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EEE1C8F85A4EFF20735D378C /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		F06575C100FC8BE8DF935908 /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/LocalAuthentication.framework; sourceTree = DEVELOPER_DIR; };
+		F146D5E2BFD7F101BE4C4857 /* TuistBundle+Bridging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TuistBundle+Bridging.swift"; sourceTree = "<group>"; };
+		F1A8CDF3ED595F7ACC34286E /* third_party_IsAppEncrypted.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = third_party_IsAppEncrypted.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F34F1F766587B32423AEA7CE /* IssueReporting.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = IssueReporting.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F41C7B54841A0F37BD2B5425 /* RxBlocking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RxBlocking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FBFFD6C79A6190131C87F23C /* swift-crypto_Crypto.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "swift-crypto_Crypto.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FEB6AE7B9F36F80D9AD43922 /* Clocks.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Clocks.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
-/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		7C2E37DE2DBBAA2F00BD6B95 /* Exceptions for "Bridging" folder in "Bridging" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				Info.plist,
-			);
-			target = 7C2E37B52DBBAA2D00BD6B95 /* Bridging */;
-		};
-/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
-
-/* Begin PBXFileSystemSynchronizedRootGroup section */
-		7C2E37B82DBBAA2D00BD6B95 /* Bridging */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				7C2E37DE2DBBAA2F00BD6B95 /* Exceptions for "Bridging" folder in "Bridging" target */,
-			);
-			path = Bridging;
-			sourceTree = "<group>";
-		};
-		7C2E37CF2DBBAA2F00BD6B95 /* BridgingTests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = BridgingTests;
-			sourceTree = "<group>";
-		};
-		7C2E37D92DBBAA2F00BD6B95 /* BridgingUITests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = BridgingUITests;
-			sourceTree = "<group>";
-		};
-/* End PBXFileSystemSynchronizedRootGroup section */
-
 /* Begin PBXFrameworksBuildPhase section */
-		7C2E37B32DBBAA2D00BD6B95 /* Frameworks */ = {
+		060753347EB545417CBF5E50 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7CCC5CD52DBBBA95000FC317 /* Supabase in Frameworks */,
-				7C2E37F02DBBB49C00BD6B95 /* PostgREST in Frameworks */,
-				7C2E37EE2DBBB49C00BD6B95 /* Functions in Frameworks */,
-				7C2E37EC2DBBB49C00BD6B95 /* Auth in Frameworks */,
-				7C2E37F72DBBB5A200BD6B95 /* GoogleSignInSwift in Frameworks */,
-				7C2E37F42DBBB49C00BD6B95 /* Storage in Frameworks */,
-				7C2E37F22DBBB49C00BD6B95 /* Realtime in Frameworks */,
+				230AD80EFE2689BD8087B9FD /* AppKit.framework in Frameworks */,
+				72A370F3FD7356F2E3B73A17 /* CoreGraphics.framework in Frameworks */,
+				14EB108922C2C0B1FA610D95 /* CoreText.framework in Frameworks */,
+				E1132770F6532709B5F9BEAC /* DeviceCheck.framework in Frameworks */,
+				781D44E766AB85CEE4995209 /* Foundation.framework in Frameworks */,
+				315116B26E899B06E579C80E /* LocalAuthentication.framework in Frameworks */,
+				23C89FF3D8C29CFA9EC81CEE /* Security.framework in Frameworks */,
+				6F4F87539AC88581C2307F75 /* UIKit.framework in Frameworks */,
+				CEF8F1F116313400B4F866C7 /* AppAuth.framework in Frameworks */,
+				0B27A8C80E89EC6A9ECCD814 /* AppAuthCore.framework in Frameworks */,
+				06B369D9F9EB979711BB686F /* AppCheckCore.framework in Frameworks */,
+				74307948B0EEB7918633D4F8 /* Auth.framework in Frameworks */,
+				A27DABD6352D8684C36224A0 /* Clocks.framework in Frameworks */,
+				9238D3F1A862276506F83668 /* ConcurrencyExtras.framework in Frameworks */,
+				CE5C482D1CB9CCE1B68E66B5 /* Crypto.framework in Frameworks */,
+				1F8382EFBCA91806AAF902C1 /* FBLPromises.framework in Frameworks */,
+				E086374509C724EAF1CBF986 /* Functions.framework in Frameworks */,
+				A32991AB5C7D75B7BC7B2B1B /* GTMAppAuth.framework in Frameworks */,
+				F1AC8712CD8858B65B62E116 /* GTMSessionFetcherCore.framework in Frameworks */,
+				D5E253F195C770B15FAC89A3 /* GoogleSignIn.framework in Frameworks */,
+				D0C89EDFFC50CF208CBB344A /* GoogleUtilities_Environment.framework in Frameworks */,
+				B5F6A3F17921FA89E319968C /* GoogleUtilities_Logger.framework in Frameworks */,
+				2EBF51B5192CFB5907F7A630 /* GoogleUtilities_UserDefaults.framework in Frameworks */,
+				B009876374BCAB3774930609 /* HTTPTypes.framework in Frameworks */,
+				2B55B8E22240164DD67B4375 /* Helpers.framework in Frameworks */,
+				31FE7F0FA3E64B275E3835D0 /* IssueReporting.framework in Frameworks */,
+				17F8BE5F14B5A4BC0529EC18 /* PostgREST.framework in Frameworks */,
+				B1AB63A74FD0847B068B6606 /* Realtime.framework in Frameworks */,
+				09FF877CA7A31E275DFBF585 /* RxCocoa.framework in Frameworks */,
+				073DE21A6870298FBB97BDCC /* RxCocoaRuntime.framework in Frameworks */,
+				60539B257989F5F28744F3B6 /* RxRelay.framework in Frameworks */,
+				064668D23637DE8B15427759 /* RxSwift.framework in Frameworks */,
+				4CABBF9C382EC6EA4A4DF042 /* Storage.framework in Frameworks */,
+				A931AA14DBB645247CFB0C93 /* Supabase.framework in Frameworks */,
+				C999655F7AB68CEA393A8F74 /* XCTestDynamicOverlay.framework in Frameworks */,
+				69F0E9FF17A8ECCCF38EFEA4 /* third_party_IsAppEncrypted.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		7C2E37C92DBBAA2F00BD6B95 /* Frameworks */ = {
+		7ED74C527EC168F239D3BE41 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		7C2E37D32DBBAA2F00BD6B95 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				3E71EC7D0E769A06DCDB167A /* RxBlocking.framework in Frameworks */,
+				F13E3DD90E3C82799376B466 /* RxSwift.framework in Frameworks */,
+				6EF0E0C56168DC2B49DF7E5C /* RxTest.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		7C2E37AD2DBBAA2D00BD6B95 = {
+		13B326704937BB061AFB7FD7 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				7C2E37B82DBBAA2D00BD6B95 /* Bridging */,
-				7C2E37CF2DBBAA2F00BD6B95 /* BridgingTests */,
-				7C2E37D92DBBAA2F00BD6B95 /* BridgingUITests */,
-				7CCC5CD32DBBBA95000FC317 /* Frameworks */,
-				7C2E37B72DBBAA2D00BD6B95 /* Products */,
+				557A60365C3054A535C2B510 /* TuistAssets+Bridging.swift */,
+				F146D5E2BFD7F101BE4C4857 /* TuistBundle+Bridging.swift */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		1E889F7DBED0314A2D44188A /* InfoPlists */ = {
+			isa = PBXGroup;
+			children = (
+				4E525A0F173EEF5F68308C77 /* Bridging-Info.plist */,
+				7A7D102297F055F0E0A618E6 /* BridgingTests-Info.plist */,
+			);
+			path = InfoPlists;
+			sourceTree = "<group>";
+		};
+		24C2F1A99D2AA0E630BF08A2 = {
+			isa = PBXGroup;
+			children = (
+				E53043E3F4628A90E08A6EB7 /* Project */,
+				B942B74B2AE3916D780A0023 /* Products */,
+				5BA9EB5D1399317BF82F2A6D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
-		7C2E37B72DBBAA2D00BD6B95 /* Products */ = {
+		4C18D8BA1C2F2C2431022727 /* Derived */ = {
 			isa = PBXGroup;
 			children = (
-				7C2E37B62DBBAA2D00BD6B95 /* Bridging.app */,
-				7C2E37CC2DBBAA2F00BD6B95 /* BridgingTests.xctest */,
-				7C2E37D62DBBAA2F00BD6B95 /* BridgingUITests.xctest */,
+				1E889F7DBED0314A2D44188A /* InfoPlists */,
+				13B326704937BB061AFB7FD7 /* Sources */,
+			);
+			path = Derived;
+			sourceTree = "<group>";
+		};
+		5BA9EB5D1399317BF82F2A6D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D6952A298D4F4D4D7BAA0ADE /* AppKit.framework */,
+				25C37B8805DBCB0C6C2D3765 /* CoreGraphics.framework */,
+				3E3CD4F945A12338D408FB11 /* CoreText.framework */,
+				B1DF9EDCEEED54042993BAAD /* DeviceCheck.framework */,
+				7E48A707B4F660C8759A3A5E /* Foundation.framework */,
+				F06575C100FC8BE8DF935908 /* LocalAuthentication.framework */,
+				54D57EE3AEEABCC424FC6CB4 /* Security.framework */,
+				5C4ADD3C3604123687CA09A5 /* UIKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		800052123DB2F6A4D30C40BB /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				862EA7DC16ABD798598D579C /* LaunchScreen.storyboard */,
+				182AFDD86D2333BD59737009 /* Assets.xcassets */,
+				02747B26B69D545CE919B586 /* BridgingRelease.entitlements */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		9B0ABD325D7922BC751198AD /* Project */ = {
+			isa = PBXGroup;
+			children = (
+				B8F697DEBCB5E97A047C5A1F /* BridgingTests */,
+				800052123DB2F6A4D30C40BB /* Resources */,
+				AE7BE33AF21F31AA2DDC522E /* Sources */,
+			);
+			path = Project;
+			sourceTree = "<group>";
+		};
+		AE7BE33AF21F31AA2DDC522E /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				11121D1720BC2FC63D6A7BD0 /* AppDelegate.swift */,
+				1D997A776BB229D38E2723C4 /* Constant.swift */,
+				8562C6315ABD33253ED6B79C /* Logger.swift */,
+				EEE1C8F85A4EFF20735D378C /* LoginViewController.swift */,
+				7AF116A2743FF3C00C5A11A0 /* SceneDelegate.swift */,
+				72DC0CE983FE88BB3470D6B4 /* Supabase.swift */,
+				6440E19A3CED6DACEE88B99D /* ViewController.swift */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		B8F697DEBCB5E97A047C5A1F /* BridgingTests */ = {
+			isa = PBXGroup;
+			children = (
+				A855CBDFBD899ADDBBA190FE /* BridgingTests.swift */,
+			);
+			path = BridgingTests;
+			sourceTree = "<group>";
+		};
+		B942B74B2AE3916D780A0023 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B564D02DD6E77A250B9C9B2C /* AppAuth_AppAuth.bundle */,
+				4D2767EA9C1A4CDFD0678922 /* AppAuth_AppAuthCore.bundle */,
+				5214A64BB021B8A51A373DD1 /* AppAuth.framework */,
+				2AB0A9AFA3DC8AA99CC2D72D /* AppAuthCore.framework */,
+				75D1294F4CA65E10BEF1B3B9 /* AppCheckCore.framework */,
+				6C1F5C32731A4255BBAEB2AF /* Auth.framework */,
+				B315B794B54F7C611B701C19 /* Bridging.app */,
+				BC3B0D28D9E8D5289DD01A9D /* BridgingTests.xctest */,
+				FEB6AE7B9F36F80D9AD43922 /* Clocks.framework */,
+				D8EF7C813CF12114BE6578B4 /* ConcurrencyExtras.framework */,
+				B060FCEB3C52E7C572BD88CC /* Crypto.framework */,
+				0F2E76854B1D3B187A9C7090 /* FBLPromises.framework */,
+				0A167881439D025107BD9399 /* Functions.framework */,
+				5F577CDC0C9121C1766BCDFC /* GoogleSignIn_GoogleSignIn.bundle */,
+				B7652DF27A6132746114DD70 /* GoogleSignIn.framework */,
+				B70FC68C364849C37CC8E336 /* GoogleUtilities_Environment.framework */,
+				2A96835BBE312A0E63499302 /* GoogleUtilities_GoogleUtilities_Environment.bundle */,
+				33F5BD0AF178A1F6444D0736 /* GoogleUtilities_GoogleUtilities_Logger.bundle */,
+				25A303E0F5F1DB774CECB714 /* GoogleUtilities_GoogleUtilities_UserDefaults.bundle */,
+				592B9A53623AFC4C0C8992D1 /* GoogleUtilities_Logger.framework */,
+				151CB4B2521BF6147EF6BB7D /* GoogleUtilities_UserDefaults.framework */,
+				4E8D30CD514AFC86A739784B /* GTMAppAuth_GTMAppAuth.bundle */,
+				5D0D3D00A9F092ED7D587C8A /* GTMAppAuth.framework */,
+				854EE6ED5776690A2B1D70B4 /* GTMSessionFetcher_GTMSessionFetcherCore.bundle */,
+				5BC3EC124EC7CB07D59BD14F /* GTMSessionFetcherCore.framework */,
+				186C0B9660CB8FBA1792ED9C /* Helpers.framework */,
+				B747FB5F9EDCF6B965A537F2 /* HTTPTypes.framework */,
+				F34F1F766587B32423AEA7CE /* IssueReporting.framework */,
+				06F4E6B98BF5B4A5E5108A05 /* PostgREST.framework */,
+				6B764578DD0E203D73BFB450 /* Promises_FBLPromises.bundle */,
+				C1CC5880EF7E69CBC1AFED61 /* Realtime.framework */,
+				F41C7B54841A0F37BD2B5425 /* RxBlocking.framework */,
+				6B56139BD578D9808A64E343 /* RxCocoa.framework */,
+				022C770C0E7FA9A11740C2AF /* RxCocoaRuntime.framework */,
+				67B235F7BE0C8E481D17EA2E /* RxRelay.framework */,
+				2C6BF095FE3AA1633FF5123E /* RxSwift_RxCocoa.bundle */,
+				5834C61F1553E23233336E88 /* RxSwift_RxCocoaRuntime.bundle */,
+				B8C4A6311D26C8CE28E14FEB /* RxSwift_RxRelay.bundle */,
+				4CD2F802307BD44D18EF717A /* RxSwift.framework */,
+				0CDBAFD2E4BB8A53A2D27EF6 /* RxTest.framework */,
+				456D2B699BFFD79A86931D80 /* Storage.framework */,
+				39320174A531665AC102EE45 /* Supabase.framework */,
+				FBFFD6C79A6190131C87F23C /* swift-crypto_Crypto.bundle */,
+				F1A8CDF3ED595F7ACC34286E /* third_party_IsAppEncrypted.framework */,
+				58133E2E8C4DA3BCDF84A496 /* XCTestDynamicOverlay.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		7CCC5CD32DBBBA95000FC317 /* Frameworks */ = {
+		E53043E3F4628A90E08A6EB7 /* Project */ = {
 			isa = PBXGroup;
 			children = (
+				4C18D8BA1C2F2C2431022727 /* Derived */,
+				9B0ABD325D7922BC751198AD /* Project */,
 			);
-			name = Frameworks;
+			name = Project;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		7C2E37B52DBBAA2D00BD6B95 /* Bridging */ = {
+		74A6F37CD37F5D8980D1900B /* BridgingTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7C2E37DF2DBBAA2F00BD6B95 /* Build configuration list for PBXNativeTarget "Bridging" */;
+			buildConfigurationList = 54581E0DAC984A9D00496E34 /* Build configuration list for PBXNativeTarget "BridgingTests" */;
 			buildPhases = (
-				7C2E37B22DBBAA2D00BD6B95 /* Sources */,
-				7C2E37B32DBBAA2D00BD6B95 /* Frameworks */,
-				7C2E37B42DBBAA2D00BD6B95 /* Resources */,
+				0085FF1C623ACEF423D580C8 /* Sources */,
+				A854C5C60DBCA94421B872FE /* Resources */,
+				7ED74C527EC168F239D3BE41 /* Frameworks */,
+				6DFB278953CBAF92FCA0A863 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-			);
-			fileSystemSynchronizedGroups = (
-				7C2E37B82DBBAA2D00BD6B95 /* Bridging */,
-			);
-			name = Bridging;
-			packageProductDependencies = (
-				7C2E37EB2DBBB49C00BD6B95 /* Auth */,
-				7C2E37ED2DBBB49C00BD6B95 /* Functions */,
-				7C2E37EF2DBBB49C00BD6B95 /* PostgREST */,
-				7C2E37F12DBBB49C00BD6B95 /* Realtime */,
-				7C2E37F32DBBB49C00BD6B95 /* Storage */,
-				7C2E37F62DBBB5A200BD6B95 /* GoogleSignInSwift */,
-				7CCC5CD42DBBBA95000FC317 /* Supabase */,
-			);
-			productName = Bridging;
-			productReference = 7C2E37B62DBBAA2D00BD6B95 /* Bridging.app */;
-			productType = "com.apple.product-type.application";
-		};
-		7C2E37CB2DBBAA2F00BD6B95 /* BridgingTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 7C2E37E42DBBAA2F00BD6B95 /* Build configuration list for PBXNativeTarget "BridgingTests" */;
-			buildPhases = (
-				7C2E37C82DBBAA2F00BD6B95 /* Sources */,
-				7C2E37C92DBBAA2F00BD6B95 /* Frameworks */,
-				7C2E37CA2DBBAA2F00BD6B95 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				7C2E37CE2DBBAA2F00BD6B95 /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				7C2E37CF2DBBAA2F00BD6B95 /* BridgingTests */,
+				396FE2BA94ED9F0025DB3026 /* PBXTargetDependency */,
 			);
 			name = BridgingTests;
 			packageProductDependencies = (
 			);
 			productName = BridgingTests;
-			productReference = 7C2E37CC2DBBAA2F00BD6B95 /* BridgingTests.xctest */;
+			productReference = BC3B0D28D9E8D5289DD01A9D /* BridgingTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		7C2E37D52DBBAA2F00BD6B95 /* BridgingUITests */ = {
+		B234AF26FA4EB6C5271294A6 /* Bridging */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7C2E37E72DBBAA2F00BD6B95 /* Build configuration list for PBXNativeTarget "BridgingUITests" */;
+			buildConfigurationList = 58447B1BAF0A831AA1D91CBC /* Build configuration list for PBXNativeTarget "Bridging" */;
 			buildPhases = (
-				7C2E37D22DBBAA2F00BD6B95 /* Sources */,
-				7C2E37D32DBBAA2F00BD6B95 /* Frameworks */,
-				7C2E37D42DBBAA2F00BD6B95 /* Resources */,
+				E3BC9CC77D73774B81BEA93A /* Sources */,
+				A71A7AA89D299464C7FD32CD /* Resources */,
+				060753347EB545417CBF5E50 /* Frameworks */,
+				5EE037C5F9296784AE17AB11 /* Embed Frameworks */,
+				2E0144E8AB7FB66147BB079B /* Dependencies */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				7C2E37D82DBBAA2F00BD6B95 /* PBXTargetDependency */,
 			);
-			fileSystemSynchronizedGroups = (
-				7C2E37D92DBBAA2F00BD6B95 /* BridgingUITests */,
-			);
-			name = BridgingUITests;
+			name = Bridging;
 			packageProductDependencies = (
 			);
-			productName = BridgingUITests;
-			productReference = 7C2E37D62DBBAA2F00BD6B95 /* BridgingUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
+			productName = Bridging;
+			productReference = B315B794B54F7C611B701C19 /* Bridging.app */;
+			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		7C2E37AE2DBBAA2D00BD6B95 /* Project object */ = {
+		CFA01719793FD31F3AE45395 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1630;
-				LastUpgradeCheck = 1630;
+				BuildIndependentTargetsInParallel = YES;
 				TargetAttributes = {
-					7C2E37B52DBBAA2D00BD6B95 = {
-						CreatedOnToolsVersion = 16.3;
-					};
-					7C2E37CB2DBBAA2F00BD6B95 = {
-						CreatedOnToolsVersion = 16.3;
-						TestTargetID = 7C2E37B52DBBAA2D00BD6B95;
-					};
-					7C2E37D52DBBAA2F00BD6B95 = {
-						CreatedOnToolsVersion = 16.3;
-						TestTargetID = 7C2E37B52DBBAA2D00BD6B95;
+					74A6F37CD37F5D8980D1900B = {
+						TestTargetID = B234AF26FA4EB6C5271294A6;
 					};
 				};
 			};
-			buildConfigurationList = 7C2E37B12DBBAA2D00BD6B95 /* Build configuration list for PBXProject "Bridging" */;
+			buildConfigurationList = 58646921705F0C2696A02B06 /* Build configuration list for PBXProject "Bridging" */;
+			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				en,
 				Base,
+				en,
 			);
-			mainGroup = 7C2E37AD2DBBAA2D00BD6B95;
-			minimizedProjectReferenceProxies = 1;
-			packageReferences = (
-				7C2E37EA2DBBB49C00BD6B95 /* XCRemoteSwiftPackageReference "supabase-swift" */,
-				7C2E37F52DBBB5A200BD6B95 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
-			);
-			preferredProjectObjectVersion = 77;
-			productRefGroup = 7C2E37B72DBBAA2D00BD6B95 /* Products */;
+			mainGroup = 24C2F1A99D2AA0E630BF08A2;
+			productRefGroup = B942B74B2AE3916D780A0023 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				7C2E37B52DBBAA2D00BD6B95 /* Bridging */,
-				7C2E37CB2DBBAA2F00BD6B95 /* BridgingTests */,
-				7C2E37D52DBBAA2F00BD6B95 /* BridgingUITests */,
+				B234AF26FA4EB6C5271294A6 /* Bridging */,
+				74A6F37CD37F5D8980D1900B /* BridgingTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		7C2E37B42DBBAA2D00BD6B95 /* Resources */ = {
+		A71A7AA89D299464C7FD32CD /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				886425DF893908154515A587 /* Assets.xcassets in Resources */,
+				717927818DAB7C8BFDE9DC37 /* LaunchScreen.storyboard in Resources */,
+				44066ACEC355D73DAB21AD19 /* BridgingRelease.entitlements in Resources */,
+				F8AFC2E0309C4A165B597816 /* AppAuth_AppAuth.bundle in Resources */,
+				4B25AA3B28744A363EFA71B9 /* AppAuth_AppAuthCore.bundle in Resources */,
+				117871E1850A483AA3B5167D /* GTMAppAuth_GTMAppAuth.bundle in Resources */,
+				14D494A95C24E9468533A88F /* GTMSessionFetcher_GTMSessionFetcherCore.bundle in Resources */,
+				218AD6A024870FFF5F839632 /* GoogleSignIn_GoogleSignIn.bundle in Resources */,
+				BAFD6112BC4C43A082F866DE /* GoogleUtilities_GoogleUtilities_Environment.bundle in Resources */,
+				E11A93DD8038C4A565598BED /* GoogleUtilities_GoogleUtilities_Logger.bundle in Resources */,
+				CD06BC6747FEFFA654EFCF42 /* GoogleUtilities_GoogleUtilities_UserDefaults.bundle in Resources */,
+				4532A14D64DF70ACA43293AC /* Promises_FBLPromises.bundle in Resources */,
+				1B13F00506C9D0E45C2BD20C /* RxSwift_RxCocoa.bundle in Resources */,
+				620B6694EF22519B03EC9F19 /* RxSwift_RxCocoaRuntime.bundle in Resources */,
+				81FA12D6DB8518206A384C99 /* RxSwift_RxRelay.bundle in Resources */,
+				418A69BCC38FA587AA689EFC /* swift-crypto_Crypto.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		7C2E37CA2DBBAA2F00BD6B95 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		7C2E37D42DBBAA2F00BD6B95 /* Resources */ = {
+		A854C5C60DBCA94421B872FE /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -281,120 +537,62 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		7C2E37B22DBBAA2D00BD6B95 /* Sources */ = {
+		0085FF1C623ACEF423D580C8 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F7AB1A0529E95417708905AA /* BridgingTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		7C2E37C82DBBAA2F00BD6B95 /* Sources */ = {
+		E3BC9CC77D73774B81BEA93A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		7C2E37D22DBBAA2F00BD6B95 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				249E7ACE046E71F4CED75A9E /* TuistAssets+Bridging.swift in Sources */,
+				F4BDB44650AAFADEC056EF5A /* TuistBundle+Bridging.swift in Sources */,
+				D9153F2F0E80B1DE8D67D8C3 /* AppDelegate.swift in Sources */,
+				154C0FBC98DA56B1EEFE774C /* Constant.swift in Sources */,
+				2F5319B44273BA29C3BDAEE9 /* Logger.swift in Sources */,
+				C18796318CAB46D732900D42 /* LoginViewController.swift in Sources */,
+				41BC4C37245DAFCEEA3FC033 /* SceneDelegate.swift in Sources */,
+				AEC1923D98FF10DF344EFDBD /* Supabase.swift in Sources */,
+				A56EEA48F823C10067E66FB1 /* ViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		7C2E37CE2DBBAA2F00BD6B95 /* PBXTargetDependency */ = {
+		396FE2BA94ED9F0025DB3026 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 7C2E37B52DBBAA2D00BD6B95 /* Bridging */;
-			targetProxy = 7C2E37CD2DBBAA2F00BD6B95 /* PBXContainerItemProxy */;
-		};
-		7C2E37D82DBBAA2F00BD6B95 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 7C2E37B52DBBAA2D00BD6B95 /* Bridging */;
-			targetProxy = 7C2E37D72DBBAA2F00BD6B95 /* PBXContainerItemProxy */;
+			name = Bridging;
+			target = B234AF26FA4EB6C5271294A6 /* Bridging */;
+			targetProxy = 002946A7F91B35B5148AD280 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
+/* Begin PBXVariantGroup section */
+		862EA7DC16ABD798598D579C /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				52E442EB62738DF5A0A600B8 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
-		7C2E37E02DBBAA2F00BD6B95 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = D49753ZB3N;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Bridging/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "";
-				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.social-networking";
-				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UIStatusBarHidden = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.Wook.Bridging;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
-				SUPPORTS_MACCATALYST = NO;
-				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		7C2E37E12DBBAA2F00BD6B95 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = Bridging/BridgingRelease.entitlements;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = D49753ZB3N;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Bridging/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "";
-				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.social-networking";
-				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UIStatusBarHidden = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.Wook.Bridging;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
-				SUPPORTS_MACCATALYST = NO;
-				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
-		7C2E37E22DBBAA2F00BD6B95 /* Debug */ = {
+		1324323A250E3289FA5BAD5D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
@@ -421,12 +619,238 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		942BFCA2B7FACD7A8ADA0FE7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/Tuist/.build/checkouts/AppAuth-iOS/Sources/AppAuth",
+					"$(SRCROOT)/Tuist/.build/checkouts/AppAuth-iOS/Sources/AppAuth/iOS",
+					"$(SRCROOT)/Tuist/.build/checkouts/AppAuth-iOS/Sources/AppAuth/macOS",
+					"$(SRCROOT)/Tuist/.build/checkouts/AppAuth-iOS/Sources/AppAuth/macOS/LoopbackHTTPServer",
+					"$(SRCROOT)/Tuist/.build/checkouts/AppAuth-iOS/Sources/AppAuthCore",
+					"$(SRCROOT)/Tuist/.build/checkouts/GoogleSignIn-iOS",
+					"$(SRCROOT)/Tuist/.build/checkouts/GoogleSignIn-iOS/GoogleSignIn/Sources/Public",
+					"$(SRCROOT)/Tuist/.build/checkouts/GoogleUtilities",
+					"$(SRCROOT)/Tuist/.build/checkouts/GoogleUtilities/GoogleUtilities/Environment/Public",
+					"$(SRCROOT)/Tuist/.build/checkouts/GoogleUtilities/GoogleUtilities/Logger/Public",
+					"$(SRCROOT)/Tuist/.build/checkouts/GoogleUtilities/GoogleUtilities/UserDefaults/Public",
+					"$(SRCROOT)/Tuist/.build/checkouts/GoogleUtilities/third_party/IsAppEncrypted/Public",
+					"$(SRCROOT)/Tuist/.build/checkouts/RxSwift/Sources/RxCocoaRuntime/include",
+					"$(SRCROOT)/Tuist/.build/checkouts/app-check",
+					"$(SRCROOT)/Tuist/.build/checkouts/app-check/AppCheckCore/Sources/Public",
+					"$(SRCROOT)/Tuist/.build/checkouts/gtm-session-fetcher/Sources/Core/Public",
+					"$(SRCROOT)/Tuist/.build/checkouts/promises/Sources/FBLPromises/include",
+				);
+				INFOPLIST_FILE = "Derived/InfoPlists/BridgingTests-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				OTHER_CFLAGS = (
+					"$(inherited)",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/checkouts/promises/Sources/FBLPromises/include/module.modulemap",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/AppAuth/AppAuth.modulemap",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/AppAuthCore/AppAuthCore.modulemap",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/AppCheckCore/AppCheckCore.modulemap",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/GTMSessionFetcherCore/GTMSessionFetcherCore.modulemap",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/GoogleSignIn/GoogleSignIn.modulemap",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/GoogleUtilities_Environment/GoogleUtilities_Environment.modulemap",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/GoogleUtilities_Logger/GoogleUtilities_Logger.modulemap",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/GoogleUtilities_UserDefaults/GoogleUtilities_UserDefaults.modulemap",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/RxCocoaRuntime/RxCocoaRuntime.modulemap",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/third_party_IsAppEncrypted/third_party_IsAppEncrypted.modulemap",
+				);
+				OTHER_SWIFT_FLAGS = (
+					"$(inherited)",
+					"-Xcc",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/checkouts/promises/Sources/FBLPromises/include/module.modulemap",
+					"-Xcc",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/AppAuth/AppAuth.modulemap",
+					"-Xcc",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/AppAuthCore/AppAuthCore.modulemap",
+					"-Xcc",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/AppCheckCore/AppCheckCore.modulemap",
+					"-Xcc",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/GTMSessionFetcherCore/GTMSessionFetcherCore.modulemap",
+					"-Xcc",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/GoogleSignIn/GoogleSignIn.modulemap",
+					"-Xcc",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/GoogleUtilities_Environment/GoogleUtilities_Environment.modulemap",
+					"-Xcc",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/GoogleUtilities_Logger/GoogleUtilities_Logger.modulemap",
+					"-Xcc",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/GoogleUtilities_UserDefaults/GoogleUtilities_UserDefaults.modulemap",
+					"-Xcc",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/RxCocoaRuntime/RxCocoaRuntime.modulemap",
+					"-Xcc",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/third_party_IsAppEncrypted/third_party_IsAppEncrypted.modulemap",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.Wook.BridgingTests;
+				PRODUCT_NAME = BridgingTests;
+				SDKROOT = iphoneos;
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
+					"$(inherited)",
+					DEBUG,
+				);
+				SWIFT_COMPILATION_MODE = singlefile;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Bridging.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Bridging";
+				TEST_TARGET_NAME = Bridging;
+			};
+			name = Debug;
+		};
+		E01609B8AE50413653774662 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/Tuist/.build/checkouts/AppAuth-iOS/Sources/AppAuth",
+					"$(SRCROOT)/Tuist/.build/checkouts/AppAuth-iOS/Sources/AppAuth/iOS",
+					"$(SRCROOT)/Tuist/.build/checkouts/AppAuth-iOS/Sources/AppAuth/macOS",
+					"$(SRCROOT)/Tuist/.build/checkouts/AppAuth-iOS/Sources/AppAuth/macOS/LoopbackHTTPServer",
+					"$(SRCROOT)/Tuist/.build/checkouts/AppAuth-iOS/Sources/AppAuthCore",
+					"$(SRCROOT)/Tuist/.build/checkouts/GoogleSignIn-iOS",
+					"$(SRCROOT)/Tuist/.build/checkouts/GoogleSignIn-iOS/GoogleSignIn/Sources/Public",
+					"$(SRCROOT)/Tuist/.build/checkouts/GoogleUtilities",
+					"$(SRCROOT)/Tuist/.build/checkouts/GoogleUtilities/GoogleUtilities/Environment/Public",
+					"$(SRCROOT)/Tuist/.build/checkouts/GoogleUtilities/GoogleUtilities/Logger/Public",
+					"$(SRCROOT)/Tuist/.build/checkouts/GoogleUtilities/GoogleUtilities/UserDefaults/Public",
+					"$(SRCROOT)/Tuist/.build/checkouts/GoogleUtilities/third_party/IsAppEncrypted/Public",
+					"$(SRCROOT)/Tuist/.build/checkouts/RxSwift/Sources/RxCocoaRuntime/include",
+					"$(SRCROOT)/Tuist/.build/checkouts/app-check",
+					"$(SRCROOT)/Tuist/.build/checkouts/app-check/AppCheckCore/Sources/Public",
+					"$(SRCROOT)/Tuist/.build/checkouts/gtm-session-fetcher/Sources/Core/Public",
+					"$(SRCROOT)/Tuist/.build/checkouts/promises/Sources/FBLPromises/include",
+				);
+				INFOPLIST_FILE = "Derived/InfoPlists/BridgingTests-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				OTHER_CFLAGS = (
+					"$(inherited)",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/checkouts/promises/Sources/FBLPromises/include/module.modulemap",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/AppAuth/AppAuth.modulemap",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/AppAuthCore/AppAuthCore.modulemap",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/AppCheckCore/AppCheckCore.modulemap",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/GTMSessionFetcherCore/GTMSessionFetcherCore.modulemap",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/GoogleSignIn/GoogleSignIn.modulemap",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/GoogleUtilities_Environment/GoogleUtilities_Environment.modulemap",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/GoogleUtilities_Logger/GoogleUtilities_Logger.modulemap",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/GoogleUtilities_UserDefaults/GoogleUtilities_UserDefaults.modulemap",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/RxCocoaRuntime/RxCocoaRuntime.modulemap",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/third_party_IsAppEncrypted/third_party_IsAppEncrypted.modulemap",
+				);
+				OTHER_SWIFT_FLAGS = (
+					"$(inherited)",
+					"-Xcc",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/checkouts/promises/Sources/FBLPromises/include/module.modulemap",
+					"-Xcc",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/AppAuth/AppAuth.modulemap",
+					"-Xcc",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/AppAuthCore/AppAuthCore.modulemap",
+					"-Xcc",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/AppCheckCore/AppCheckCore.modulemap",
+					"-Xcc",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/GTMSessionFetcherCore/GTMSessionFetcherCore.modulemap",
+					"-Xcc",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/GoogleSignIn/GoogleSignIn.modulemap",
+					"-Xcc",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/GoogleUtilities_Environment/GoogleUtilities_Environment.modulemap",
+					"-Xcc",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/GoogleUtilities_Logger/GoogleUtilities_Logger.modulemap",
+					"-Xcc",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/GoogleUtilities_UserDefaults/GoogleUtilities_UserDefaults.modulemap",
+					"-Xcc",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/RxCocoaRuntime/RxCocoaRuntime.modulemap",
+					"-Xcc",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/third_party_IsAppEncrypted/third_party_IsAppEncrypted.modulemap",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.Wook.BridgingTests;
+				PRODUCT_NAME = BridgingTests;
+				SDKROOT = iphoneos;
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Bridging.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Bridging";
+				TEST_TARGET_NAME = Bridging;
+			};
+			name = Release;
+		};
+		EA4DA0470E2B01C4F0D66DC9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = D49753ZB3N;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -440,243 +864,213 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.4;
-				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
-				MTL_FAST_MATH = YES;
+				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		EBF4A5FA34E3FDECF332C204 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				ENABLE_PREVIEWS = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/Tuist/.build/checkouts/AppAuth-iOS/Sources/AppAuth",
+					"$(SRCROOT)/Tuist/.build/checkouts/AppAuth-iOS/Sources/AppAuth/iOS",
+					"$(SRCROOT)/Tuist/.build/checkouts/AppAuth-iOS/Sources/AppAuth/macOS",
+					"$(SRCROOT)/Tuist/.build/checkouts/AppAuth-iOS/Sources/AppAuth/macOS/LoopbackHTTPServer",
+					"$(SRCROOT)/Tuist/.build/checkouts/AppAuth-iOS/Sources/AppAuthCore",
+					"$(SRCROOT)/Tuist/.build/checkouts/GoogleSignIn-iOS",
+					"$(SRCROOT)/Tuist/.build/checkouts/GoogleSignIn-iOS/GoogleSignIn/Sources/Public",
+					"$(SRCROOT)/Tuist/.build/checkouts/GoogleUtilities",
+					"$(SRCROOT)/Tuist/.build/checkouts/GoogleUtilities/GoogleUtilities/Environment/Public",
+					"$(SRCROOT)/Tuist/.build/checkouts/GoogleUtilities/GoogleUtilities/Logger/Public",
+					"$(SRCROOT)/Tuist/.build/checkouts/GoogleUtilities/GoogleUtilities/UserDefaults/Public",
+					"$(SRCROOT)/Tuist/.build/checkouts/GoogleUtilities/third_party/IsAppEncrypted/Public",
+					"$(SRCROOT)/Tuist/.build/checkouts/RxSwift/Sources/RxCocoaRuntime/include",
+					"$(SRCROOT)/Tuist/.build/checkouts/app-check",
+					"$(SRCROOT)/Tuist/.build/checkouts/app-check/AppCheckCore/Sources/Public",
+					"$(SRCROOT)/Tuist/.build/checkouts/gtm-session-fetcher/Sources/Core/Public",
+					"$(SRCROOT)/Tuist/.build/checkouts/promises/Sources/FBLPromises/include",
+				);
+				INFOPLIST_FILE = "Derived/InfoPlists/Bridging-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				OTHER_CFLAGS = (
+					"$(inherited)",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/checkouts/promises/Sources/FBLPromises/include/module.modulemap",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/AppAuth/AppAuth.modulemap",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/AppAuthCore/AppAuthCore.modulemap",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/AppCheckCore/AppCheckCore.modulemap",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/GTMSessionFetcherCore/GTMSessionFetcherCore.modulemap",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/GoogleSignIn/GoogleSignIn.modulemap",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/GoogleUtilities_Environment/GoogleUtilities_Environment.modulemap",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/GoogleUtilities_Logger/GoogleUtilities_Logger.modulemap",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/GoogleUtilities_UserDefaults/GoogleUtilities_UserDefaults.modulemap",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/RxCocoaRuntime/RxCocoaRuntime.modulemap",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/third_party_IsAppEncrypted/third_party_IsAppEncrypted.modulemap",
+				);
+				OTHER_SWIFT_FLAGS = (
+					"$(inherited)",
+					"-Xcc",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/checkouts/promises/Sources/FBLPromises/include/module.modulemap",
+					"-Xcc",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/AppAuth/AppAuth.modulemap",
+					"-Xcc",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/AppAuthCore/AppAuthCore.modulemap",
+					"-Xcc",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/AppCheckCore/AppCheckCore.modulemap",
+					"-Xcc",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/GTMSessionFetcherCore/GTMSessionFetcherCore.modulemap",
+					"-Xcc",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/GoogleSignIn/GoogleSignIn.modulemap",
+					"-Xcc",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/GoogleUtilities_Environment/GoogleUtilities_Environment.modulemap",
+					"-Xcc",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/GoogleUtilities_Logger/GoogleUtilities_Logger.modulemap",
+					"-Xcc",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/GoogleUtilities_UserDefaults/GoogleUtilities_UserDefaults.modulemap",
+					"-Xcc",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/RxCocoaRuntime/RxCocoaRuntime.modulemap",
+					"-Xcc",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/third_party_IsAppEncrypted/third_party_IsAppEncrypted.modulemap",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.Wook.Bridging;
+				PRODUCT_NAME = Bridging;
 				SDKROOT = iphoneos;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
+					"$(inherited)",
+					DEBUG,
+				);
+				SWIFT_COMPILATION_MODE = singlefile;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
-		7C2E37E32DBBAA2F00BD6B95 /* Release */ = {
+		FBD19E3F7010EBEFF2AF1B8F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_COMMA = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = D49753ZB3N;
-				ENABLE_NS_ASSERTIONS = NO;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu17;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.4;
-				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				MTL_FAST_MATH = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				ENABLE_PREVIEWS = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/Tuist/.build/checkouts/AppAuth-iOS/Sources/AppAuth",
+					"$(SRCROOT)/Tuist/.build/checkouts/AppAuth-iOS/Sources/AppAuth/iOS",
+					"$(SRCROOT)/Tuist/.build/checkouts/AppAuth-iOS/Sources/AppAuth/macOS",
+					"$(SRCROOT)/Tuist/.build/checkouts/AppAuth-iOS/Sources/AppAuth/macOS/LoopbackHTTPServer",
+					"$(SRCROOT)/Tuist/.build/checkouts/AppAuth-iOS/Sources/AppAuthCore",
+					"$(SRCROOT)/Tuist/.build/checkouts/GoogleSignIn-iOS",
+					"$(SRCROOT)/Tuist/.build/checkouts/GoogleSignIn-iOS/GoogleSignIn/Sources/Public",
+					"$(SRCROOT)/Tuist/.build/checkouts/GoogleUtilities",
+					"$(SRCROOT)/Tuist/.build/checkouts/GoogleUtilities/GoogleUtilities/Environment/Public",
+					"$(SRCROOT)/Tuist/.build/checkouts/GoogleUtilities/GoogleUtilities/Logger/Public",
+					"$(SRCROOT)/Tuist/.build/checkouts/GoogleUtilities/GoogleUtilities/UserDefaults/Public",
+					"$(SRCROOT)/Tuist/.build/checkouts/GoogleUtilities/third_party/IsAppEncrypted/Public",
+					"$(SRCROOT)/Tuist/.build/checkouts/RxSwift/Sources/RxCocoaRuntime/include",
+					"$(SRCROOT)/Tuist/.build/checkouts/app-check",
+					"$(SRCROOT)/Tuist/.build/checkouts/app-check/AppCheckCore/Sources/Public",
+					"$(SRCROOT)/Tuist/.build/checkouts/gtm-session-fetcher/Sources/Core/Public",
+					"$(SRCROOT)/Tuist/.build/checkouts/promises/Sources/FBLPromises/include",
+				);
+				INFOPLIST_FILE = "Derived/InfoPlists/Bridging-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				OTHER_CFLAGS = (
+					"$(inherited)",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/checkouts/promises/Sources/FBLPromises/include/module.modulemap",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/AppAuth/AppAuth.modulemap",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/AppAuthCore/AppAuthCore.modulemap",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/AppCheckCore/AppCheckCore.modulemap",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/GTMSessionFetcherCore/GTMSessionFetcherCore.modulemap",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/GoogleSignIn/GoogleSignIn.modulemap",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/GoogleUtilities_Environment/GoogleUtilities_Environment.modulemap",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/GoogleUtilities_Logger/GoogleUtilities_Logger.modulemap",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/GoogleUtilities_UserDefaults/GoogleUtilities_UserDefaults.modulemap",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/RxCocoaRuntime/RxCocoaRuntime.modulemap",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/third_party_IsAppEncrypted/third_party_IsAppEncrypted.modulemap",
+				);
+				OTHER_SWIFT_FLAGS = (
+					"$(inherited)",
+					"-Xcc",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/checkouts/promises/Sources/FBLPromises/include/module.modulemap",
+					"-Xcc",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/AppAuth/AppAuth.modulemap",
+					"-Xcc",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/AppAuthCore/AppAuthCore.modulemap",
+					"-Xcc",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/AppCheckCore/AppCheckCore.modulemap",
+					"-Xcc",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/GTMSessionFetcherCore/GTMSessionFetcherCore.modulemap",
+					"-Xcc",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/GoogleSignIn/GoogleSignIn.modulemap",
+					"-Xcc",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/GoogleUtilities_Environment/GoogleUtilities_Environment.modulemap",
+					"-Xcc",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/GoogleUtilities_Logger/GoogleUtilities_Logger.modulemap",
+					"-Xcc",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/GoogleUtilities_UserDefaults/GoogleUtilities_UserDefaults.modulemap",
+					"-Xcc",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/RxCocoaRuntime/RxCocoaRuntime.modulemap",
+					"-Xcc",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/third_party_IsAppEncrypted/third_party_IsAppEncrypted.modulemap",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.Wook.Bridging;
+				PRODUCT_NAME = Bridging;
 				SDKROOT = iphoneos;
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_COMPILATION_MODE = wholemodule;
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		7C2E37E52DBBAA2F00BD6B95 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = D49753ZB3N;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.4;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.Wook.BridgingTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Bridging.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Bridging";
-			};
-			name = Debug;
-		};
-		7C2E37E62DBBAA2F00BD6B95 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = D49753ZB3N;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.4;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.Wook.BridgingTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Bridging.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Bridging";
-			};
-			name = Release;
-		};
-		7C2E37E82DBBAA2F00BD6B95 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = D49753ZB3N;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.Wook.BridgingUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = Bridging;
-			};
-			name = Debug;
-		};
-		7C2E37E92DBBAA2F00BD6B95 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = D49753ZB3N;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.Wook.BridgingUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = Bridging;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		7C2E37B12DBBAA2D00BD6B95 /* Build configuration list for PBXProject "Bridging" */ = {
+		54581E0DAC984A9D00496E34 /* Build configuration list for PBXNativeTarget "BridgingTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				7C2E37E22DBBAA2F00BD6B95 /* Debug */,
-				7C2E37E32DBBAA2F00BD6B95 /* Release */,
+				942BFCA2B7FACD7A8ADA0FE7 /* Debug */,
+				E01609B8AE50413653774662 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7C2E37DF2DBBAA2F00BD6B95 /* Build configuration list for PBXNativeTarget "Bridging" */ = {
+		58447B1BAF0A831AA1D91CBC /* Build configuration list for PBXNativeTarget "Bridging" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				7C2E37E02DBBAA2F00BD6B95 /* Debug */,
-				7C2E37E12DBBAA2F00BD6B95 /* Release */,
+				EBF4A5FA34E3FDECF332C204 /* Debug */,
+				FBD19E3F7010EBEFF2AF1B8F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7C2E37E42DBBAA2F00BD6B95 /* Build configuration list for PBXNativeTarget "BridgingTests" */ = {
+		58646921705F0C2696A02B06 /* Build configuration list for PBXProject "Bridging" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				7C2E37E52DBBAA2F00BD6B95 /* Debug */,
-				7C2E37E62DBBAA2F00BD6B95 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		7C2E37E72DBBAA2F00BD6B95 /* Build configuration list for PBXNativeTarget "BridgingUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				7C2E37E82DBBAA2F00BD6B95 /* Debug */,
-				7C2E37E92DBBAA2F00BD6B95 /* Release */,
+				EA4DA0470E2B01C4F0D66DC9 /* Debug */,
+				1324323A250E3289FA5BAD5D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		7C2E37EA2DBBB49C00BD6B95 /* XCRemoteSwiftPackageReference "supabase-swift" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/supabase-community/supabase-swift.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 2.5.1;
-			};
-		};
-		7C2E37F52DBBB5A200BD6B95 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/google/GoogleSignIn-iOS";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 8.0.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		7C2E37EB2DBBB49C00BD6B95 /* Auth */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 7C2E37EA2DBBB49C00BD6B95 /* XCRemoteSwiftPackageReference "supabase-swift" */;
-			productName = Auth;
-		};
-		7C2E37ED2DBBB49C00BD6B95 /* Functions */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 7C2E37EA2DBBB49C00BD6B95 /* XCRemoteSwiftPackageReference "supabase-swift" */;
-			productName = Functions;
-		};
-		7C2E37EF2DBBB49C00BD6B95 /* PostgREST */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 7C2E37EA2DBBB49C00BD6B95 /* XCRemoteSwiftPackageReference "supabase-swift" */;
-			productName = PostgREST;
-		};
-		7C2E37F12DBBB49C00BD6B95 /* Realtime */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 7C2E37EA2DBBB49C00BD6B95 /* XCRemoteSwiftPackageReference "supabase-swift" */;
-			productName = Realtime;
-		};
-		7C2E37F32DBBB49C00BD6B95 /* Storage */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 7C2E37EA2DBBB49C00BD6B95 /* XCRemoteSwiftPackageReference "supabase-swift" */;
-			productName = Storage;
-		};
-		7C2E37F62DBBB5A200BD6B95 /* GoogleSignInSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 7C2E37F52DBBB5A200BD6B95 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
-			productName = GoogleSignInSwift;
-		};
-		7CCC5CD42DBBBA95000FC317 /* Supabase */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 7C2E37EA2DBBB49C00BD6B95 /* XCRemoteSwiftPackageReference "supabase-swift" */;
-			productName = Supabase;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
-	rootObject = 7C2E37AE2DBBAA2D00BD6B95 /* Project object */;
+	rootObject = CFA01719793FD31F3AE45395 /* Project object */;
 }

@@ -1,6 +1,8 @@
 import ProjectDescription
+import ProjectDescriptionHelpers
 
 let plistOverrides: [String: Plist.Value] = [
+    "UILaunchStoryboardName": .string("LaunchScreen"),
     "UIApplicationSceneManifest": .dictionary([
         "UIApplicationSupportsMultipleScenes": .boolean(false),
         "UISceneConfigurations": .dictionary([
@@ -15,6 +17,8 @@ let plistOverrides: [String: Plist.Value] = [
     ])
 ]
 
+import ProjectDescription
+
 let project = Project(
     name: "Bridging",
     targets: [
@@ -23,15 +27,18 @@ let project = Project(
             destinations: .iOS,
             product: .app,
             bundleId: "com.Wook.Bridging",
+            deploymentTargets: .iOS("15.0"),
             infoPlist: .extendingDefault(with: plistOverrides),
             sources: ["Project/Sources/**"],
             resources: ["Project/Resources/**"],
+            entitlements: "Project/Entitlements/BridgingRelease.entitlements",
             dependencies: [
                 .external(name: "RxSwift"),
                 .external(name: "RxCocoa"),
                 .external(name: "GoogleSignIn"),
                 .external(name: "Supabase"),
-            ]
+            ],
+            settings: .settings(base: SigningHelper.signingSettings)
         ),
         .target(
             name: "BridgingTests",
@@ -48,4 +55,4 @@ let project = Project(
             ]
         )
     ]
-)vi
+)

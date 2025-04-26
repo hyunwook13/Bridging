@@ -36,7 +36,6 @@
 		3E71EC7D0E769A06DCDB167A /* RxBlocking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F41C7B54841A0F37BD2B5425 /* RxBlocking.framework */; };
 		418A69BCC38FA587AA689EFC /* swift-crypto_Crypto.bundle in Resources */ = {isa = PBXBuildFile; fileRef = FBFFD6C79A6190131C87F23C /* swift-crypto_Crypto.bundle */; };
 		41BC4C37245DAFCEEA3FC033 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF116A2743FF3C00C5A11A0 /* SceneDelegate.swift */; };
-		44066ACEC355D73DAB21AD19 /* BridgingRelease.entitlements in Resources */ = {isa = PBXBuildFile; fileRef = 02747B26B69D545CE919B586 /* BridgingRelease.entitlements */; };
 		4532A14D64DF70ACA43293AC /* Promises_FBLPromises.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 6B764578DD0E203D73BFB450 /* Promises_FBLPromises.bundle */; };
 		48978AA03813B0F9C9986403 /* Promises_FBLPromises.bundle in Dependencies */ = {isa = PBXBuildFile; fileRef = 6B764578DD0E203D73BFB450 /* Promises_FBLPromises.bundle */; };
 		4B25AA3B28744A363EFA71B9 /* AppAuth_AppAuthCore.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4D2767EA9C1A4CDFD0678922 /* AppAuth_AppAuthCore.bundle */; };
@@ -146,7 +145,6 @@
 
 /* Begin PBXFileReference section */
 		022C770C0E7FA9A11740C2AF /* RxCocoaRuntime.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RxCocoaRuntime.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		02747B26B69D545CE919B586 /* BridgingRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BridgingRelease.entitlements; sourceTree = "<group>"; };
 		06F4E6B98BF5B4A5E5108A05 /* PostgREST.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PostgREST.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A167881439D025107BD9399 /* Functions.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Functions.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CDBAFD2E4BB8A53A2D27EF6 /* RxTest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RxTest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -192,6 +190,7 @@
 		7E48A707B4F660C8759A3A5E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		854EE6ED5776690A2B1D70B4 /* GTMSessionFetcher_GTMSessionFetcherCore.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GTMSessionFetcher_GTMSessionFetcherCore.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		8562C6315ABD33253ED6B79C /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		93501475AB856431CC6B1E40 /* BridgingRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BridgingRelease.entitlements; sourceTree = "<group>"; };
 		A855CBDFBD899ADDBBA190FE /* BridgingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BridgingTests.swift; sourceTree = "<group>"; };
 		B060FCEB3C52E7C572BD88CC /* Crypto.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Crypto.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1DF9EDCEEED54042993BAAD /* DeviceCheck.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DeviceCheck.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/DeviceCheck.framework; sourceTree = DEVELOPER_DIR; };
@@ -281,6 +280,14 @@
 			path = Sources;
 			sourceTree = "<group>";
 		};
+		1606585EB758BE791448499C /* Entitlements */ = {
+			isa = PBXGroup;
+			children = (
+				93501475AB856431CC6B1E40 /* BridgingRelease.entitlements */,
+			);
+			path = Entitlements;
+			sourceTree = "<group>";
+		};
 		1E889F7DBED0314A2D44188A /* InfoPlists */ = {
 			isa = PBXGroup;
 			children = (
@@ -328,7 +335,6 @@
 			children = (
 				862EA7DC16ABD798598D579C /* LaunchScreen.storyboard */,
 				182AFDD86D2333BD59737009 /* Assets.xcassets */,
-				02747B26B69D545CE919B586 /* BridgingRelease.entitlements */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -337,6 +343,7 @@
 			isa = PBXGroup;
 			children = (
 				B8F697DEBCB5E97A047C5A1F /* BridgingTests */,
+				1606585EB758BE791448499C /* Entitlements */,
 				800052123DB2F6A4D30C40BB /* Resources */,
 				AE7BE33AF21F31AA2DDC522E /* Sources */,
 			);
@@ -510,7 +517,6 @@
 			files = (
 				886425DF893908154515A587 /* Assets.xcassets in Resources */,
 				717927818DAB7C8BFDE9DC37 /* LaunchScreen.storyboard in Resources */,
-				44066ACEC355D73DAB21AD19 /* BridgingRelease.entitlements in Resources */,
 				F8AFC2E0309C4A165B597816 /* AppAuth_AppAuth.bundle in Resources */,
 				4B25AA3B28744A363EFA71B9 /* AppAuth_AppAuthCore.bundle in Resources */,
 				117871E1850A483AA3B5167D /* GTMAppAuth_GTMAppAuth.bundle in Resources */,
@@ -874,7 +880,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_ENTITLEMENTS = Project/Entitlements/BridgingRelease.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				DEVELOPMENT_TEAM = D49753ZB3N;
 				ENABLE_PREVIEWS = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -897,6 +905,7 @@
 					"$(SRCROOT)/Tuist/.build/checkouts/promises/Sources/FBLPromises/include",
 				);
 				INFOPLIST_FILE = "Derived/InfoPlists/Bridging-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -942,6 +951,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.Wook.Bridging;
 				PRODUCT_NAME = Bridging;
+				PROVISIONING_PROFILE_SPECIFIER = "$(PROVISIONING_PROFILE_SPECIFIER)";
 				SDKROOT = iphoneos;
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
@@ -961,7 +971,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_ENTITLEMENTS = Project/Entitlements/BridgingRelease.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				DEVELOPMENT_TEAM = D49753ZB3N;
 				ENABLE_PREVIEWS = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -984,6 +996,7 @@
 					"$(SRCROOT)/Tuist/.build/checkouts/promises/Sources/FBLPromises/include",
 				);
 				INFOPLIST_FILE = "Derived/InfoPlists/Bridging-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1029,6 +1042,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.Wook.Bridging;
 				PRODUCT_NAME = Bridging;
+				PROVISIONING_PROFILE_SPECIFIER = "$(PROVISIONING_PROFILE_SPECIFIER)";
 				SDKROOT = iphoneos;
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;

@@ -29,5 +29,10 @@ let package = Package(
             url: "https://github.com/supabase/supabase-swift.git",
             .upToNextMajor(from: "2.0.0")
         ),
+        .package(
+            url: "https://github.com/layoutBox/PinLayout",
+            .branchItem("master")
+        )
+     
     ]
 )

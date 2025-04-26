@@ -37,6 +37,7 @@ let project = Project(
                 .external(name: "RxCocoa"),
                 .external(name: "GoogleSignIn"),
                 .external(name: "Supabase"),
+                .external(name: "PinLayout")
             ],
             settings: .settings(base: SigningHelper.signingSettings)
         ),

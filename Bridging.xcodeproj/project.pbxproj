@@ -79,6 +79,7 @@
 		E44048E852ED9A2BD69BA003 /* GTMAppAuth_GTMAppAuth.bundle in Dependencies */ = {isa = PBXBuildFile; fileRef = 4E8D30CD514AFC86A739784B /* GTMAppAuth_GTMAppAuth.bundle */; };
 		E7F7C2AE3D9A1B309AF7F002 /* RxSwift_RxRelay.bundle in Dependencies */ = {isa = PBXBuildFile; fileRef = B8C4A6311D26C8CE28E14FEB /* RxSwift_RxRelay.bundle */; };
 		E987FE522739C61749C3C695 /* GTMSessionFetcher_GTMSessionFetcherCore.bundle in Dependencies */ = {isa = PBXBuildFile; fileRef = 854EE6ED5776690A2B1D70B4 /* GTMSessionFetcher_GTMSessionFetcherCore.bundle */; };
+		EB9535884DA2C3C4F555775E /* PinLayout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8426EAC02571AF6C4450816 /* PinLayout.framework */; };
 		F13E3DD90E3C82799376B466 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CD2F802307BD44D18EF717A /* RxSwift.framework */; };
 		F1AC8712CD8858B65B62E116 /* GTMSessionFetcherCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BC3EC124EC7CB07D59BD14F /* GTMSessionFetcherCore.framework */; };
 		F4BDB44650AAFADEC056EF5A /* TuistBundle+Bridging.swift in Sources */ = {isa = PBXBuildFile; fileRef = F146D5E2BFD7F101BE4C4857 /* TuistBundle+Bridging.swift */; };
@@ -210,6 +211,7 @@
 		F1A8CDF3ED595F7ACC34286E /* third_party_IsAppEncrypted.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = third_party_IsAppEncrypted.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F34F1F766587B32423AEA7CE /* IssueReporting.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = IssueReporting.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F41C7B54841A0F37BD2B5425 /* RxBlocking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RxBlocking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F8426EAC02571AF6C4450816 /* PinLayout.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PinLayout.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBFFD6C79A6190131C87F23C /* swift-crypto_Crypto.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "swift-crypto_Crypto.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FEB6AE7B9F36F80D9AD43922 /* Clocks.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Clocks.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -245,6 +247,7 @@
 				B009876374BCAB3774930609 /* HTTPTypes.framework in Frameworks */,
 				2B55B8E22240164DD67B4375 /* Helpers.framework in Frameworks */,
 				31FE7F0FA3E64B275E3835D0 /* IssueReporting.framework in Frameworks */,
+				EB9535884DA2C3C4F555775E /* PinLayout.framework in Frameworks */,
 				17F8BE5F14B5A4BC0529EC18 /* PostgREST.framework in Frameworks */,
 				B1AB63A74FD0847B068B6606 /* Realtime.framework in Frameworks */,
 				09FF877CA7A31E275DFBF585 /* RxCocoa.framework in Frameworks */,
@@ -403,6 +406,7 @@
 				186C0B9660CB8FBA1792ED9C /* Helpers.framework */,
 				B747FB5F9EDCF6B965A537F2 /* HTTPTypes.framework */,
 				F34F1F766587B32423AEA7CE /* IssueReporting.framework */,
+				F8426EAC02571AF6C4450816 /* PinLayout.framework */,
 				06F4E6B98BF5B4A5E5108A05 /* PostgREST.framework */,
 				6B764578DD0E203D73BFB450 /* Promises_FBLPromises.bundle */,
 				C1CC5880EF7E69CBC1AFED61 /* Realtime.framework */,

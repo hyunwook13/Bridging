@@ -26,8 +26,8 @@ let package = Package(
             .upToNextMajor(from: "8.0.0")
         ),
         .package(
-            url: "https://github.com/supabase/supabase-swift.git",
-            .upToNextMajor(from: "2.0.0")
+            url: "https://github.com/firebase/firebase-ios-sdk",
+            .branchItem("main")
         ),
         .package(
             url: "https://github.com/layoutBox/PinLayout",

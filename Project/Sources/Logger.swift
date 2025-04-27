@@ -7,10 +7,10 @@
 
 import Foundation
 
-import Supabase
+import FirebaseAnalytics
 
-struct AppLogger: SupabaseLogger {
-    func log(message: SupabaseLogMessage) {
-        print(message.description)
+struct BridgingLogger {
+    static func logEvent(_ eventName: String, parameters: [String: Any] = [:]) {
+        Analytics.logEvent(eventName, parameters: parameters)
     }
 }

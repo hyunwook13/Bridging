@@ -14,10 +14,19 @@ let plistOverrides: [String: Plist.Value] = [
                 ])
             ])
         ])
+    ]),
+    "FirebaseCrashlyticsCollectionEnabled": .boolean(true),
+    "FirebaseCrashlyticsAutoSubmitEnabled": .boolean(true),
+    "CFBundleURLTypes": .array([
+        .dictionary([
+            "CFBundleTypeRole": .string("Editor"),
+            "CFBundleURLName": .string("google_login_call_back"),
+            "CFBundleURLSchemes": .array([
+                .string("com.googleusercontent.apps.56373788373-bs996t6ri7h8rij4jv9g02emt0u3429j")
+            ])
+        ])
     ])
 ]
-
-import ProjectDescription
 
 let project = Project(
     name: "Bridging",
@@ -36,17 +45,27 @@ let project = Project(
                 .external(name: "RxSwift"),
                 .external(name: "RxCocoa"),
                 .external(name: "GoogleSignIn"),
-                .external(name: "Supabase"),
+                .external(name: "FirebaseCore"),
+                .external(name: "FirebaseAnalytics"),
+                .external(name: "FirebaseAuth"),
+                .external(name: "FirebaseCrashlytics"),
+                .external(name: "FirebaseFirestore"),
                 .external(name: "PinLayout")
             ],
-            settings: .settings(base: SigningHelper.signingSettings)
+            settings: .settings(
+                base: SigningHelper.signingSettings,
+                configurations: [
+                    .debug(name: "Debug"),
+                    .release(name: "Release"),
+                ]
+            )
         ),
         .target(
             name: "BridgingTests",
             destinations: .iOS,
             product: .unitTests,
             bundleId: "com.Wook.BridgingTests",
-//            infoPlist: .default,
+            //            infoPlist: .default,
             sources: ["Project/BridgingTests/**"],
             resources: [],
             dependencies: [

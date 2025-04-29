@@ -50,6 +50,7 @@ let project = Project(
                 .external(name: "FirebaseAuth"),
                 .external(name: "FirebaseCrashlytics"),
                 .external(name: "FirebaseFirestore"),
+                .external(name: "FirebaseStorage"),
                 .external(name: "PinLayout")
             ],
             settings: .settings(

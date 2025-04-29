@@ -7,7 +7,7 @@
 
 import UIKit
 
-import Supabase
+//import Supabase
 import AppAuth
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
@@ -22,16 +22,21 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = scene as? UIWindowScene else { return }
 
         let window = UIWindow(windowScene: windowScene)
-        let loginViewController = LoginViewController()
+        let loginViewController = MainViewController()
+        let navlogin = UINavigationController(rootViewController: loginViewController)
+        
+        
+    let tabbar = UITabBarController()
+        tabbar.viewControllers = [navlogin ]
 
-        window.rootViewController = loginViewController
+        window.rootViewController = tabbar
         self.window = window
         window.makeKeyAndVisible()
     }
     
     func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
       guard let url = URLContexts.first?.url else { return }
-      supabase.auth.handle(url)
+//      supabase.auth.handle(url)
     }
     
     func sceneDidDisconnect(_ scene: UIScene) {

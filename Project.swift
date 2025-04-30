@@ -15,6 +15,7 @@ let plistOverrides: [String: Plist.Value] = [
             ])
         ])
     ]),
+    "NSPhotoLibraryUsageDescription": "앱에서 사진 보관함의 사진과 비디오를 조회 및 수정하기 위해 사용됩니다.",
     "FirebaseCrashlyticsCollectionEnabled": .boolean(true),
     "FirebaseCrashlyticsAutoSubmitEnabled": .boolean(true),
     "CFBundleURLTypes": .array([
@@ -36,7 +37,7 @@ let project = Project(
             destinations: .iOS,
             product: .app,
             bundleId: "com.Wook.Bridging",
-            deploymentTargets: .iOS("15.0"),
+            deploymentTargets: .iOS("16.0"),
             infoPlist: .extendingDefault(with: plistOverrides),
             sources: ["Project/Sources/**"],
             resources: ["Project/Resources/**"],

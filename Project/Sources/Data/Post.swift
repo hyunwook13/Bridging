@@ -10,6 +10,7 @@ import Foundation
 import FirebaseFirestore
 
 struct Post: Codable {
+    @DocumentID var uuid: String? 
     var commentsID: [String]
     var context: String
     var createdAt: Timestamp
@@ -17,9 +18,11 @@ struct Post: Codable {
     var imageURL: String?
     var likeUserID: [String]
     var reportedUserID: [String]
+    var categories: [String]
     var title: String
     var authorNickName: String
     var authorGender: String
     var authorAgeGroup: String
-    var lastModifed: Timestamp
+    var lastModifed: Timestamp? = nil
+    var lastComment: String? 
 }

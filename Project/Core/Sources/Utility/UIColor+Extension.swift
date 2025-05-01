@@ -9,7 +9,7 @@ import UIKit
 
 // MARK: - UIColor Hex Extension
 extension UIColor {
-    convenience init(hex: String) {
+    public convenience init(hex: String) {
         var hexFormatted = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
         if hexFormatted.hasPrefix("#") { hexFormatted.remove(at: hexFormatted.startIndex) }
         var rgb: UInt64 = 0

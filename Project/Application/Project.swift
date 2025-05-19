@@ -39,20 +39,14 @@ let project = Project(
             bundleId: "com.Wook.Bridging",
             deploymentTargets: .iOS("16.0"),
             infoPlist: .extendingDefault(with: plistOverrides),
-            sources: ["Project/Sources/**"],
-            resources: ["Project/Resources/**"],
-            entitlements: "Project/Entitlements/BridgingRelease.entitlements",
+            sources: ["Sources/**"],
+            resources: ["ReSources/**"],
+            entitlements: "./Entitlements/BridgingRelease.entitlements",
             dependencies: [
-                .external(name: "RxSwift"),
-                .external(name: "RxCocoa"),
+                .project(target: "Core", path: "../Core"),
+                .project(target: "Feature", path: "../Feature"),
                 .external(name: "GoogleSignIn"),
                 .external(name: "FirebaseCore"),
-                .external(name: "FirebaseAnalytics"),
-                .external(name: "FirebaseAuth"),
-                .external(name: "FirebaseCrashlytics"),
-                .external(name: "FirebaseFirestore"),
-                .external(name: "FirebaseStorage"),
-                .external(name: "PinLayout")
             ],
             settings: .settings(
                 base: SigningHelper.signingSettings,
@@ -61,20 +55,6 @@ let project = Project(
                     .release(name: "Release"),
                 ]
             )
-        ),
-        .target(
-            name: "BridgingTests",
-            destinations: .iOS,
-            product: .unitTests,
-            bundleId: "com.Wook.BridgingTests",
-            //            infoPlist: .default,
-            sources: ["Project/BridgingTests/**"],
-            resources: [],
-            dependencies: [
-                .target(name: "Bridging"),
-                .external(name: "RxTest"),
-                .external(name: "RxBlocking")
-            ]
         )
     ]
 )

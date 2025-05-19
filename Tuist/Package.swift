@@ -32,7 +32,10 @@ let package = Package(
         .package(
             url: "https://github.com/layoutBox/PinLayout",
             .branchItem("master")
+        ),
+        .package(
+            url: "https://github.com/Juanpe/SkeletonView.git",
+            .upToNextMajor(from: "1.7.0")
         )
-     
     ]
 )

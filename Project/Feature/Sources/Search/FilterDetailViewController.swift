@@ -147,6 +147,8 @@
 //}
 
 import UIKit
+import Core
+
 import PinLayout
 import RxSwift
 import RxCocoa
@@ -178,6 +180,7 @@ final class FilterDetailViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         
+        navigationController?.hidesBottomBarWhenPushed = true
         navigationController?.isNavigationBarHidden = false
         
         view.addSubview(tableView)

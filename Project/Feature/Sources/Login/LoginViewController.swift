@@ -7,6 +7,7 @@
 
 import UIKit
 import AuthenticationServices
+import Core
 
 import FirebaseCore
 import FirebaseAuth
@@ -56,14 +57,17 @@ final class LoginViewController: UIViewController {
         return btn
     }()
     
-    private var appleLoginButton = ASAuthorizationAppleIDButton()
+    private var appleLoginButton = ASAuthorizationAppleIDButton(type: .signIn, style: .black)
     
     private let exploreButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("로그인 없이 둘러보기", for: .normal)
-//        button.tintColor = .customGray
         return button
     }()
+    
+    deinit {
+        print("deinit LoginVC")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -75,6 +79,11 @@ final class LoginViewController: UIViewController {
         super.viewDidLayoutSubviews()
         layoutInfo()
         layoutButtons()
+    }
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        updateButtonStyles()
     }
     
     private func setupUI() {
@@ -122,11 +131,6 @@ final class LoginViewController: UIViewController {
             .height(50)
     }
     
-    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-        super.traitCollectionDidChange(previousTraitCollection)
-        updateButtonStyles()
-    }
-    
     // 버튼 스타일 변경
     private func updateButtonStyles() {
         if traitCollection.userInterfaceStyle == .dark {
@@ -148,6 +152,10 @@ final class LoginViewController: UIViewController {
             appleLoginButton = newAppleButton
             layoutButtons()
         }
+        appleLoginButton.rx.controlEvent(.touchDown)
+            .bind {
+                self.startSignInWithAppleFlow()
+            }.disposed(by: disposeBag)
     }
     
     private func bindActions() {
@@ -156,13 +164,6 @@ final class LoginViewController: UIViewController {
                 print("Google 로그인 시도")
                 self?.googleSignIn()
                 // Google 로그인 로직 연결
-            }
-            .disposed(by: disposeBag)
-        
-        appleLoginButton.rx.controlEvent(.touchDown)
-            .bind { [weak self] in
-                print("Apple 로그인 시도")
-                self?.startSignInWithAppleFlow()
             }
             .disposed(by: disposeBag)
         
@@ -213,25 +214,29 @@ final class LoginViewController: UIViewController {
                                                            accessToken: user.accessToken.tokenString)
             
             Auth.auth().signIn(with: credential) { [unowned self] result, error in
-                self.handleLogin(result: result, error: error, type: .google)
+                self.handleLogin(result: result, credential: credential, error: error, type: .google)
             }
         }
     }
     
-    private func handleLogin(result: AuthDataResult?, error: (any Error)?, type: LoginType) {
+    private func handleLogin(result: AuthDataResult?, credential: AuthCredential, error: (any Error)?, type: LoginType) {
         if let error = error {
             return BridgingLogger.logEvent("fail_\(type.rawValue)_login", parameters: ["error": error.localizedDescription])
         }
         
-        guard let result = result else {
+        guard let _ = result else {
             return BridgingLogger.logEvent("fail_\(type.rawValue)_login", parameters: ["error": "no value after login"])
         }
         
-        Task {
-            do {
-                try await FireStore.shared.addUser(with: result.user.uid)
-                
+        if KeyChainManager.shared.isExistKeychain() {
+            self.dismiss(animated: true)
+        } else {
+            self.navigationController?.pushViewController(OnboardingViewController(), animated: true)
+        }
+        
                 if let user = Auth.auth().currentUser {
+//                    AuthManager.shared.userRelay.accept(user)
+//                    
                     print("=== 현재 유저 정보 ===")
                     print("UID: \(user.uid)")
                     print("이메일: \(user.email ?? "없음")")
@@ -260,10 +265,10 @@ final class LoginViewController: UIViewController {
                 } else {
                     print("현재 로그인된 유저가 없습니다.")
                 }
-            } catch {
-                print("FireStore에 사용자 저장 실패: \(error.localizedDescription)")
-            }
-        }
+//            } catch {
+//                print("FireStore에 사용자 저장 실패: \(error.localizedDescription)")
+//            }
+//        }
     }
 }
 
@@ -273,7 +278,6 @@ extension LoginViewController: ASAuthorizationControllerDelegate, ASAuthorizatio
     }
     
     func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
-        // Handle error.
         return BridgingLogger.logEvent("fail_apple_login", parameters: ["error": error.localizedDescription])
     }
     
@@ -296,7 +300,7 @@ extension LoginViewController: ASAuthorizationControllerDelegate, ASAuthorizatio
                                                            fullName: appleIDCredential.fullName)
             // Sign in with Firebase.
             Auth.auth().signIn(with: credential) { [unowned self] (result, error) in
-                self.handleLogin(result: result, error: error, type: .apple)
+                self.handleLogin(result: result, credential: credential, error: error, type: .apple)
             }
         }
     }

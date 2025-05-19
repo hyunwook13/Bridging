@@ -103,6 +103,8 @@
 //}
 
 import UIKit
+import Core
+
 import PinLayout
 import RxSwift
 import RxCocoa
@@ -122,7 +124,7 @@ final class SearchViewController: UIViewController {
 
     private lazy var tableView: UITableView = {
         let tv = UITableView()
-        tv.register(UITableViewCell.self, forCellReuseIdentifier: "feedCell")
+        tv.register(MainTableViewCell.self, forCellReuseIdentifier: MainTableViewCell.reuseIdentifier)
         tv.rx.setDelegate(self).disposed(by: disposeBag)
         tv.showsVerticalScrollIndicator = false
         return tv
@@ -132,6 +134,7 @@ final class SearchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        binding()
     }
     
     override func viewDidLayoutSubviews() {
@@ -165,6 +168,49 @@ final class SearchViewController: UIViewController {
         view.addSubview(tableView)
         
         categoryView.delegate = self
+    }
+    
+    private func binding() {
+        let categoriesObservable = Observable.deferred {
+            let latest = self.categoryView
+                             .getSelectedCategories()
+                             .values
+                             .flatMap { $0 }
+            return .just(latest)
+        }.distinctUntilChanged()
+        
+        searchBar.rx.text.orEmpty
+          .debounce(.milliseconds(300), scheduler: MainScheduler.instance)    // 불필요한 호출 줄이기
+          .distinctUntilChanged()                                           // 같은 텍스트 중복 방지
+          .withLatestFrom(categoriesObservable) { query, cats in (query, cats) }
+          .flatMapLatest { query, cats -> Observable<[Post]> in
+              // 2) async/await fetchPosts를 Observable로 래핑
+              Observable.create { observer in
+                  Task {
+                      do {
+                          let posts = try await FireStoreManager.shared.fetchPosts(withTitle: query, categories: cats)
+                          observer.onNext(posts)
+                          observer.onCompleted()
+                      } catch {
+                          observer.onError(error)
+                      }
+                  }
+                  return Disposables.create()
+              }
+          }
+          .observe(on: MainScheduler.instance)  // UI 바인딩은 메인스레드
+          // 3) 결과를 테이블뷰에 바인딩
+          .bind(to: tableView.rx.items(
+              cellIdentifier: MainTableViewCell.reuseIdentifier,
+              cellType: MainTableViewCell.self
+          )) { _, post, cell in
+              cell.configure(with: post)
+              {
+                  self.tableView.beginUpdates()
+                  self.tableView.endUpdates()
+              }
+          }
+          .disposed(by: disposeBag)
     }
 }
 

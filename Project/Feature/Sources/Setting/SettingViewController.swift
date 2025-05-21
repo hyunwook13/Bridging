@@ -28,6 +28,7 @@ public class SettingViewController: UIViewController {
         view.backgroundColor = .systemBackground
         view.addSubview(authButton)
         bindAuthState()
+        binding()
     }
 
     public override func viewDidLayoutSubviews() {
@@ -51,29 +52,28 @@ public class SettingViewController: UIViewController {
                     self.authButton.setTitle("로그아웃", for: .normal)
                     self.authButton.setTitleColor(.systemRed, for: .normal)
                     self.authButton.layer.borderColor = UIColor.systemRed.cgColor
-                    self.authButton.rx.tap
-                        .bind { _ in
-//                            do {
-                                 AuthManager.shared.signout()
-//                            } catch {
-//                                print("Sign out error: \(error)")
-//                            }
-                        }
-                        .disposed(by: self.disposeBag)
                 } else {
                     self.authButton.setTitle("로그인", for: .normal)
                     self.authButton.setTitleColor(.systemBlue, for: .normal)
                     self.authButton.layer.borderColor = UIColor.systemBlue.cgColor
-                    self.authButton.rx.tap
-                        .bind { [weak self] _ in
-                            let loginVC = LoginViewController()
-                            let nav = UINavigationController(rootViewController: loginVC)
-                            nav.modalPresentationStyle = .fullScreen
-                            self?.present(nav, animated: true)
-                        }
-                        .disposed(by: self.disposeBag)
                 }
             })
             .disposed(by: disposeBag)
+    }
+    
+    private func binding() {
+        self.authButton.rx.tap
+            .withLatestFrom(AuthManager.shared.userRelay)
+            .bind { [weak self] user in
+                if let _ = user {
+                    AuthManager.shared.signout()
+                } else {
+                    let loginVC = LoginViewController()
+                    let nav = UINavigationController(rootViewController: loginVC)
+                    nav.modalPresentationStyle = .fullScreen
+                    self?.present(nav, animated: true)
+                }
+            }
+            .disposed(by: self.disposeBag)
     }
 }

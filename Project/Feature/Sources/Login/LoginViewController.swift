@@ -21,7 +21,7 @@ enum LoginType: String {
     case google
 }
 
-final class LoginViewController: UIViewController {
+public final class LoginViewController: UIViewController {
     
     private let disposeBag = DisposeBag()
     
@@ -31,6 +31,8 @@ final class LoginViewController: UIViewController {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "AppImage")
         imageView.contentMode = .scaleAspectFit
+        imageView.accessibilityHint = "앱의 로고"
+        imageView.isAccessibilityElement = true
         return imageView
     }()
     
@@ -39,6 +41,9 @@ final class LoginViewController: UIViewController {
         label.text = "Bridging"
         label.font = UIFont.boldSystemFont(ofSize: 28)
         label.textAlignment = .center
+        label.isAccessibilityElement = true
+        label.accessibilityLabel = "Bridging"
+        label.accessibilityHint = "앱의 제목"
         return label
     }()
     
@@ -48,20 +53,35 @@ final class LoginViewController: UIViewController {
         label.font = UIFont.systemFont(ofSize: 16)
         label.textAlignment = .center
         label.numberOfLines = 0
+        label.isAccessibilityElement = true
+        label.accessibilityLabel = "당신의 다양한 목소리를 하나로 연결하는 곳"
+        label.accessibilityHint = "앱의 부제목"
         return label
     }()
     
     private let googleLoginButton: GIDSignInButton = {
         let btn = GIDSignInButton()
         btn.style = .standard
+        btn.isAccessibilityElement = true
+        btn.accessibilityLabel = "구글 로그인 버튼"
+        btn.accessibilityHint = "구글 계정으로 로그인"
         return btn
     }()
     
-    private var appleLoginButton = ASAuthorizationAppleIDButton(type: .signIn, style: .black)
+    private var appleLoginButton: ASAuthorizationAppleIDButton = {
+        let btn = ASAuthorizationAppleIDButton(type: .signIn, style: .black)
+        btn.isAccessibilityElement = true
+        btn.accessibilityHint = "애플계정으로 로그인"
+        btn.accessibilityLabel = "애플 로그인 버튼"
+        return btn
+    }()
     
     private let exploreButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("로그인 없이 둘러보기", for: .normal)
+        button.isAccessibilityElement = true
+        button.accessibilityHint = "로그인 없이 둘러보기"
+        button.accessibilityLabel = "로그인 없이 둘러보기"
         return button
     }()
     
@@ -69,19 +89,19 @@ final class LoginViewController: UIViewController {
         print("deinit LoginVC")
     }
     
-    override func viewDidLoad() {
+    public override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
         bindActions()
     }
     
-    override func viewDidLayoutSubviews() {
+    public override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         layoutInfo()
         layoutButtons()
     }
     
-    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+    public override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
         updateButtonStyles()
     }
@@ -153,8 +173,8 @@ final class LoginViewController: UIViewController {
             layoutButtons()
         }
         appleLoginButton.rx.controlEvent(.touchDown)
-            .bind {
-                self.startSignInWithAppleFlow()
+            .bind { [weak self] in
+                self?.startSignInWithAppleFlow()
             }.disposed(by: disposeBag)
     }
     
@@ -166,6 +186,11 @@ final class LoginViewController: UIViewController {
                 // Google 로그인 로직 연결
             }
             .disposed(by: disposeBag)
+        
+        appleLoginButton.rx.controlEvent(.touchDown)
+            .bind { [weak self] in
+                self?.startSignInWithAppleFlow()
+            }.disposed(by: disposeBag)
         
         exploreButton.rx.tap
             .bind { [weak self] in
@@ -228,14 +253,15 @@ final class LoginViewController: UIViewController {
             return BridgingLogger.logEvent("fail_\(type.rawValue)_login", parameters: ["error": "no value after login"])
         }
         
-        if KeyChainManager.shared.isExistKeychain() {
-            self.dismiss(animated: true)
-        } else {
-            self.navigationController?.pushViewController(OnboardingViewController(), animated: true)
+        DispatchQueue.main.async { [weak self] in
+            if KeyChainManager.shared.isExistKeychain() {
+                self?.dismiss(animated: true)
+            } else {
+                self?.navigationController?.pushViewController(OnboardingViewController(), animated: true)
+            }
         }
         
                 if let user = Auth.auth().currentUser {
-//                    AuthManager.shared.userRelay.accept(user)
 //                    
                     print("=== 현재 유저 정보 ===")
                     print("UID: \(user.uid)")
@@ -273,15 +299,15 @@ final class LoginViewController: UIViewController {
 }
 
 extension LoginViewController: ASAuthorizationControllerDelegate, ASAuthorizationControllerPresentationContextProviding {
-    func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
-        return self.view.window!
+    public func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
+        return view.window!
     }
     
-    func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
+    public func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
         return BridgingLogger.logEvent("fail_apple_login", parameters: ["error": error.localizedDescription])
     }
     
-    func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
+    public func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
         if let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential {
             guard let nonce = currentNonce else {
                 return BridgingLogger.logEvent("fail_apple_login", parameters: ["error": "failed to get nonce"])

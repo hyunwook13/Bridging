@@ -41,7 +41,7 @@ public final class MainViewController: UIViewController {
     private lazy var tableView: UITableView = {
         let tv = UITableView()
         tv.separatorInset = .zero
-        tv.estimatedRowHeight = 174
+        tv.estimatedRowHeight = 200
         tv.showsVerticalScrollIndicator = false
         //        tv.rx.setDataSource(self).disposed(by: disposeBag)
         tv.rx.setDelegate(self).disposed(by: disposeBag)
@@ -60,6 +60,7 @@ public final class MainViewController: UIViewController {
         let btn = UIButton(type: .custom)
         btn.backgroundColor = .systemBlue
         btn.layer.cornerRadius = 28
+//        btn.accessibilityLabel = "글 작성버튼"
         btn.setImage(UIImage(systemName: "plus"), for: .normal)
         btn.tintColor = .white
         return btn
@@ -200,15 +201,15 @@ public final class MainViewController: UIViewController {
             .disposed(by: disposeBag)
         
         postsRelay
-            .do(onNext: { _ in
-                if self.tableView.sk.isSkeletonActive {
-                    self.tableView.hideSkeleton(transition: .crossDissolve(0.25))
-                }
-            })
-            .flatMapLatest { posts in
-                Observable.just(posts)
-                    .delay(.milliseconds(250), scheduler: MainScheduler.instance)
-            }
+//            .do(onNext: { _ in
+//                if self.tableView.sk.isSkeletonActive {
+//                    self.tableView.hideSkeleton(transition: .crossDissolve(0.25))
+//                }
+//            })
+//            .flatMapLatest { posts in
+//                Observable.just(posts)
+//                    .delay(.milliseconds(250), scheduler: MainScheduler.instance)
+//            }
             .bind(to: tableView.rx.items(cellIdentifier: MainTableViewCell.reuseIdentifier, cellType: MainTableViewCell.self)) { _, post, cell in
                 cell.configure(with: post)
                 {

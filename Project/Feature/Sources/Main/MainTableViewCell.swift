@@ -45,52 +45,64 @@ final class MainTableViewCell: UITableViewCell {
     private var hasImageURL: Bool = false
     
     private let genderLabel: UILabel = {
-        let lbl = UILabel()
-        lbl.font = .systemFont(ofSize: 12, weight: .semibold)
-        lbl.textAlignment = .center
-
-        return lbl
+        let label = UILabel()
+//        label.font = .systemFont(ofSize: 12, weight: .semibold)
+        label.font = .preferredFont(forTextStyle: .footnote)
+        label.textAlignment = .center
+        return label
     }()
     private let ageLabel: UILabel = {
-        let lbl = UILabel()
-        lbl.font = .systemFont(ofSize: 12, weight: .semibold)
-        lbl.textAlignment = .center
-        return lbl
+        let label = UILabel()
+//        label.font = .systemFont(ofSize: 12, weight: .semibold)
+        label.font = .preferredFont(forTextStyle: .caption2)
+        label.textAlignment = .center
+        label.accessibilityHint = "작성자 연령대"
+        return label
     }()
     private let sectionLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 12, weight: .semibold)
+        label.font = .preferredFont(forTextStyle: .caption2)
+//        label.font = .systemFont(ofSize: 12, weight: .semibold)
         label.textColor = .secondaryLabel
         return label
     }()
     private let titleLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 16, weight: .bold)
+        label.font = .preferredFont(forTextStyle: .title1)
+//            .systemFont(ofSize: 16, weight: .bold)
+        label.accessibilityHint = "게시물 제목"
+
         label.numberOfLines = 4
         return label
     }()
     private let subtitleLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 14)
+        label.font = .preferredFont(forTextStyle: .subheadline)
+//        label.font = .systemFont(ofSize: 14)
         label.textColor = .tertiaryLabel
+        label.accessibilityHint = "게시물 내용"
         label.numberOfLines = 2
         return label
     }()
     private let dateLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 12)
+//        label.font = .systemFont(ofSize: 12)
+        label.font = .preferredFont(forTextStyle: .caption1)
         label.textColor = .secondaryLabel
+        label.accessibilityHint = "게시물 작성 날짜"
         return label
     }()
     private let clapIcon: UIImageView = {
         let iv = UIImageView(image: UIImage(systemName: "hand.thumbsup"))
         iv.contentMode = .scaleAspectFit
+//        label.accessibilityHint = "게시물 작성 날짜"
         return iv
     }()
     private let clapLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 12)
         label.textColor = .secondaryLabel
+        
         return label
     }()
     private let commentIcon: UIImageView = {
@@ -142,7 +154,15 @@ final class MainTableViewCell: UITableViewCell {
         return CGSize(width: size.width, height: height)
     }
     
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        layout()
+    }
+    
     private func setting() {
+//        isAccessibilityElement = false
+//        self.accessibilityLabel = "포스트 정보, 자세한 정보를 얻으려면 선택하세요."
+        self.accessibilityElements = [genderLabel, ageLabel, sectionLabel, titleLabel, subtitleLabel, dateLabel, clapIcon, clapLabel, commentIcon, commentLabel]
         selectionStyle = .none
         self.isSkeletonable = true // <-
         self.contentView.isSkeletonable = true // <-
@@ -156,13 +176,17 @@ final class MainTableViewCell: UITableViewCell {
         genderLabel.pin
             .top(paddingV)
             .left(paddingH)
-            .width(28)
-            .height(17)
+            .sizeToFit(.content)
+//            .minWidth(28)
+//            .width(28)
+//            .height(17)
         ageLabel.pin
             .vCenter(to: genderLabel.edge.vCenter)
             .after(of: genderLabel).marginLeft(margin)
-            .width(30)
-            .height(17)
+            .sizeToFit(.content)
+//            .width(30)
+//            .minWidth(30)
+//            .height(17)
         sectionLabel.pin
             .vCenter(to: ageLabel.edge.vCenter)
             .after(of: ageLabel).marginLeft(margin)
@@ -185,24 +209,32 @@ final class MainTableViewCell: UITableViewCell {
         
         // Title and subtitle with dynamic right inset
         let rightInset = hasImageURL ? (30 + 80 + paddingH) : 40
+        
+        let titleHeight = lineHeight(for: .title1)
         titleLabel.pin
-            .below(of: sectionLabel).marginTop(20)
+            .below(of: genderLabel).marginTop(16)
             .left(to: genderLabel.edge.left)
             .right(rightInset)
-            .maxHeight(77.33)
+            .maxHeight(titleHeight * 4)
+            .minHeight(titleHeight)
             .sizeToFit(.width)
+        
+        let subTitleHeight = lineHeight(for: .subheadline)
         subtitleLabel.pin
             .below(of: titleLabel).marginTop(12)
             .left(to: genderLabel.edge.left)
             .right(rightInset)
-            .maxHeight(34)
+            .minHeight(subTitleHeight)
+            .maxHeight(subTitleHeight * 2)
             .sizeToFit(.width)
         
         dateLabel.pin
             .below(of: subtitleLabel).marginTop(20)
             .left(to: genderLabel.edge.left)
+            .width(14.33)
             .sizeToFit()
             .bottom(paddingV)
+        
         clapIcon.pin
             .vCenter(to: dateLabel.edge.vCenter)
             .after(of: dateLabel).marginLeft(16)
@@ -227,12 +259,17 @@ final class MainTableViewCell: UITableViewCell {
             return
         }
         
-        contentView.hideSkeleton()
-        configureCell(with: post)
-        
+        UIView.animate(withDuration: 0.25) {
+            self.contentView.hideSkeleton()
+        } completion: {
+            if $0 {
+                self.configureCell(with: post)
+            }
+        }
+           
         // 2) 이미지 로딩 전엔 thumbnailView 에만 스켈레톤
         thumbnailView.image = nil
-        thumbnailView.isSkeletonable = true
+        
         thumbnailView.showAnimatedSkeleton()
         
         // 3) 이미지 URL이 없으면, 스켈레톤만 숨기고 리턴
@@ -348,8 +385,11 @@ final class MainTableViewCell: UITableViewCell {
         ageLabel.textColor = ageColor
         // 1) 제목, 내용
         sectionLabel.text = post.authorNickName
+        sectionLabel.accessibilityLabel = "작성자 닉네임: \(post.authorNickName)"
         titleLabel.text = post.title
+        titleLabel.accessibilityLabel = "제목: \(post.title)"
         subtitleLabel.text = post.content
+        subtitleLabel.accessibilityLabel = "내용: \(post.content)"
         
         // 2) 날짜 포맷팅
         let date = post.createdAt.dateValue()
@@ -359,6 +399,12 @@ final class MainTableViewCell: UITableViewCell {
         
         // 3) 좋아요, 댓글 수
         clapLabel.text = "\(post.likeUserID.count)"
+        clapLabel.accessibilityLabel = "\(post.likeUserID.count)개의 게시물 좋아요"
         commentLabel.text = "\(post.commentsID.count)"
+        commentLabel.accessibilityLabel = "\(post.commentsID.count)개의 게시물 댓글"
+    }
+    
+    private func lineHeight(for textStyle: UIFont.TextStyle) -> CGFloat {
+        return UIFont.preferredFont(forTextStyle: textStyle).lineHeight
     }
 }

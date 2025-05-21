@@ -103,6 +103,7 @@ class OnboardingViewController: UIViewController {
             .asObservable()
             .subscribe(onNext: { isSuccess in
                 if isSuccess {
+                    KeyChainManager.shared.saveToKeychain(value: UUID().uuidString)
                     self.dismiss(animated: true)
                 } else {
                     HapticManager.shared.notify(.error)

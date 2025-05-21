@@ -24,7 +24,7 @@ final class PostDetailViewController: UIViewController {
 
     private let titleLabel: UILabel = {
         let lbl = UILabel()
-        lbl.font = .systemFont(ofSize: 24, weight: .bold)
+        lbl.font = .preferredFont(forTextStyle: .title3)
         lbl.textColor = .label
         lbl.numberOfLines = 0
         return lbl
@@ -49,7 +49,7 @@ final class PostDetailViewController: UIViewController {
 
     private let authorLabel: UILabel = {
         let lbl = UILabel()
-        lbl.font = .systemFont(ofSize: 14)
+        lbl.font = .preferredFont(forTextStyle: .footnote)
         lbl.textColor = .secondaryLabel
         return lbl
     }()
@@ -62,7 +62,7 @@ final class PostDetailViewController: UIViewController {
 
     private let contentTextView: UITextView = {
         let tv = UITextView()
-        tv.font = .systemFont(ofSize: 16)
+        tv.font = .preferredFont(forTextStyle: .body)
         tv.textColor = .label
         tv.isScrollEnabled = false
         tv.isEditable = false
@@ -87,7 +87,7 @@ final class PostDetailViewController: UIViewController {
 
     private let commentCountLabel: UIButton = {
         let lbl = UIButton(type: .system)
-        lbl.titleLabel?.font = .systemFont(ofSize: 14)
+        lbl.titleLabel?.font = .preferredFont(forTextStyle: .callout)
         lbl.tintColor = .secondaryLabel
         return lbl
     }()
@@ -101,7 +101,7 @@ final class PostDetailViewController: UIViewController {
 
     private let previewCommentLabel: UILabel = {
         let lbl = UILabel()
-        lbl.font = .systemFont(ofSize: 14)
+        lbl.font = .preferredFont(forTextStyle: .body)
         lbl.textColor = .label
         lbl.numberOfLines = 0
         lbl.isUserInteractionEnabled = true

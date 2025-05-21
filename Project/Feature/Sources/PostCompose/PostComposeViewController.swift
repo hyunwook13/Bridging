@@ -46,6 +46,8 @@ final class PostComposeViewController: UIViewController {
     private let titleCounterLabel: UILabel = {
         let lbl = UILabel(); lbl.font = .systemFont(ofSize: 12); lbl.textColor = .lightGray; lbl.text = "0/50"
         lbl.textAlignment = .right
+        lbl.accessibilityLabel = "현재 글자수는 \(lbl.text?.count ?? 0)개 입니다"
+        lbl.accessibilityHint = "글자수 50자 이내"
         return lbl
     }()
     
@@ -63,7 +65,7 @@ final class PostComposeViewController: UIViewController {
     private let categorySectionLabel: UILabel = {
         let lbl = UILabel()
         lbl.text = "카테고리 선택"
-        lbl.font = .systemFont(ofSize: 16, weight: .medium)
+        lbl.font = .preferredFont(forTextStyle: .title3)
         lbl.textColor = .label
         return lbl
     }()
@@ -74,7 +76,7 @@ final class PostComposeViewController: UIViewController {
     private let imageSectionLabel: UILabel = {
         let lbl = UILabel()
         lbl.text = "이미지 선택"
-        lbl.font = .systemFont(ofSize: 16, weight: .medium)
+        lbl.font = .preferredFont(forTextStyle: .title3)
         lbl.textColor = .label
         return lbl
     }()
@@ -103,6 +105,8 @@ final class PostComposeViewController: UIViewController {
         btn.setTitle("✕", for: .normal)
         btn.backgroundColor = UIColor(white: 0, alpha: 0.5)
         btn.tintColor = .white
+        btn.accessibilityLabel = "추가된 이미지 삭제"
+        btn.accessibilityHint = "삭제 버튼"
         btn.layer.cornerRadius = 12
         btn.isHidden = true
         return btn
@@ -144,6 +148,7 @@ final class PostComposeViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        hidesBottomBarWhenPushed = true
         navigationController?.isNavigationBarHidden = false
         
         // Title Input
@@ -196,25 +201,25 @@ final class PostComposeViewController: UIViewController {
             .disposed(by: disposeBag)
         
         contentTextView.rx.didBeginEditing
-          .subscribe(onNext: { [weak self] in
-            guard let tv = self?.contentTextView else { return }
-            if tv.text == self?.placeholder {
-              tv.text = ""
-              tv.textColor = UIColor(hex: "333333")  // 실제 입력 텍스트 컬러
-            }
-          })
-          .disposed(by: disposeBag)
-
+            .subscribe(onNext: { [weak self] in
+                guard let tv = self?.contentTextView else { return }
+                if tv.text == self?.placeholder {
+                    tv.text = ""
+                    tv.textColor = UIColor(hex: "333333")  // 실제 입력 텍스트 컬러
+                }
+            })
+            .disposed(by: disposeBag)
+        
         // 편집 종료 시
         contentTextView.rx.didEndEditing
-          .subscribe(onNext: { [weak self] in
-            guard let tv = self?.contentTextView else { return }
-            if tv.text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
-              tv.text = self?.placeholder
-              tv.textColor = .lightGray
-            }
-          })
-          .disposed(by: disposeBag)
+            .subscribe(onNext: { [weak self] in
+                guard let tv = self?.contentTextView else { return }
+                if tv.text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+                    tv.text = self?.placeholder
+                    tv.textColor = .lightGray
+                }
+            })
+            .disposed(by: disposeBag)
         
         let titleContent = Observable
             .combineLatest(
@@ -235,60 +240,61 @@ final class PostComposeViewController: UIViewController {
         isCompleted
             .bind(to: doneButton.rx.isEnabled)
             .disposed(by: disposeBag)
-
+        
         // 2) 이미지 업로드를 Single<String?>로 래핑
         func uploadImageUUID() -> Single<String?> {
-          guard let image = self.addedImageView.image else {
-            return .just(nil)
-          }
-            
-            let resized = image.resized(to: CGSize(width: 400, height: 300))
-            
-          return Single<String?>.create { single in
-            Task {
-              do {
-                let result = try await StorageManager.shared.uploadImage(image)
-                single(.success(result.uuid))
-              } catch {
-                single(.success(nil))   // 실패 시에도 nil 넘겨주거나 single(.failure(error)) 선택
-              }
+            guard let image = self.addedImageView.image else {
+                return .just(nil)
             }
-            return Disposables.create()
-          }
+            
+//            let resized = image.resized(to: CGSize(width: 400, height: 300))
+            
+            return Single<String?>.create { single in
+                Task {
+                    do {
+                        let result = try await StorageManager.shared.uploadImage(image)
+                        single(.success(result.uuid))
+                    } catch {
+                        single(.success(nil))   // 실패 시에도 nil 넘겨주거나 single(.failure(error)) 선택
+                    }
+                }
+                return Disposables.create()
+            }
         }
-
+        
         // 3) 탭 스트림에 requireLogin, withLatestFrom, flatMap 연결
         doneButton.rx.tap
-          .requireLogin()                         // 로그인 확인
-          .withLatestFrom(titleContent)           // 제목·내용과 묶기
-          .flatMapLatest { pair in
-              let (title, content) = pair
-              
-              return uploadImageUUID()
-                  .flatMap { imageUUID -> Single<Void> in
-                      do {
-                          let categories = self.categoryControl.getSelectedCategories().values.flatMap { $0 }
-                          
-                          try FireStoreManager.shared.savePost(
-                            with: title,
-                            context: content,
-                            categories: categories,
-                            imageUUID: imageUUID
-                          )
-                          return .just(())
-                      } catch {
-                          return .error(error)
-                      }
-                  }
-                  .asObservable()
-              
-          }.subscribe(onNext: { _ in
-              self.navigationController?.popViewController(animated: true)
-          }, onCompleted: {
-              self.navigationController?.popViewController(animated: true)
-          }, onDisposed: {
-              
-          }).disposed(by: disposeBag)
+            .requireLogin()                         // 로그인 확인
+            .withLatestFrom(titleContent)           // 제목·내용과 묶기
+            .flatMapLatest { pair in
+                let (title, content) = pair
+                
+                return uploadImageUUID()
+                    .flatMap { imageUUID -> Single<Void> in
+                        do {
+                            let categories = self.categoryControl.getSelectedCategories().values.flatMap { $0 }
+                            
+                            try FireStoreManager.shared.savePost(
+                                with: title,
+                                context: content,
+                                categories: categories,
+                                imageUUID: imageUUID
+                            )
+                            return .just(())
+                        } catch {
+                            return .error(error)
+                        }
+                    }
+                    .asObservable()
+                
+            }.subscribe(
+                onNext: { _ in
+                    HapticManager.shared.notify(.success)
+                    self.navigationController?.popViewController(animated: true)
+                },
+                onDisposed: {
+                    HapticManager.shared.notify(.error)
+                }).disposed(by: disposeBag)
         
         removeImageButton.rx.tap
             .bind { [weak self] in self?.resetImageSection() }
@@ -314,44 +320,44 @@ final class PostComposeViewController: UIViewController {
     }
     
     /// post가 non-nil(=수정 모드)이면 UI를 미리 채워줍니다.
-       private func populateIfEditing() {
-           guard let post = post else { return }
-
-           // 1) 제목
-           titleField.text = post.title
-           titleCounterLabel.text = "\(post.title.count)/50"
-
-           // 2) 내용
-           contentTextView.text = post.content
-           contentTextView.textColor = UIColor(hex: "333333")
-
-           // 3) 카테고리
-           // CategoryFilterView에 '기존 선택'을 전달
-           categoryControl.preSelected(categories: post.categories)
-
-           // 4) 이미지
-           if let imageUUID = post.imageURL {
-               imageAddButton.isHidden = true
-               addedImageView.isHidden = false
-               removeImageButton.isHidden = false
-
-               // 예: Storage에서 불러오거나 URL->UIImage 변환
-               Task {
-                   do {
-                       let image = try await StorageManager.shared.fetchPostImage(uuid: imageUUID)
-                       DispatchQueue.main.async {
-                           self.addedImageView.image = image
-                           self.view.setNeedsLayout()
-                       }
-                   } catch {
-                       
-                   }
-               }
-           }
-
-           // 5) '완료' 버튼 활성화
-           doneButton.isEnabled = true
-       }
+    private func populateIfEditing() {
+        guard let post = post else { return }
+        
+        // 1) 제목
+        titleField.text = post.title
+        titleCounterLabel.text = "\(post.title.count)/50"
+        
+        // 2) 내용
+        contentTextView.text = post.content
+        contentTextView.textColor = UIColor(hex: "333333")
+        
+        // 3) 카테고리
+        // CategoryFilterView에 '기존 선택'을 전달
+        categoryControl.preSelected(categories: post.categories)
+        
+        // 4) 이미지
+        if let imageUUID = post.imageURL {
+            imageAddButton.isHidden = true
+            addedImageView.isHidden = false
+            removeImageButton.isHidden = false
+            
+            // 예: Storage에서 불러오거나 URL->UIImage 변환
+            Task {
+                do {
+                    let image = try await StorageManager.shared.fetchPostImage(uuid: imageUUID)
+                    DispatchQueue.main.async {
+                        self.addedImageView.image = image
+                        self.view.setNeedsLayout()
+                    }
+                } catch {
+                    
+                }
+            }
+        }
+        
+        // 5) '완료' 버튼 활성화
+        doneButton.isEnabled = true
+    }
 }
 
 extension PostComposeViewController: CategoryFilterViewDelegate {

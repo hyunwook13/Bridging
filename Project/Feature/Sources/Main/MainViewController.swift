@@ -38,10 +38,16 @@ public final class MainViewController: UIViewController {
         btn.tintColor = .label
         return btn
     }()
+    private let settingButton: UIButton = {
+        let btn = UIButton(type: .system)
+        btn.setImage(UIImage(systemName: "gearshape.fill"), for: .normal)
+        btn.tintColor = .label
+        return btn
+    }()
     private lazy var tableView: UITableView = {
         let tv = UITableView()
         tv.separatorInset = .zero
-        tv.estimatedRowHeight = 200
+//        tv.estimatedRowHeight = 200
         tv.showsVerticalScrollIndicator = false
         //        tv.rx.setDataSource(self).disposed(by: disposeBag)
         tv.rx.setDelegate(self).disposed(by: disposeBag)
@@ -74,6 +80,12 @@ public final class MainViewController: UIViewController {
         self.loadNextPageTrigger.onNext(())
     }
     
+    public override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        tableView.beginUpdates()
+        tableView.endUpdates()
+    }
+    
     public override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
@@ -103,6 +115,12 @@ public final class MainViewController: UIViewController {
             .bottom()
             .margin(4)
         
+        settingButton.pin
+            .right(to: searchButton.edge.left)
+//            .marginRight(8)
+            .size(44)
+            .vCenter(to: searchButton.edge.vCenter)
+        
         tableView.pin
             .below(of: headerView)
             .horizontally(16)
@@ -112,6 +130,9 @@ public final class MainViewController: UIViewController {
             .size(56)
             .bottom(view.pin.safeArea).margin(24)
             .right(view.pin.safeArea).margin(24)
+        
+        tableView.beginUpdates()
+        tableView.endUpdates()
     }
     
     private func settingUI() {
@@ -121,6 +142,7 @@ public final class MainViewController: UIViewController {
         
         view.addSubview(headerView)
         headerView.addSubview(appImageView)
+        headerView.addSubview(settingButton)
         headerView.addSubview(searchButton)
         headerView.clipsToBounds = true
         
@@ -257,6 +279,7 @@ extension MainViewController: UITableViewDelegate {
     //    }
     
     
+    
     public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let posts = postsRelay.value
         let post = posts[indexPath.row]
@@ -266,7 +289,12 @@ extension MainViewController: UITableViewDelegate {
         if !post.isTemporaryFlag {
             return MainTableViewCell.skeletonHeight(width: width)
         } else {
-            return MainTableViewCell.height(for: post, width: width)
+            guard let cell = tableView.cellForRow(at: indexPath) as? MainTableViewCell else { return MainTableViewCell.height(for: post, width: width)}
+            
+            cell.configure(with: post)
+            cell.layout()
+            let targetSize = CGSize(width: tableView.bounds.width, height: .greatestFiniteMagnitude)
+            return cell.sizeThatFits(targetSize).height
         }
     }
 }

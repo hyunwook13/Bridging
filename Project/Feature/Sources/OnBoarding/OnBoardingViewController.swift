@@ -93,7 +93,7 @@ class OnboardingViewController: UIViewController {
         nextButton.rx.tap
             .withUnretained(self)
             .flatMapLatest { _ -> Single<Bool> in
-                let user = UserProfile(ageGroup: self.selectedAgeGroup.value,
+                let user = UserProfile(ageGroup: AgeGroup(rawValue: self.selectedAgeGroup.value) ?? .teen,
                                        gender: Gender(rawValue: self.selectedGender.value) ?? .man,
                                        nickname: self.nicknameRelay.value,
                                        posts: [])

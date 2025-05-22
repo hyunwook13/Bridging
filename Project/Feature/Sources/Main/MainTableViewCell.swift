@@ -64,23 +64,26 @@ final class MainTableViewCell: UITableViewCell {
         label.font = .preferredFont(forTextStyle: .caption2)
 //        label.font = .systemFont(ofSize: 12, weight: .semibold)
         label.textColor = .secondaryLabel
+        label.textAlignment = .left
         return label
     }()
     private let titleLabel: UILabel = {
         let label = UILabel()
-        label.font = .preferredFont(forTextStyle: .title1)
+        label.font = .preferredFont(forTextStyle: .title3)
 //            .systemFont(ofSize: 16, weight: .bold)
-        label.accessibilityHint = "게시물 제목"
+        label.accessibilityTraits = .header
+        label.accessibilityHint = "게시물 의견"
 
         label.numberOfLines = 4
         return label
     }()
     private let subtitleLabel: UILabel = {
         let label = UILabel()
-        label.font = .preferredFont(forTextStyle: .subheadline)
+        label.font = .preferredFont(forTextStyle: .title3)
 //        label.font = .systemFont(ofSize: 14)
         label.textColor = .tertiaryLabel
         label.accessibilityHint = "게시물 내용"
+//        label.lineBreakMode = .byTruncatingTail
         label.numberOfLines = 2
         return label
     }()
@@ -100,7 +103,7 @@ final class MainTableViewCell: UITableViewCell {
     }()
     private let clapLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 12)
+        label.font = .preferredFont(forTextStyle: .footnote)
         label.textColor = .secondaryLabel
         
         return label
@@ -112,7 +115,7 @@ final class MainTableViewCell: UITableViewCell {
     }()
     private let commentLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 12)
+        label.font = .preferredFont(forTextStyle: .footnote)
         label.textColor = .secondaryLabel
         return label
     }()
@@ -148,8 +151,24 @@ final class MainTableViewCell: UITableViewCell {
     }
     
     override func sizeThatFits(_ size: CGSize) -> CGSize {
+//        contentView.pin.width(size.width)
+//        layout()
+//        print("----------")
+//        print(subtitleLabel.frame.height)
+//        print(subtitleLabel.text)
+//        print("----------")
+//        let height = dateLabel.frame.maxY + 28
+//        return CGSize(width: size.width, height: height)
+        
+        let isFinalPass = size.height == .greatestFiniteMagnitude
+        // or: let isFinalPass = (size.width == tableView.bounds.width)
         contentView.pin.width(size.width)
-        layout()
+        layout()  // PinLayout 레이아웃
+        if isFinalPass {
+            // 마지막 패스일 때만 다시 그리기
+            setNeedsLayout()
+            layoutIfNeeded()
+        }
         let height = dateLabel.frame.maxY + 28
         return CGSize(width: size.width, height: height)
     }
@@ -168,29 +187,26 @@ final class MainTableViewCell: UITableViewCell {
         self.contentView.isSkeletonable = true // <-
     }
     
-    private func layout() {
+    internal func layout() {
         let paddingH: CGFloat = 8
         let paddingV: CGFloat = 28
         let margin: CGFloat = 6
         
+        let genderLabelHeight = lineHeight(for: .footnote)
         genderLabel.pin
             .top(paddingV)
             .left(paddingH)
-            .sizeToFit(.content)
-//            .minWidth(28)
-//            .width(28)
-//            .height(17)
+            .sizeToFit()
+            .minWidth(28)
+            .maxWidth(50)
+            .minHeight(genderLabelHeight + 2)
+        
         ageLabel.pin
             .vCenter(to: genderLabel.edge.vCenter)
             .after(of: genderLabel).marginLeft(margin)
-            .sizeToFit(.content)
-//            .width(30)
-//            .minWidth(30)
-//            .height(17)
-        sectionLabel.pin
-            .vCenter(to: ageLabel.edge.vCenter)
-            .after(of: ageLabel).marginLeft(margin)
             .sizeToFit()
+            .minHeight(genderLabelHeight + 2)
+            .minWidth(30)
         
         // Reserve or collapse thumbnail space based on hasImageURL
         if hasImageURL {
@@ -209,31 +225,39 @@ final class MainTableViewCell: UITableViewCell {
         
         // Title and subtitle with dynamic right inset
         let rightInset = hasImageURL ? (30 + 80 + paddingH) : 40
+        sectionLabel.pin
+            .vCenter(to: ageLabel.edge.vCenter)
+            .after(of: ageLabel).marginLeft(margin)
+            .right(rightInset)
+            .sizeToFit(.widthFlexible)
+            .minHeight(genderLabelHeight + 2)
+//            .minWidth(30)
         
-        let titleHeight = lineHeight(for: .title1)
+        let titleHeight = lineHeight(for: .title3)
         titleLabel.pin
             .below(of: genderLabel).marginTop(16)
             .left(to: genderLabel.edge.left)
             .right(rightInset)
-            .maxHeight(titleHeight * 4)
+            .maxHeight(titleHeight > 36 ? titleHeight * 2 : titleHeight * 4)
             .minHeight(titleHeight)
             .sizeToFit(.width)
         
-        let subTitleHeight = lineHeight(for: .subheadline)
         subtitleLabel.pin
             .below(of: titleLabel).marginTop(12)
             .left(to: genderLabel.edge.left)
             .right(rightInset)
-            .minHeight(subTitleHeight)
-            .maxHeight(subTitleHeight * 2)
+            .minHeight(titleHeight)
+            .maxHeight(titleHeight > 36 ? titleHeight * 2 : titleHeight * 3)
             .sizeToFit(.width)
-        
+            
         dateLabel.pin
             .below(of: subtitleLabel).marginTop(20)
             .left(to: genderLabel.edge.left)
-            .width(14.33)
-            .sizeToFit()
+            .minWidth(14.33)
+            .maxHeight(34)
+            .minHeight(15.67)
             .bottom(paddingV)
+            .sizeToFit()
         
         clapIcon.pin
             .vCenter(to: dateLabel.edge.vCenter)
@@ -243,6 +267,10 @@ final class MainTableViewCell: UITableViewCell {
             .vCenter(to: clapIcon.edge.vCenter)
             .after(of: clapIcon).marginLeft(4)
             .sizeToFit()
+            .minWidth(14.33)
+            .minHeight(genderLabelHeight + 2)
+            .maxWidth(40)
+//            .minHeight(14.33)
         commentIcon.pin
             .vCenter(to: clapLabel.edge.vCenter)
             .after(of: clapLabel).marginLeft(16)
@@ -251,6 +279,9 @@ final class MainTableViewCell: UITableViewCell {
             .vCenter(to: commentIcon.edge.vCenter)
             .after(of: commentIcon).marginLeft(4)
             .sizeToFit()
+            .minWidth(14.33)
+            .minHeight(genderLabelHeight + 2)
+            .maxWidth(40)
     }
     
     func configure(with post: Post, completion: (() -> Void)? = nil) {
@@ -276,6 +307,7 @@ final class MainTableViewCell: UITableViewCell {
         guard let uuid = post.imageURL, !uuid.isEmpty else {
             thumbnailView.hideSkeleton()
             completion?()
+//            self.setNeedsLayout()
             return
         }
         
@@ -283,7 +315,7 @@ final class MainTableViewCell: UITableViewCell {
         
         // 4) 비동기 이미지 로드
         
-        completion?()
+//        completion?()
         
         Task {
             do {
@@ -294,10 +326,10 @@ final class MainTableViewCell: UITableViewCell {
                     self.thumbnailView.image = img
                     
                     // 6) 레이아웃 필요 시 갱신
-                    self.setNeedsLayout()
-                    self.layoutIfNeeded()
-                    
-//                    completion?()
+//                    self.setNeedsLayout()
+//                    self.layoutIfNeeded()
+//                    
+                    completion?()
                 }
             } catch {
                 // 에러 시 스켈레톤은 숨겨 두고
@@ -307,6 +339,9 @@ final class MainTableViewCell: UITableViewCell {
                 }
             }
         }
+        
+//        self.setNeedsLayout()
+//        self.layoutIfNeeded()
     }
     
     
@@ -368,9 +403,9 @@ final class MainTableViewCell: UITableViewCell {
             genderLabel.textColor = color
         }
         
-        ageLabel.text = "\(post.authorAgeGroup)대"
+        ageLabel.text = "\(post.authorAgeGroup.rawValue)대"
         let ageColor: UIColor = {
-            switch Int(post.authorAgeGroup)! {
+            switch Int(post.authorAgeGroup.rawValue)! {
             case 10: return .systemRed
             case 20: return .systemOrange
             case 30: return .systemYellow
@@ -400,11 +435,11 @@ final class MainTableViewCell: UITableViewCell {
         // 3) 좋아요, 댓글 수
         clapLabel.text = "\(post.likeUserID.count)"
         clapLabel.accessibilityLabel = "\(post.likeUserID.count)개의 게시물 좋아요"
-        commentLabel.text = "\(post.commentsID.count)"
-        commentLabel.accessibilityLabel = "\(post.commentsID.count)개의 게시물 댓글"
+//        commentLabel.text = "\(post.commentsID.count)"
+//        commentLabel.accessibilityLabel = "\(post.commentsID.count)개의 게시물 댓글"
     }
     
     private func lineHeight(for textStyle: UIFont.TextStyle) -> CGFloat {
-        return UIFont.preferredFont(forTextStyle: textStyle).lineHeight
+        return UIFont.preferredFont(forTextStyle: textStyle).lineHeight + 1
     }
 }

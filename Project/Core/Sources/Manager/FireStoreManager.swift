@@ -67,6 +67,105 @@ public class FireStoreManager {
     }
     
     private init() { }
+    
+//    public func fetchPost(with postUUID: String?) -> Single<Post?> {
+//        return Single.create { single in
+//            guard let postUUID = postUUID else {
+//                single(.failure(NSError(domain: "", code: 0)))
+//                return Disposables.create()
+//            }
+//            
+//            self.db.document("posts")
+//                .collection(postUUID)
+//                .getDocuments { snapshot, error in
+//                    do {
+//                        let data = try snapshot?.documents.first?.data(as: Post.self)
+//                        single(.success(data))
+//                    } catch {
+//                        single(.failure(error))
+//                    }
+//                }
+//            
+//            return Disposables.create()
+//        }
+//    }
+    public func saveComment(with postUUID: String?, comment: CommentDTO) -> Single<CommentDTO> {
+        return Single.create { comp in
+            guard let postUUID = postUUID else {
+                comp(.failure(NSError(domain: "", code: 0)))
+                return Disposables.create()
+            }
+            do {
+                let docRef = try self.db
+                .collection("posts")
+                .document(postUUID)
+                .collection("comments")
+                .addDocument(from: comment)
+                comp(.success(comment))
+            } catch {
+                comp(.failure(error))
+            }
+                
+            return Disposables.create()
+        }
+    }
+    
+    public func fetchComments(with postUUID: String?) -> Single<[CommentDTO]> {
+        return Single.create { comp in
+            guard let postUUID = postUUID else {
+                comp(.failure(NSError(domain: "", code: 0)))
+                return Disposables.create()
+            }
+            Task {
+                do {
+                    var comments = [CommentDTO]()
+                    
+                    let docRef = try await self.db
+                        .collection("posts")
+                        .document(postUUID)
+                        .collection("comments")
+                        .getDocuments()
+                    
+                    for snapshot in docRef.documents {
+                        let comment = try snapshot.data(as: CommentDTO.self)
+                        comments.append(comment)
+                    }
+                    comp(.success(comments))
+                } catch {
+                    comp(.failure(error))
+                }
+            }
+            
+            return Disposables.create()
+        }
+    }
+    
+    public func fetchPost(with postUUID: String? ) -> Single<Post?> {
+        return Single.create { single in
+                        guard let postUUID = postUUID else {
+                            single(.failure(NSError(domain: "", code: 0)))
+                            return Disposables.create()
+                        }
+            let docRef = self.db
+                .collection("posts")
+                .document(postUUID)     // UUID가 문서 ID인 경우
+
+            docRef.getDocument { snapshot, error in
+                if let error = error {
+                    single(.failure(error))
+                } else {
+                    do {
+                        let post = try snapshot?.data(as: Post.self)
+                        single(.success(post))
+                    } catch {
+                        single(.failure(error))
+                    }
+                }
+            }
+
+            return Disposables.create()
+        }
+    }
 
     public func fetchNextPage() -> Single<[Post]> {
         Single.create { single in
@@ -99,6 +198,37 @@ public class FireStoreManager {
             }
 
             // 취소 로직이 필요 없으므로 빈 Disposable 반환
+            return Disposables.create()
+        }
+    }
+    
+    public func saveVote(postUUID: String?, type: VoteType) -> Completable {
+        Completable.create { comp in
+            guard let postUUID = postUUID else {
+                comp(.error(NSError(domain: "", code: 0, userInfo: nil)))
+                return Disposables.create()
+            }
+            
+            guard let user = AuthManager.shared.userRelay.value else {
+                comp(.error(NSError(domain: "", code: 0, userInfo: nil)))
+                return Disposables.create()
+            }
+            
+            guard let profile = AuthManager.shared.profileRelay.value else {
+                comp(.error(NSError(domain: "", code: 0, userInfo: nil)))
+                return Disposables.create()
+            }
+            
+            let vote = Vote(vote: type, ageGroup: profile.ageGroup, createdAt: Timestamp(date: Date()))
+            do {
+                try self.db.collection("posts").document(postUUID)
+                    .collection("votes").document(user.uid)
+                    .setData(from: vote)
+                comp(.completed)
+            } catch {
+                comp(.error(error))
+            }
+            
             return Disposables.create()
         }
     }
@@ -146,7 +276,7 @@ public class FireStoreManager {
     public func savePost(with title: String, context: String, categories: [String], imageUUID: String?) throws {
         let uuid = UUID().uuidString
         
-        let user = AuthManager.shared.profileRelay.value!
+        guard let user = AuthManager.shared.profileRelay.value else { throw NSError(domain: "", code: 0, userInfo: nil) }
         
         let post = PostBuilder()
             .setContext(context)
@@ -229,6 +359,67 @@ public class FireStoreManager {
         db.collection("users").document(user.uid).updateData([
             "posts": FieldValue.arrayUnion([postuuid])
         ])
+    }
+    
+    public func fetchVotes(postUUID: String?) -> Single<[Vote]> {
+        // 1) 포스트 문서만 가져오는 작은 함수
+        guard let postUUID = postUUID else {
+            return Single.error(NSError(domain: "", code: 0))
+        }
+
+        // 3) 두 함수를 조합해 Post에 votes를 채워서 반환
+//        return fetchPost(with: postUUID)
+//            .flatMap { postOpt in
+//                guard var post = postOpt else {
+//                    return .just(nil)
+//                }
+                return self.fetchVotes(postUUID: postUUID)
+//                    .map { votes in
+//                        post.votes = votes
+//                        return post
+//                    }
+//                    .map(Optional.some)
+//            }
+    }
+    
+    func fetchPost(postUUID: String) -> Single<Post?> {
+        return Single.create { single in
+            let docRef = self.db.collection("posts").document(postUUID)
+            docRef.getDocument { snap, error in
+                if let error = error {
+                    single(.failure(error))
+                } else {
+                    do {
+                        let post = try snap?.data(as: Post.self)
+                        single(.success(post))
+                    } catch {
+                        single(.failure(error))
+                    }
+                }
+            }
+            return Disposables.create()
+        }
+    }
+
+    // 2) votes 서브컬렉션만 가져오는 작은 함수
+    func fetchVotes(postUUID: String) -> Single<[Vote]> {
+        return Single.create { single in
+            let votesRef = self.db
+                .collection("posts")
+                .document(postUUID)
+                .collection("votes")
+            votesRef.getDocuments { snap, error in
+                if let error = error {
+                    single(.failure(error))
+                } else {
+                    let votes = snap?.documents.compactMap {
+                        try? $0.data(as: Vote.self)
+                    } ?? []
+                    single(.success(votes))
+                }
+            }
+            return Disposables.create()
+        }
     }
 }
 

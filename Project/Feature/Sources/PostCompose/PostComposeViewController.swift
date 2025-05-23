@@ -17,7 +17,7 @@ final class PostComposeViewController: UIViewController {
     // MARK: - UI Elements
     private let titleLabel: UILabel = {
         let lbl = UILabel()
-        lbl.text = "게시물 작성"
+        lbl.text = "의견 작성"
         lbl.font = .systemFont(ofSize: 17, weight: .semibold)
         lbl.textColor = .black
         return lbl
@@ -35,7 +35,7 @@ final class PostComposeViewController: UIViewController {
     
     private let titleField: UITextField = {
         let tf = UITextField()
-        tf.placeholder = "제목을 입력하세요"
+        tf.placeholder = "의견을 입력하세요"
         tf.font = .systemFont(ofSize: 17, weight: .semibold)
         tf.textColor = UIColor(hex: "222222")
         return tf

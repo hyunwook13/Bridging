@@ -16,6 +16,7 @@ import RxCocoa
 final class PostDetailViewController: UIViewController {
     
     private var post: Post!
+    private var votes: [Vote] = []
     // MARK: - UI Elements
     private let disposeBag = DisposeBag()
     
@@ -114,6 +115,10 @@ final class PostDetailViewController: UIViewController {
         configure(with: post)
     }
     
+    deinit {
+        print("deinit PostDetailViewController")
+    }
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -123,6 +128,7 @@ final class PostDetailViewController: UIViewController {
         super.viewDidLoad()
         setupViews()
         bind()
+        asd()
     }
 
     override func viewDidLayoutSubviews() {
@@ -194,6 +200,15 @@ final class PostDetailViewController: UIViewController {
         contentView.pin.height(contentHeight)
         scrollView.contentSize = CGSize(width: scrollView.frame.width, height: contentHeight)
     }
+    
+    private func asd() {
+                FireStoreManager.shared.fetchVotes(postUUID: post.uuid)
+                    .asObservable()
+                    .bind {
+                        self.votes = $0
+                    }
+                    .disposed(by: disposeBag)
+    }
 
     // MARK: - Setup
     private func setupViews() {
@@ -223,7 +238,7 @@ final class PostDetailViewController: UIViewController {
         likeButton.setImage(
             UIImage(systemName: post.likeUserID.isEmpty ? "heart" : "heart.fill"),
             for: .normal)
-        commentCountLabel.setTitle("댓글 \(post.commentsID.count)개", for: .normal)
+//        commentCountLabel.setTitle("댓글 \(post.commentsID.count)개", for: .normal)
         if let lastComment = post.lastComment {
             previewCommentLabel.text = lastComment
         } else {
@@ -238,8 +253,8 @@ final class PostDetailViewController: UIViewController {
             Task {
                 do {
                     let image = try await StorageManager.shared.fetchPostImage(uuid: post.imageURL)
-                    DispatchQueue.main.async {
-                        self.postImageView.image = image
+                    DispatchQueue.main.async { [weak self] in
+                        self?.postImageView.image = image
 //                        self.view.setNeedsLayout()
                     }
                 } catch {
@@ -269,7 +284,9 @@ final class PostDetailViewController: UIViewController {
         
         AuthManager.shared.userRelay
             .compactMap { $0 }
-            .map { $0.uid != self.post.createdUserID }
+            .map { [weak self] in
+                $0.uid != self?.post.createdUserID
+            }
             .bind {
                 self.deleteBtn.isHidden = $0
                 self.editBtn.isHidden = $0
@@ -295,10 +312,14 @@ final class PostDetailViewController: UIViewController {
         
         Observable.merge(commentBoxView.rx.tap.asObservable(), commentCountLabel.rx.tap.asObservable())
             .throttle(.seconds(1), latest: false, scheduler: MainScheduler.instance)
-            .bind {
-                let vc = CommentsViewController()
-                let nav = UINavigationController(rootViewController: vc)
-                self.present(nav, animated: true)
+            .withUnretained(self)
+            .bind { _ in
+                var asd = self.post!
+                asd.votes = self.votes
+                
+                let vc = CommentsViewController(post: asd)
+                self.navigationController?.pushViewController(vc, animated: true)
+                
             }.disposed(by: disposeBag)
     }
 }

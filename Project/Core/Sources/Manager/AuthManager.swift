@@ -62,7 +62,7 @@ public final class AuthManager {
     private func handleAuthStateChange(user: User?) {
         if let newUser = user {
             userRelay.accept(newUser)
-            refreshProfile()
+//            refreshProfile()
         } else {
             signout()
         }
@@ -71,7 +71,7 @@ public final class AuthManager {
     private func refreshProfile() {
         if let user = user, user.uid != lastUUID {
             let createdAt = user.metadata.creationDate ?? Date()
-            if !(abs(Date().timeIntervalSince(createdAt)) < 1) {
+            if !(abs(Date().timeIntervalSince(createdAt)) < 15) {
                 lastUUID = user.uid
                 
                 profileService.fetchProfile(for: user.uid)
@@ -104,15 +104,31 @@ public final class AuthManager {
 
 extension ObservableType {
     /// 로그인 상태면 자신을, 아니면 로그인 화면 띄우고 빈 시퀀스를 반환
+//    public func requireLogin() -> Observable<Element> {
+//        return AuthManager.shared.userRelay
+////            .skip(2)
+//            .flatMapLatest { user -> Observable<Element> in
+//                if user != nil {
+//                    return self.asObservable()  // 로그인 됐으니 원본 이벤트 흘려보냄
+//                } else {
+//                    // 로그인 화면 전환
+//                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "requiredLogin"), object: nil)
+//                    return .empty()            // 이후 스트림 차단
+//                }
+//            }
+//    }
+    
     public func requireLogin() -> Observable<Element> {
-        return AuthManager.shared.userRelay
-            .flatMapLatest { user -> Observable<Element> in
+        return self
+            .withLatestFrom(AuthManager.shared.userRelay) { element, user in
+                (element, user)
+            }
+            .flatMapLatest { element, user in
                 if user != nil {
-                    return self.asObservable()  // 로그인 됐으니 원본 이벤트 흘려보냄
+                    return Observable.just(element)
                 } else {
-                    // 로그인 화면 전환
-                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "requiredLogin"), object: nil)
-                    return .empty()            // 이후 스트림 차단
+                    NotificationCenter.default.post(name: .init("requiredLogin"), object: nil)
+                    return .empty()
                 }
             }
     }

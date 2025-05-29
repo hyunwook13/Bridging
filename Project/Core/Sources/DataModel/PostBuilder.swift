@@ -15,8 +15,9 @@ protocol Builder {
 }
 
 public class PostBuilder: Builder {
+    public static let shared = PostBuilder()
+    
     @DocumentID var uuid: String? = nil
-    public var commentsID:    [String] = []
     public var content:       String = ""
     public var createdAt:     Timestamp = .init()
     public var createdUserID: String = ""
@@ -27,99 +28,97 @@ public class PostBuilder: Builder {
     public var title:         String = ""
     public var authorNickName:String = ""
     public var authorGender:  Gender = .man
-    public var authorAgeGroup:String = ""
+    public var authorAgeGroup:AgeGroup = .teen
     public var lastModifed:   Timestamp? = nil
     public var lastComment:   String?
+    public var comment: [CommentDTO] = []
+    public var vote: [Vote] = []
     
-    func setCommentIDs(_ ids: [String]) -> Self {
-        self.commentsID = ids
-        return self
-    }
-
-    func setContext(_ content: String) -> Self {
+    public func setContext(_ content: String) -> Self {
         self.content = content
         return self
     }
-
-    func setCreatedAt(_ date: Timestamp) -> Self {
+    
+    public func setCreatedAt(_ date: Timestamp) -> Self {
         self.createdAt = date
         return self
     }
-
-    func setCreatedUserID(_ id: String) -> Self {
+    
+    public func setCreatedUserID(_ id: String) -> Self {
         self.createdUserID = id
         return self
     }
     
-    func setImageURL(_ url: String?) -> Self {
+    public func setImageURL(_ url: String?) -> Self {
         self.imageURL = url
         return self
     }
     
-    func setLikeUserID(_ users: [String]) -> Self {
+    public func setLikeUserID(_ users: [String]) -> Self {
         self.likeUserID = users
         return self
     }
     
-    func setReportedUserID(_ users: [String]) -> Self {
+    public func setReportedUserID(_ users: [String]) -> Self {
         self.reportedUserID = users
         return self
     }
     
-    func setCategories(_ cates: [String]) -> Self {
+    public func setCategories(_ cates: [String]) -> Self {
         self.categories = cates
         return self
     }
     
-    func setTitle(_ title: String) -> Self {
+    public func setTitle(_ title: String) -> Self {
         self.title = title
         return self
     }
     
-    func setAuthorNickName(_ nickName: String) -> Self {
+    public func setAuthorNickName(_ nickName: String) -> Self {
         self.authorNickName = nickName
         return self
     }
     
-    func setAuthorGender(_ gender: Gender) -> Self {
+    public func setAuthorGender(_ gender: Gender) -> Self {
         self.authorGender = gender
         return self
     }
     
-    func setAuthorAgeGroup(_ group: String) -> Self {
+    public func setAuthorAgeGroup(_ group: AgeGroup) -> Self {
         self.authorAgeGroup = group
         return self
     }
     
-    func setLastModifed(_ date: Timestamp) -> Self {
+    public func setComments(_ comments: [CommentDTO]) -> Self {
+        self.comment = comments
+        return self
+    }
+    
+    public func setVotes(_ votes: [Vote]) -> Self {
+        self.vote = votes
+        return self
+    }
+    
+    public func setLastModifed(_ date: Timestamp) -> Self {
         self.lastModifed = date
         return self
     }
     
-    func setLastComment(_ comment: String) -> Self {
+    public func setLastComment(_ comment: String) -> Self {
         self.lastComment = comment
         return self
     }
     
-    func build() -> Post {
-//        Post(
-//            context: context,
-//            createdAt: createdAt,
-//            createdUserID: createdUserID,
-//            title: title,
-//            authorNickName: authorNickName,
-//            authorGender: authorGender,
-//            authorAgeGroup:
-//        )
-        
+    public func build() -> Post {
         Post(
-            commentsID: commentsID,
             content: content,
             createdAt: createdAt,
             createdUserID: createdUserID,
             imageURL: imageURL,
             likeUserID: likeUserID,
             reportedUserID: reportedUserID,
+            comment: comment,
+            vote: vote,
             categories: categories,
             title: title,
             authorNickName: authorNickName,
@@ -129,44 +128,5 @@ public class PostBuilder: Builder {
             lastComment: lastComment,
             isTemporaryFlag: false
         )
-        
-//        Post(commentsID: <#T##[String]#>, context: <#T##String#>, createdUserID: <#T##String#>, likeUserID: <#T##[String]#>, reportedUserID: <#T##[String]#>, categories: <#T##[String]#>, title: <#T##String#>, authorNickName: <#T##String#>, authorGender: <#T##Gender#>, authorAgeGroup: <#T##String#>)
-        
-//        Post(
-//            uuid: nil,
-//            commentsID: commentsID,
-//            categories: categories,
-//            likeUserID: likeUserID,
-//            reportedUserID: reportedUserID,
-//            context: context,
-//            createdAt: createdAt,
-//            createdUserID: createdUserID,
-//            title: title,
-//            authorNickName: authorNickName,
-//            authorGender: authorGender,
-//            authorAgeGroup: authorAgeGroup,
-//            imageURL: imageURL,
-//            lastModifed: lastModifed,
-//            lastComment: lastComment,
-//            isTemporaryFlag: false
-//        )
-        
-//        return Post(
-//            uuid: uuid,
-//            commentsID: commentsID,
-//            categories: categories, context: context,
-//            createdAt: createdAt,
-//            createdUserID: createdUserID,
-//            likeUserID: likeUserID,
-//            reportedUserID: reportedUserIDcategories: categories, context: context,
-//            createdAt: createdAt,
-//            createdUserID: createdUserID,
-//            likeUserID: likeUserID,
-//            reportedUserID: reportedUserID,
-//            title: title,
-//            authorNickName: authorNickName,
-//            authorGender: authorGender,
-//            authorAgeGroup: authorAgeGroup
-//        )
     }
 }

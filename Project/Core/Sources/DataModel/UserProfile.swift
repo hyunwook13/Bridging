@@ -14,13 +14,19 @@ public enum Gender: String, Codable, CaseIterable{
     case woman = "여성"
 }
 
-public enum AgeGroup: String, CaseIterable {
+public enum AgeGroup: String, Codable, CaseIterable {
     case teen = "10"
     case twenties = "20"
     case thirties = "30"
     case forties = "40"
     case fifties = "50"
     case sixties = "60"
+}
+
+public enum DiscussionState: Int, Codable {
+    case none = 0
+    case open = 1
+    case closed = 2
 }
 
 public struct UserProfile: Codable {
@@ -31,7 +37,7 @@ public struct UserProfile: Codable {
     // 서버 타임스탬프(작성 시점) 자동 저장
     @ServerTimestamp var createdAt: Date?
     
-    public var ageGroup: String
+    public var ageGroup: AgeGroup
     public var gender: Gender
     public var nickname: String
     public var posts: [PostUUID]
@@ -39,7 +45,7 @@ public struct UserProfile: Codable {
     // createdAt, uuid는 모두 Firestore에서 채워주므로
     // 로컬에서 초기화할 필요가 없는 파라미터로 뺍니다
     public init(
-        ageGroup: String,
+        ageGroup: AgeGroup,
         gender: Gender,
         nickname: String,
         posts: [PostUUID]

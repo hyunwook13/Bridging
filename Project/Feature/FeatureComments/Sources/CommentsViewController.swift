@@ -3,13 +3,13 @@
 //
 //  Created by 이현욱 on 4/30/25.
 
-import Core
 import UIKit
+import Core
 
-import PinLayout
+import FirebaseFirestore
 import RxSwift
 import RxCocoa
-import FirebaseFirestore
+import PinLayout
 
 protocol SelecteOpinionDelegate: AnyObject {
     func selectedOpinion(_ opinion: VoteType)
@@ -55,7 +55,7 @@ public final class CommentsViewController: UIViewController {
 
     init(post: Post) {
         self.post = post
-        self.voteType = post.votes.first(where: { $0.uuid == AuthManager.shared.userRelay.value?.uid })?.vote
+//        self.voteType = post.votes.first(where: { $0.uuid == AuthManager.shared.userRelay.value?.uid })?.vote
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -122,10 +122,11 @@ public final class CommentsViewController: UIViewController {
     }
 
     private func bindRx() {
-        commentInputTextView.rx.text.orEmpty
-            .map { !$0.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty }
-            .bind(to: completeButton.rx.isEnabled)
-            .disposed(by: disposeBag)
+//        commentInputTextView.rx.text.orEmpty
+//            .map { !$0.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty }
+//            .subscribe(on: MainScheduler.instance)
+//            .bind(to: completeButton.rx.isEnabled)
+//            .disposed(by: disposeBag)
 
         segmentControl.rx.selectedSegmentIndex
             .subscribe(on: MainScheduler.instance)

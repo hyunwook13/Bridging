@@ -6,10 +6,11 @@
 //
 
 import UIKit
+import Core
 
-import RxSwift
-import RxCocoa
 import PinLayout
+import RxCocoa
+import RxSwift
 
 public final class OpinionAlertViewController: UIViewController {
     private let disposeBag = DisposeBag()

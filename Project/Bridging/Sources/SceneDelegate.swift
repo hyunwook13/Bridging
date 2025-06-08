@@ -39,7 +39,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let settingsVC = SettingViewController()
         let settingsNav = UINavigationController(rootViewController: settingsVC)
         settingsNav.navigationBar.prefersLargeTitles = true
-        settingsNav.title = "설정"
+        settingsNav.navigationItem.title = "설정"
         settingsNav.tabBarItem = UITabBarItem(
             title: nil,
             image: UIImage(systemName: "gearshape"),
@@ -57,7 +57,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         tabBar.viewControllers = [homeNav, settingsNav]
         
         // 5) Assign root and show
-        window.rootViewController = tabBar
+        window.rootViewController = homeNav
         self.window = window
         window.makeKeyAndVisible()
     }
@@ -117,12 +117,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     
     func sceneWillEnterForeground(_ scene: UIScene) {
-        print("SceneDelegate - sceneWillEnterForeground - 켜지기 전 1 (완전 백그라운드로 갔다 다시 돌아올 때) 백그라운드로 갔다가 바로 오면 여기 안탐. 백그라운드 1초 있다가 켜야 여기 탐")
         callBackgroundImage()
     }
 
     func sceneDidEnterBackground(_ scene: UIScene) {
-        print("SceneDelegate - sceneDidEnterBackground - 백그라운드로 갔을 때, 홈 눌렀을 때")
         callBackgroundImage(true)
     }
     

@@ -15,8 +15,6 @@
 import UIKit
 import Core
 import PinLayout
-import RxSwift
-import RxCocoa
 
 // MARK: - CommentCell
 final class CommentCell: UITableViewCell {

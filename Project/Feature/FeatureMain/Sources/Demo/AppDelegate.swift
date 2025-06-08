@@ -7,12 +7,16 @@
 
 import UIKit
 
+import FirebaseCore
+
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        print("여기 들어오는거 아니야? ")
+        FirebaseApp.configure()
         return true
     }
 }

@@ -13,16 +13,7 @@ let project = Project(
             sources: ["Sources/**"],
             resources: [],
             dependencies: [
-                .external(name: "RxSwift"),
-                .external(name: "RxCocoa"),
-                .external(name: "RxBlocking"),
-                .external(name: "RxTest"),
-                .external(name: "FirebaseCore"),
-                .external(name: "FirebaseAnalytics"),
-                .external(name: "FirebaseAuth"),
-                .external(name: "FirebaseCrashlytics"),
-                .external(name: "FirebaseFirestore"),
-                .external(name: "FirebaseStorage"),
+                .project(target: "Feature", path: "../Feature"),
             ]
         )
     ]

@@ -43,11 +43,7 @@ let project = Project(
             resources: ["ReSources/**"],
             entitlements: "./Entitlements/BridgingRelease.entitlements",
             dependencies: [
-//                .project(target: "Core", path: "../Core"),
                 .project(target: "Feature", path: "../Feature"),
-                .external(name: "GoogleSignIn"),
-                .external(name: "FirebaseCore"),
-                .external(name: "FirebaseMessaging")
             ],
             settings: .settings(
                 base: SigningHelper.signingSettings,

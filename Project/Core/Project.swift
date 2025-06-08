@@ -6,7 +6,7 @@ let project = Project(
         .target(
             name: "Core",
             destinations: .iOS,
-            product: .staticFramework,
+            product: .framework,
             bundleId: "com.Wook.core",
             deploymentTargets: .iOS("16.0"),
             infoPlist: .default, // 필요 시 .extendingDefault(with:)로 변경 가능
@@ -16,11 +16,12 @@ let project = Project(
                 .external(name: "RxSwift"),
                 .external(name: "RxCocoa"),
                 .external(name: "FirebaseCore"),
-                .external(name: "FirebaseAnalytics"),
                 .external(name: "FirebaseAuth"),
-                .external(name: "FirebaseCrashlytics"),
                 .external(name: "FirebaseFirestore"),
                 .external(name: "FirebaseStorage"),
+                .external(name: "FirebaseAnalytics"),
+                .external(name: "FirebaseCrashlytics")
+
             ]
         )
     ]

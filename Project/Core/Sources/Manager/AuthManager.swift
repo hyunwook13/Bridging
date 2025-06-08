@@ -35,7 +35,7 @@ public final class AuthManager {
     
     private init(profileService: UserProfileService = FireStoreManager.shared) {
         self.profileService = profileService
-        
+        print("init")
         refreshProfile()
         
         authHandler = Auth.auth().addStateDidChangeListener { [weak self] _, user in

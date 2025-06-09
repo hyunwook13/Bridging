@@ -8,7 +8,6 @@
 import Foundation
 import Security
 
-
 public class KeyChainManager {
     public static let shared = KeyChainManager()
     

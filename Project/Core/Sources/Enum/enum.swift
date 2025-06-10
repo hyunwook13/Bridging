@@ -1,5 +1,5 @@
 //
-//  Post.swift
+//  enum.swift
 //  Core
 //
 //  Created by 이현욱 on 6/9/25.

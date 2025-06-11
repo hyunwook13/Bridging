@@ -1,4 +1,5 @@
 import ProjectDescription
+import ProjectDescriptionHelpers
 
 let project = Project(
     name: "FeatureOnBoarding",
@@ -13,8 +14,7 @@ let project = Project(
             infoPlist: .default,
             resources: [],
             dependencies: [
-                .project(target: "Core", path: "../../Core"),
-                .external(name: "GoogleSignIn"),
+                .project(target: "CommonUI", path: "../../CommonUI"),
                 .external(name: "PinLayout"),
                 .external(name: "SkeletonView"),
             ]
@@ -22,17 +22,41 @@ let project = Project(
 
         // 추가된 CommentsDemo 앱 타겟
         .target(
-            name: "FeatureMainApp",
+            name: "FeatureOnBoardingApp",
             destinations: .iOS,
             product: .app,
             bundleId: "com.Wook.feature.FeatureOnBoardingApp",
             deploymentTargets: .iOS("16.0"),
-            infoPlist: .default,
+            infoPlist: .extendingDefault(
+                with: [
+                    "UIApplicationSceneManifest": [
+                        "UISceneConfigurations": [
+                            "UIWindowSceneSessionRoleApplication": [
+                                [
+                                    "UISceneConfigurationName": "Default Configuration",
+                                    "UISceneDelegateClassName": "FeatureOnBoardingApp.SceneDelegate"
+                                ]
+                            ]
+                        ]
+                    ],
+                    "UILaunchScreen": [:]
+                ]
+            ),
             sources: ["Sources/**"],
+            resources: [
+                "Resources/GoogleService-Info.plist"
+            ],
             dependencies: [
                 .target(name: "FeatureOnBoarding"),
 //                .project(target: "Core", path: "../Core")
-            ]
+            ],
+            settings: .settings(
+                base: SigningHelper.mergedBaseSettings,
+                configurations: [
+                    .debug(name: "Debug"),
+                    .release(name: "Release"),
+                ]
+            )
         )
     ]
 )

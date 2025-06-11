@@ -8,6 +8,8 @@
 
 import UIKit
 import Core
+import Domain
+import Common
 
 import PinLayout
 import RxSwift
@@ -202,7 +204,7 @@ final class PostDetailViewController: UIViewController {
     }
     
     private func asd() {
-                FireStoreManager.shared.fetchVotes(postUUID: post.uuid)
+                FireStoreManager.shared.fetchVotes(postUUID: post.id)
                     .asObservable()
                     .bind {
                         self.votes = $0
@@ -236,7 +238,7 @@ final class PostDetailViewController: UIViewController {
         authorLabel.text = "by \(post.authorNickName)"
         contentTextView.text = post.content
         likeButton.setImage(
-            UIImage(systemName: post.likeUserID.isEmpty ? "heart" : "heart.fill"),
+            UIImage(systemName: post.likeUserIDs.isEmpty ? "heart" : "heart.fill"),
             for: .normal)
 //        commentCountLabel.setTitle("댓글 \(post.commentsID.count)개", for: .normal)
         if let lastComment = post.lastComment {
@@ -274,13 +276,13 @@ final class PostDetailViewController: UIViewController {
 //                FireStoreManager.shared.
             }.disposed(by: disposeBag)
         
-        editBtn.rx.tap
-            .throttle(.seconds(1), latest: false, scheduler: MainScheduler.instance)
-            .requireLogin()
-            .bind {
-                let co = PostComposeViewController(post: self.post)
-                self.navigationController?.pushViewController(co, animated: true)
-            }.disposed(by: disposeBag)
+//        editBtn.rx.tap
+//            .throttle(.seconds(1), latest: false, scheduler: MainScheduler.instance)
+//            .requireLogin()
+//            .bind {
+//                let co = PostComposeViewController(post: self.post)
+//                self.navigationController?.pushViewController(co, animated: true)
+//            }.disposed(by: disposeBag)
         
         AuthManager.shared.userRelay
             .compactMap { $0 }
@@ -295,7 +297,7 @@ final class PostDetailViewController: UIViewController {
         
         deleteBtn.rx.tap
             .requireLogin()
-            .compactMap { self.post.uuid }
+            .compactMap { self.post.id }
             .flatMapLatest {  id -> Single<Void> in
                 return FireStoreManager.shared.removePost(with: id)
             }
@@ -310,16 +312,16 @@ final class PostDetailViewController: UIViewController {
                 })
             .disposed(by: disposeBag)
         
-        Observable.merge(commentBoxView.rx.tap.asObservable(), commentCountLabel.rx.tap.asObservable())
-            .throttle(.seconds(1), latest: false, scheduler: MainScheduler.instance)
-            .withUnretained(self)
-            .bind { _ in
-                var asd = self.post!
-                asd.votes = self.votes
-                
-                let vc = CommentsViewController(post: asd)
-                self.navigationController?.pushViewController(vc, animated: true)
-                
-            }.disposed(by: disposeBag)
+//        Observable.merge(commentBoxView.rx.tap.asObservable(), commentCountLabel.rx.tap.asObservable())
+//            .throttle(.seconds(1), latest: false, scheduler: MainScheduler.instance)
+//            .withUnretained(self)
+//            .bind { _ in
+//                var asd = self.post!
+//                asd.votes = self.votes
+//                
+//                let vc = CommentsViewController(post: asd)
+//                self.navigationController?.pushViewController(vc, animated: true)
+//                
+//            }.disposed(by: disposeBag)
     }
 }

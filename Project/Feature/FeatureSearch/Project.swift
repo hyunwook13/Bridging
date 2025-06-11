@@ -13,8 +13,7 @@ let project = Project(
             infoPlist: .default,
             resources: [],
             dependencies: [
-                .project(target: "Core", path: "../../Core"),
-                .external(name: "GoogleSignIn"),
+                .project(target: "CommonUI", path: "../../CommonUI"),
                 .external(name: "PinLayout"),
                 .external(name: "SkeletonView"),
             ]

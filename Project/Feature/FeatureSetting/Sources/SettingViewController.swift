@@ -6,10 +6,13 @@
 //
 
 import UIKit
-import Core
+import Common
+
 
 import RxSwift
 import RxCocoa
+import PinLayout
+
 
 public class SettingViewController: UIViewController {
     private let disposeBag = DisposeBag()

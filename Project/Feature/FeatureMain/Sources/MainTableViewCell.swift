@@ -6,8 +6,11 @@
 //
 
 import UIKit
+import Domain
 import Core
+import Common
 
+import FirebaseFirestore
 import PinLayout
 import SkeletonView
 
@@ -285,7 +288,7 @@ final class MainTableViewCell: UITableViewCell {
     }
     
     func configure(with post: Post, completion: (() -> Void)? = nil) {
-        if !post.isTemporaryFlag {
+        if true { //!post.isTemporaryFlag {
             self.contentView.showSkeleton()
             return
         }
@@ -427,14 +430,14 @@ final class MainTableViewCell: UITableViewCell {
         subtitleLabel.accessibilityLabel = "내용: \(post.content)"
         
         // 2) 날짜 포맷팅
-        let date = post.createdAt.dateValue()
+        let date = post.createdAt
         let df = DateFormatter()
         df.dateFormat = "MMM d"
         dateLabel.text = df.string(from: date)
         
         // 3) 좋아요, 댓글 수
-        clapLabel.text = "\(post.likeUserID.count)"
-        clapLabel.accessibilityLabel = "\(post.likeUserID.count)개의 게시물 좋아요"
+        clapLabel.text = "\(post.likeUserIDs.count)"
+        clapLabel.accessibilityLabel = "\(post.likeUserIDs.count)개의 게시물 좋아요"
 //        commentLabel.text = "\(post.commentsID.count)"
 //        commentLabel.accessibilityLabel = "\(post.commentsID.count)개의 게시물 댓글"
     }

@@ -4,9 +4,11 @@
 //  Created by 이현욱 on 4/30/25.
 
 import UIKit
+import Domain
+import Common
 import Core
 
-import FirebaseFirestore
+//import FirebaseFirestore
 import RxSwift
 import RxCocoa
 import PinLayout
@@ -50,8 +52,8 @@ public final class CommentsViewController: UIViewController {
     private let tableView = UITableView(frame: .zero, style: .plain)
 
     // Data
-    private let comments = BehaviorRelay<[CommentDTO]>(value: [])
-    private var allComments: [CommentDTO] = []
+    private let comments = BehaviorRelay<[Comment]>(value: [])
+    private var allComments: [Comment] = []
 
     init(post: Post) {
         self.post = post
@@ -68,6 +70,7 @@ public final class CommentsViewController: UIViewController {
         view.backgroundColor = .systemBackground
         title = "댓글"
 
+        edgesForExtendedLayout = []
         setupTableView()
         setupHeaderView()
         bindRx()
@@ -75,7 +78,7 @@ public final class CommentsViewController: UIViewController {
 
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        FireStoreManager.shared.fetchComments(with: post.uuid)
+        FireStoreManager.shared.fetchComments(with: post.id)
             .asObservable()
             .subscribe(onNext: { [weak self] fetched in
                 self?.allComments = fetched
@@ -115,18 +118,17 @@ public final class CommentsViewController: UIViewController {
         commentInputTextView.pin.top(to: segmentControl.edge.bottom).marginTop(padding).left(padding).right(to: completeButton.edge.left).marginRight(padding).bottom(padding)
 
         seperateView2.pin.height(1).left().bottom().right()
-//        seperateView.pin.height(1).left().bottom().right()
 
         headerView.frame.size.height = completeButton.frame.maxY + padding
         tableView.tableHeaderView = headerView
     }
 
     private func bindRx() {
-//        commentInputTextView.rx.text.orEmpty
-//            .map { !$0.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty }
-//            .subscribe(on: MainScheduler.instance)
-//            .bind(to: completeButton.rx.isEnabled)
-//            .disposed(by: disposeBag)
+        commentInputTextView.rx.text.orEmpty
+            .map { !$0.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty }
+            .subscribe(on: MainScheduler.instance)
+            .bind(to: completeButton.rx.isEnabled)
+            .disposed(by: disposeBag)
 
         segmentControl.rx.selectedSegmentIndex
             .subscribe(on: MainScheduler.instance)
@@ -139,10 +141,10 @@ public final class CommentsViewController: UIViewController {
             .withLatestFrom(commentInputTextView.rx.text.orEmpty)
             .withLatestFrom(AuthManager.shared.userRelay) { text, user in (text, user) }
             .withLatestFrom(AuthManager.shared.profileRelay) { text, user in
-                return CommentDTO(
-                    id: UUID().uuidString,
+                return Comment(
+                    uuid: UUID().uuidString,
                     authorID: text.1!.uid,
-                    createdAt: Timestamp(date: Date()),
+                    createdAt: Date(),
                     authorAgeGroup: user!.ageGroup,
                     authorNickName: user!.nickname,
                     gender: user!.gender,
@@ -150,7 +152,7 @@ public final class CommentsViewController: UIViewController {
                     vote: self.voteType ?? .agree
                 )
             }.flatMapLatest {
-                FireStoreManager.shared.saveComment(with: self.post.uuid, comment: $0).asObservable()
+                FireStoreManager.shared.saveComment(with: self.post.id, comment: $0).asObservable()
             }.subscribe (onNext: { [weak self] in
                 self?.commentInputTextView.text = ""
                 self?.allComments.append($0)
@@ -182,7 +184,7 @@ public final class CommentsViewController: UIViewController {
 extension CommentsViewController: SelecteOpinionDelegate {
     func selectedOpinion(_ opinion: VoteType) {
         voteType = opinion
-        FireStoreManager.shared.saveVote(postUUID: post.uuid, type: opinion)
+        FireStoreManager.shared.saveVote(postUUID: post.id, type: opinion)
             .subscribe {
                 HapticManager.shared.notify(.success)
             } onError: { error in

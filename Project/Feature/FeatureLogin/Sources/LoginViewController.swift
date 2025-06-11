@@ -8,7 +8,9 @@
 import UIKit
 import AuthenticationServices
 import Core
+import Common
 
+import AppAuthCore
 import FirebaseCore
 import FirebaseAuth
 import GoogleSignIn
@@ -257,7 +259,7 @@ public final class LoginViewController: UIViewController {
             if KeyChainManager.shared.isExistKeychain() {
                 self?.dismiss(animated: true)
             } else {
-                self?.navigationController?.pushViewController(OnboardingViewController(), animated: true)
+//                self?.navigationController?.pushViewController(OnboardingViewController(), animated: true)
             }
         }
         

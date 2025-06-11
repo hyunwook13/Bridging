@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import Core
+import Common
 import FirebaseCore
 
 @main
@@ -16,6 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure()
+        _ = AuthManager.shared
         return true
     }
 }

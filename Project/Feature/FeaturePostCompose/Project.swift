@@ -1,4 +1,5 @@
 import ProjectDescription
+import ProjectDescriptionHelpers
 
 let project = Project(
     name: "FeaturePostCompose",
@@ -13,8 +14,7 @@ let project = Project(
             infoPlist: .default,
             resources: [],
             dependencies: [
-                .project(target: "Core", path: "../../Core"),
-                .external(name: "GoogleSignIn"),
+                .project(target: "CommonUI", path: "../../CommonUI"),
                 .external(name: "PinLayout"),
                 .external(name: "SkeletonView"),
             ]
@@ -32,7 +32,14 @@ let project = Project(
             dependencies: [
                 .target(name: "FeaturePostCompose"),
 //                .project(target: "Core", path: "../Core")
-            ]
+            ],
+            settings: .settings(
+                base: SigningHelper.mergedBaseSettings,
+                configurations: [
+                    .debug(name: "Debug"),
+                    .release(name: "Release"),
+                ]
+            )
         )
     ]
 )

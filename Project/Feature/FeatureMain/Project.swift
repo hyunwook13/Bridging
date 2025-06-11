@@ -1,4 +1,5 @@
 import ProjectDescription
+import ProjectDescriptionHelpers
 
 let project = Project(
     name: "FeatureMain",
@@ -13,10 +14,7 @@ let project = Project(
             infoPlist: .default,
             resources: [],
             dependencies: [
-                .project(target: "Core", path: "../../Core"),
-                .external(name: "GoogleSignIn"),
-                .external(name: "PinLayout"),
-                .external(name: "SkeletonView"),
+                .project(target: "CommonUI", path: "../../CommonUI"),
             ]
         ),
 
@@ -27,15 +25,35 @@ let project = Project(
             product: .app,
             bundleId: "com.Wook.feature.FeatureMainApp",
             deploymentTargets: .iOS("16.0"),
-            infoPlist: .default,
+            infoPlist: .extendingDefault(
+                with: [
+                    "UIApplicationSceneManifest": [
+                        "UISceneConfigurations": [
+                            "UIWindowSceneSessionRoleApplication": [
+                                [
+                                    "UISceneConfigurationName": "Default Configuration",
+                                    "UISceneDelegateClassName": "FeatureMainApp.SceneDelegate"
+                                ]
+                            ]
+                        ]
+                    ],
+                    "UILaunchScreen": [:]
+                ]
+            ),
             sources: ["Sources/**"],
-//            resources: [
-//              "Resources/GoogleService-Info.plist"
-//            ],
+            resources: [
+              "Resources/GoogleService-Info.plist"
+            ],
             dependencies: [
                 .target(name: "FeatureMain"),
-//                .project(target: "Core", path: "../Core")
-            ]
+            ],
+            settings: .settings(
+                base: SigningHelper.mergedBaseSettings,
+                configurations: [
+                    .debug(name: "Debug"),
+                    .release(name: "Release"),
+                ]
+            )
         )
     ]
 )

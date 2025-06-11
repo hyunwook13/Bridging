@@ -3,7 +3,6 @@ import ProjectDescription
 let project = Project(
     name: "FeatureComments",
     targets: [
-        // 기존 Feature 프레임워크 타겟
         .target(
             name: "FeatureComments",
             destinations: .iOS,
@@ -13,30 +12,47 @@ let project = Project(
             infoPlist: .default,
             resources: [],
             dependencies: [
-                .project(target: "Core", path: "../../Core"),
-                .external(name: "GoogleSignIn"),
+                .project(target: "CommonUI", path: "../../CommonUI"),
                 .external(name: "PinLayout"),
                 .external(name: "SkeletonView"),
+                
             ]
         ),
 
-        // 추가된 CommentsDemo 앱 타겟
+        // FeatureCommentsApp 앱
         .target(
             name: "FeatureCommentsApp",
             destinations: .iOS,
             product: .app,
             bundleId: "com.Wook.feature.FeatureCommentsApp",
             deploymentTargets: .iOS("16.0"),
-            infoPlist: .default,
+            infoPlist: .extendingDefault(
+                with: [
+                    "UIApplicationSceneManifest": [
+                        "UISceneConfigurations": [
+                            "UIWindowSceneSessionRoleApplication": [
+                                [
+                                    "UISceneConfigurationName": "Default Configuration",
+                                    "UISceneDelegateClassName": "FeatureCommentsApp.SceneDelegate"
+                                ]
+                            ]
+                        ]
+                    ],
+//                    "UILaunchScreen": [:]
+                ]
+            ),
             sources: ["Sources/**"],
             resources: [
-              "Resources/GoogleService-Info.plist"
+                "Resources/GoogleService-Info.plist"
             ],
             dependencies: [
                 .target(name: "FeatureComments"),
-//                .project(target: "Core", path: "../Core")
-            ]
+            ],
+            settings: .settings(
+                base: [
+                    "OTHER_LDFLAGS": ["-ObjC"]
+                ]
+            )
         )
     ]
 )
-

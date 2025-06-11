@@ -7,6 +7,8 @@
 
 import UIKit
 import Core
+import Common
+import Domain
 
 import RxSwift
 import RxCocoa
@@ -44,6 +46,7 @@ class OnboardingViewController: UIViewController {
         view.backgroundColor = .white
         setupHierarchy()
         setupBindings()
+        print("ASDASDASDASDASDASDASDASD")
     }
     
     override func viewDidLayoutSubviews() {
@@ -93,10 +96,14 @@ class OnboardingViewController: UIViewController {
         nextButton.rx.tap
             .withUnretained(self)
             .flatMapLatest { _ -> Single<Bool> in
-                let user = UserProfile(ageGroup: AgeGroup(rawValue: self.selectedAgeGroup.value) ?? .teen,
-                                       gender: Gender(rawValue: self.selectedGender.value) ?? .man,
-                                       nickname: self.nicknameRelay.value,
-                                       posts: [])
+                let user =  UserProfile(
+                    uuid: UUID().uuidString,
+                    createdAt: Date(),
+                    ageGroup: AgeGroup(rawValue: self.selectedAgeGroup.value) ?? .teen,
+                    gender: Gender(rawValue: self.selectedGender.value) ?? .man,
+                    nickname: self.nicknameRelay.value,
+                    posts: []
+                )
                 
                 return FireStoreManager.shared.addUser(user)
             }

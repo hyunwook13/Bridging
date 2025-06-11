@@ -7,6 +7,9 @@
 
 import UIKit
 import Core
+import Domain
+import Common
+import CommonUI
 
 import PinLayout
 import RxSwift
@@ -18,7 +21,7 @@ public final class MainViewController: UIViewController {
     private let disposeBag = DisposeBag()
     
     private let postsRelay = BehaviorRelay<[Post]>(
-        value: Array(repeating: Post.empty, count: 5)
+        value: [] //Array(repeating: Post.empty, count: 5)
     )
     private let loadNextPageTrigger = PublishSubject<Void>()
     private let isLoading = BehaviorRelay<Bool>(value: false)
@@ -152,26 +155,26 @@ public final class MainViewController: UIViewController {
     }
     
     private func binding() {
-        searchButton.rx.tap
-            .bind {
-                let vc = SearchViewController()
-                vc.hidesBottomBarWhenPushed = true
-                self.navigationController?.pushViewController(vc, animated: true)
-            }.disposed(by: disposeBag)
-        
-        floatingButton.rx.tap
-            .requireLogin()
-            .bind {
-                let vc = PostComposeViewController()
-                self.navigationController?.pushViewController(vc, animated: true)
-            }.disposed(by: disposeBag)
-        
-        tableView.rx.modelSelected(Post.self)
-            .filter { $0.isTemporaryFlag }
-            .bind { post in
-                let vc = PostDetailViewController(post: post)
-                self.navigationController?.pushViewController(vc, animated: true)
-            }.disposed(by: disposeBag)
+//        searchButton.rx.tap
+//            .bind {
+//                let vc = SearchViewController()
+//                vc.hidesBottomBarWhenPushed = true
+//                self.navigationController?.pushViewController(vc, animated: true)
+//            }.disposed(by: disposeBag)
+//        
+//        floatingButton.rx.tap
+//            .requireLogin()
+//            .bind {
+//                let vc = PostComposeViewController()
+//                self.navigationController?.pushViewController(vc, animated: true)
+//            }.disposed(by: disposeBag)
+//        
+//        tableView.rx.modelSelected(Post.self)
+//            .filter { $0.isTemporaryFlag }
+//            .bind { post in
+//                let vc = PostDetailViewController(post: post)
+//                self.navigationController?.pushViewController(vc, animated: true)
+//            }.disposed(by: disposeBag)
         
         tableView.rx.willDisplayCell
             .filter { [weak self] _, idx in
@@ -187,9 +190,10 @@ public final class MainViewController: UIViewController {
                 guard let self = self else { return }
                 var current = self.postsRelay.value
                 // 중복 방지
-                if !current.contains(where: { $0.uuid == newPost.uuid }) {
+                
+                if let post = newPost, !current.contains(where: { $0.id == newPost?.id }) {
                     // 새 글은 앞에 삽입
-                    current.insert(newPost, at: 0)
+                    current.insert(post, at: 0)
                     self.postsRelay.accept(current)
                 }
             })
@@ -286,7 +290,7 @@ extension MainViewController: UITableViewDelegate {
         let width = tableView.bounds.width - tableView.contentInset.left - tableView.contentInset.right
         
         // 로딩 중이면 Skeleton 높이, 아니면 실제 데이터 높이
-        if !post.isTemporaryFlag {
+        if true { //*!post.isTemporaryFlag*/ {
             return MainTableViewCell.skeletonHeight(width: width)
         } else {
             guard let cell = tableView.cellForRow(at: indexPath) as? MainTableViewCell else { return MainTableViewCell.height(for: post, width: width)}

@@ -13,7 +13,7 @@
 //
 
 import UIKit
-import Core
+import Domain
 import PinLayout
 
 // MARK: - CommentCell
@@ -114,14 +114,14 @@ final class CommentCell: UITableViewCell {
         contentView.frame.size.height = h
     }
     
-    func configure(with comment: CommentDTO) {
+    func configure(with comment: Comment) {
         nicknameLabel.text = comment.authorNickName
         contentLabel.text = comment.content
         
         let formatter = DateFormatter()
         formatter.dateStyle = .medium
         formatter.timeStyle = .short
-        dateLabel.text = formatter.string(from: comment.createdAt.dateValue())
+        dateLabel.text = formatter.string(from: comment.createdAt)
         
         infoLabel.text = "\(comment.gender.rawValue), \(comment.authorAgeGroup.rawValue)"
         

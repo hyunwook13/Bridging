@@ -8,7 +8,7 @@
 import UIKit
 
 import Domain
-
+import Common
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
@@ -16,8 +16,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = scene as? UIWindowScene else { return }
+
         window = .init(windowScene: windowScene)
-        window?.rootViewController = LoginViewController()
+        window?.rootViewController = UINavigationController(rootViewController: PostDetailViewController(post: mockPost()))
         window?.makeKeyAndVisible()
     }
     
@@ -45,6 +46,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     func sceneDidEnterBackground(_ scene: UIScene) {
         callBackgroundImage(true)
+    }
+    
+    private func mockPost() -> Post {
+        return PostBuilder.shared
+            .setTitle("AI 기술이 일자리를 없애는가 vs AI가 새로운 일자리를 창출하는가")
+            .setCreatedUserID(UUID().uuidString)
+            .setVotes([])
+            .setAuthorGender(.woman)
+            .setContext("현재 많은 AI가 생기고 있고, 그 능력은 시간이 지날수록 점점 더 강해지고, 범위 또한 넓어지고 있다. 과연 AI의 기술이 기존에 있던 일자리를 없애는가 혹은 새로운 일자리를 창출하는가?")
+            .setAuthorAgeGroup(.thirties)
+            .build()
     }
     
     private func callBackgroundImage(_ isShow: Bool = false) {

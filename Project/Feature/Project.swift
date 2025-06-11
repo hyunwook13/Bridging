@@ -8,10 +8,10 @@ let project = Project(
         .target(
             name: "Feature",
             destinations: .iOS,
-            product: .staticLibrary,
+            product: .framework,
             bundleId: "com.Wook.feature",
             deploymentTargets: .iOS("16.0"),
-//            infoPlist: .default,
+            infoPlist: .default,
             resources: [],
             dependencies: [
                 .project(target: "FeatureComments", path: "./FeatureComments"),

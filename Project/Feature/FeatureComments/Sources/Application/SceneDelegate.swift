@@ -6,8 +6,8 @@
 //
 
 import UIKit
-
-import Core
+import Common
+import Domain
 
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
@@ -15,11 +15,18 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        guard let windowScene = scene as? UIWindowScene else { return }
-        let window = UIWindow(frame: UIScreen.main.bounds)
-        window.rootViewController = CommentsViewController(post: mockPost())
-        self.window = window
-        window.makeKeyAndVisible()
+        guard let windowScene = (scene as? UIWindowScene) else { return }
+//        let window = UIWindow(windowScene: windowScene)
+////        window.frame = windowScene.coordinateSpace.bounds
+//        window.rootViewController = CommentsViewController(post: mockPost())  // 여기 맞는 VC 지정
+//        window.makeKeyAndVisible()                             // 이 줄이 꼭 필요
+//        self.window = window
+//        let navigationController = UINavigationController()
+//        navigationController.setViewControllers([CommentsViewController(post: mockPost())], animated: false)
+        window = .init(windowScene: windowScene)
+        window?.rootViewController = CommentsViewController(post: mockPost())
+        window?.makeKeyAndVisible()
+        
     }
     
     func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
@@ -43,7 +50,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func sceneWillEnterForeground(_ scene: UIScene) {
         callBackgroundImage()
     }
-
+    
     func sceneDidEnterBackground(_ scene: UIScene) {
         callBackgroundImage(true)
     }
@@ -52,18 +59,18 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let TAG_BG_IMG = -101
         
         guard let baseWindow = window?.rootViewController?.view.window else { return }
-
+        
         if isShow {
             // 이미 있으면 아무것도 하지 않음
             if baseWindow.viewWithTag(TAG_BG_IMG) != nil { return }
-//
-//            let splashVC = SplashViewController()
-//            let splashView = splashVC.view!
-//            splashView.tag = TAG_BG_IMG
-//            splashView.frame = baseWindow.bounds
-//            splashView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-//
-//            baseWindow.addSubview(splashView)
+            //
+            //            let splashVC = SplashViewController()
+            //            let splashView = splashVC.view!
+            //            splashView.tag = TAG_BG_IMG
+            //            splashView.frame = baseWindow.bounds
+            //            splashView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+            //
+            //            baseWindow.addSubview(splashView)
         } else {
             // 있을 때만 제거
             if let splash = baseWindow.viewWithTag(TAG_BG_IMG) {

@@ -13,7 +13,6 @@ A welcoming digital space for open dialogue across generations and genders, wher
 - Add comments to posts and express opinions through upvotes or downvotes
 - Responsive design with full accessibility support for all users
 - Real-time updates for new comments and votes
-- Optimized for both desktop and mobile platforms
 
 ## Dependency Graph
 ![graph](https://github.com/hyunwook13/Bridging/blob/main/graph.png)

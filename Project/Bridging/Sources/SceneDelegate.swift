@@ -7,7 +7,7 @@
 
 import UIKit
 
-import Feature
+import Feate
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     

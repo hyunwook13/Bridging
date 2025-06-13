@@ -5,10 +5,17 @@ import PackageDescription
     import ProjectDescription
 
     let packageSettings = PackageSettings(
-        // Customize the product types for specific package product
-        // Default is .staticFramework
-        // productTypes: ["Alamofire": .framework,]
-        productTypes: [:]
+        productTypes: [
+            "RxCocoa": .framework,
+            "RxCocoaRuntime": .framework,
+            "RxRelay": .framework,
+            "RxBlocking": .framework,
+            "RxTest": .framework,
+            "PinLayout": .framework,
+            "SkeletonView": .framework,
+            "GoogleSignIn": .framework,
+            "GTMAppAuth": .framework
+        ]
     )
 #endif
 
@@ -21,7 +28,8 @@ let package = Package(
         ),
         .package(
             url: "https://github.com/google/GoogleSignIn-iOS.git",
-            .upToNextMajor(from: "8.0.0")
+//            .upToNextMajor(from: "8.0.0")
+            .branchItem("main")
         ),
         .package(
             url: "https://github.com/firebase/firebase-ios-sdk",

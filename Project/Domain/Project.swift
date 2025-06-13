@@ -1,8 +1,21 @@
-//
-//  Project.swift
-//  BridgingManifests
-//
-//  Created by 이현욱 on 6/9/25.
-//
+import ProjectDescription
 
-import Foundation
+let project = Project(
+    name: "Domain",
+    targets: [
+        .target(
+            name: "Domain",
+            destinations: .iOS,
+            product: .framework,
+            bundleId: "com.Wook.Domain",
+            deploymentTargets: .iOS("16.0"),
+            infoPlist: .default, // 필요 시 .extendingDefault(with:)로 변경 가능
+            sources: ["Sources/**"],
+            resources: [],
+            dependencies: [
+
+            ]
+        )
+    ]
+)
+

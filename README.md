@@ -1,6 +1,6 @@
-![Logo](https://github.com/hyunwook13/Bridging/blob/main/Resource/logo.png)
-
-<img src="https://github.com/hyunwook13/Bridging/blob/main/Resource/logo.png" width="20%" />
+<div align="center">
+  <img src="https://github.com/hyunwook13/Bridging/blob/main/Resource/logo.png" width="20%" />
+</div>
 # Bridging
 
 A welcoming digital space for open dialogue across generations and genders, where diverse perspectives are understood and shared.

@@ -9,7 +9,7 @@ let project = Project(
             product: .framework,
             bundleId: "com.Wook.Common",
             deploymentTargets: .iOS("16.0"),
-            infoPlist: .default, // 필요 시 .extendingDefault(with:)로 변경 가능
+            infoPlist: .default,
             sources: ["Sources/**"],
             resources: [],
             dependencies: [

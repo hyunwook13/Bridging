@@ -43,14 +43,7 @@ let project = Project(
             resources: ["ReSources/**"],
             entitlements: "./Entitlements/BridgingRelease.entitlements",
             dependencies: [
-                .project(target: "FeatureComments",    path: "../Feature/FeatureComments"),
-                .project(target: "FeatureLogin",       path: "../Feature/FeatureLogin"),
-                .project(target: "FeatureMain",        path: "../Feature/FeatureMain"),
-                .project(target: "FeatureOnBoarding",  path: "../Feature/FeatureOnBoarding"),
-                .project(target: "FeaturePostDetail",  path: "../Feature/FeaturePostDetail"),
-                .project(target: "FeaturePostCompose", path: "../Feature/FeaturePostCompose"),
-                .project(target: "FeatureSearch",      path: "../Feature/FeatureSearch"),
-                .project(target: "FeatureSetting",     path: "../Feature/FeatureSetting"),
+                .project(target: "Feature",    path: "../Feature"),
             ],
             settings: .settings(
                 base: SigningHelper.signingSettings,

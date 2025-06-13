@@ -38,7 +38,7 @@ let project = Project(
                             ]
                         ]
                     ],
-//                    "UILaunchScreen": [:]
+                    "UILaunchScreen": [:]
                 ]
             ),
             sources: ["Sources/**"],

@@ -39,7 +39,7 @@ let project = Project(
                             ]
                         ]
                     ],
-//                    "UILaunchScreen": [:]
+                    "UILaunchScreen": [:]
                 ]
             ),
             sources: ["Sources/**"],
@@ -47,8 +47,7 @@ let project = Project(
               "Resources/GoogleService-Info.plist"
             ],
             dependencies: [
-                .target(name: "FeatureLogin"),
-//                .project(target: "Core", path: "../Core")
+                .target(name: "FeatureLogin")
             ],
             settings: .settings(
                 base: SigningHelper.mergedBaseSettings,

@@ -28,7 +28,6 @@ let package = Package(
         ),
         .package(
             url: "https://github.com/google/GoogleSignIn-iOS.git",
-//            .upToNextMajor(from: "8.0.0")
             .branchItem("main")
         ),
         .package(

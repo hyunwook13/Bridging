@@ -22,9 +22,11 @@ tuist_path = ENV["TUIST_PATH"] || "/opt/homebrew/bin/tuist"  # 기본 경로 지
 
 
   lane :setup_and_build do
-     sh("#{tuist_path} clean")
-     sh("#{tuist_path} install")
-     sh("#{tuist_path} generate")
+     Dir.chdir("..") do
+       sh("#{tuist_path} clean")
+       sh("#{tuist_path} install")
+       sh("#{tuist_path} generate")
+     End
      match(type: "development")
      build_app(scheme: "Bridging")
    end

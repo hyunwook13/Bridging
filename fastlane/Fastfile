@@ -17,10 +17,14 @@ default_platform(:ios)
 
 platform :ios do
   desc "Description of what the lane does"
+
+tuist_path = ENV["TUIST_PATH"] || "/opt/homebrew/bin/tuist"  # 기본 경로 지정
+
+
   lane :setup_and_build do
-     sh("tuist clean")
-     sh("tuist install")
-     sh("tuist generate")
+     sh("#{tuist_path} clean")
+     sh("#{tuist_path} install")
+     sh("#{tuist_path} generate")
      match(type: "development")
      build_app(scheme: "Bridging")
    end
